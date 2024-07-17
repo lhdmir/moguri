@@ -33,6 +33,6 @@
    1. Squash and Merge
    2. merge 후 `featrue` 브랜치 자동 삭제
 6. 배포 시점에 `develop` → `main` PR 및 Merge
-   1. Merge commit or Rebase and Merge
+   1. Merge commit ~~or Rebase and Merge~~
 7. 애플리케이션 장애가 발생하면 `main` → `hotfix/{문제상황}` 브랜치로 분기
    1. 버그를 고치고 `main`으로 merge
