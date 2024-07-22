@@ -34,6 +34,49 @@
 
 // export default App
 
+import "./css/App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import IntroductionPage from "./components/IntroductionPage.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import RegisterPage from "./components/RegisterPage.jsx";
+import MoguriSelectPage from "./components/MoguriSelectPage.jsx";
+import MoguriWeightPage from "./components/MoguriWeightPage.jsx";
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import './App.css'
+
+// function App() {
+//   const [count, setCount] = useState(0)
+
+//   return (
+//     <>
+//       <div>
+//         <a href="https://vitejs.dev" target="_blank">
+//           <img src={viteLogo} className="logo" alt="Vite logo" />
+//         </a>
+//         <a href="https://react.dev" target="_blank">
+//           <img src={reactLogo} className="logo react" alt="React logo" />
+//         </a>
+//       </div>
+//       <h1>Vite + React</h1>
+//       <div className="card">
+//         <button onClick={() => setCount((count) => count + 1)}>
+//           count is {count}
+//         </button>
+//         <p>
+//           Edit <code>src/App.jsx</code> and save to test HMR
+//         </p>
+//       </div>
+//       <p className="read-the-docs">
+//         Click on the Vite and React logos to learn more
+//       </p>
+//     </>
+//   )
+// }
+
+// export default App
+
 import  { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -71,6 +114,15 @@ function App() {
   };
 
   return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<IntroductionPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/moguri-select" element={<MoguriSelectPage />} />
+          <Route path="/moguri-weight" element={<MoguriWeightPage />} />
+        </Routes>
     <div className="App">
       <h1>My Calendar</h1>
       <Calendar
@@ -83,6 +135,8 @@ function App() {
         <textarea value={note} onChange={handleNoteChange} />
         <button onClick={saveNote}>Save Note</button>
       </div>
+    </Router>
+  );
       <div>
         <h2>All Notes</h2>
         <ul>
@@ -97,4 +151,5 @@ function App() {
   );
 }
 
+export default App;
 export default App;
