@@ -1,34 +1,25 @@
-import { useNavigate } from "react-router-dom";
 import "../css/RegisterPage.css";
+import backgroundImage from "../assets/image/title.png";
 
 function RegisterPage() {
-  const navigate = useNavigate();
-
-  const handleRegister = () => {
-    // 회원가입 로직을 여기에 추가
-    navigate("/");
-  };
-
   return (
     <div className="register-page">
-      <h2>Register</h2>
-      <form>
-        <div>
-          <label>ID</label>
-          <input type="text" name="id" required />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" name="password" required />
-        </div>
-        <div>
-          <label>Email</label>
-          <input type="email" name="email" required />
-        </div>
-        <button type="submit" onClick={handleRegister}>
-          Register
-        </button>
-      </form>
+      <img
+        src={backgroundImage}
+        alt="Background"
+        className="background-image-register"
+      />
+      <div className="modal-register">
+        <h2>MOGURI</h2>
+        <form>
+          <input type="text" placeholder="ID" required />
+          <input type="password" placeholder="PW" required />
+          <input type="email" placeholder="Email" required />
+          <button type="submit" className="register-button">
+            회원가입
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -28,11 +28,11 @@ html, body, #root {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */ 
     z-index: -1;
 }
 
-.content {
+.content-intro {
     text-align: center;
     z-index: 1;
     display: flex;
@@ -42,8 +42,8 @@ html, body, #root {
     margin-top: 550px;
 }
 
-.login-button,
-.register-button {
+.login-button-intro,
+.register-button-intro {
     background-color: #ABE8B4;
     color: #000;
     border: none;

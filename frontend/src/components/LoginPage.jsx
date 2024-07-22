@@ -1,30 +1,24 @@
-import { useNavigate } from "react-router-dom";
 import "../css/LoginPage.css";
+import backgroundImage from "../assets/image/title.png";
 
 function LoginPage() {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // 로그인 로직을 여기에 추가
-    navigate("/");
-  };
-
   return (
     <div className="login-page">
-      <h2>Login</h2>
-      <form>
-        <div>
-          <label>ID</label>
-          <input type="text" name="id" required />
-        </div>
-        <div>
-          <label>Password</label>
-          <input type="password" name="password" required />
-        </div>
-        <button type="submit" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+      <img
+        src={backgroundImage}
+        alt="Background"
+        className="background-image-login"
+      />
+      <div className="modal-login">
+        <h2>MOGURI</h2>
+        <form>
+          <input type="text" placeholder="ID" required />
+          <input type="password" placeholder="PW" required />
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
