@@ -49,7 +49,7 @@ label {
     display: block;
 }
 
-input {
+.input-login {
     display: block;
     width: 100%;
     padding: 10px;
@@ -64,13 +64,14 @@ input {
     background-color: #ABE8B4;
     color: #000;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 15px;
     margin: 20px;
     font-size: 1.2rem;
     font-family: 'Nanum Pen Script', cursive;
     cursor: pointer;
     border-radius: 10px;
     transition: background-color 0.3s ease;
+    margin-left: 70%;
 }
 
 .login-button:hover {

@@ -18,11 +18,11 @@ function LoginPage() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="id">ID</label>
-            <input type="text" id="id" placeholder="ID" required />
+            <input className="input-login" type="text" id="id" placeholder="ID" required />
           </div>
           <div className="form-group">
             <label htmlFor="pw">PW</label>
-            <input type="password" id="pw" placeholder="PW" required />
+            <input className="input-login" type="password" id="pw" placeholder="PW" required />
           </div>
           <button type="submit" className="login-button">
             Login
