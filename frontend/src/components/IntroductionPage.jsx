@@ -7,7 +7,7 @@ function IntroductionPage() {
 
   return (
     <div className="introduction-page">
-      <img src={titleImage} alt="MOGURI" className="background-image" />
+      <img src={titleImage} alt="MOGURI" className="background-image-intro" />
       <div className="content-intro">
         <button className="login-button-intro" onClick={() => navigate("/login")}>
           Login
