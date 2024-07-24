@@ -22,7 +22,7 @@
   transform: translateY(180px); /* 여기서 Y축으로 50px 아래로 이동 */
 }
 
-.button-intro {
+.title-button {
   background-color: #abe8b4;
   color: #000;
   border: none;
@@ -35,6 +35,6 @@
   transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.title-button:hover {
   background-color: #98d8a8;
 }

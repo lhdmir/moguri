@@ -24,10 +24,10 @@ function Title() {
   return (
     <div className="title-intro">
       <div className="content-intro">
-        <button className="button-intro" onClick={openSignInModal}>
+        <button className="title-button" onClick={openSignInModal}>
           Sign In
         </button>
-        <button className="button-intro" onClick={openSignUpModal}>
+        <button className="title-button" onClick={openSignUpModal}>
           Sign Up
         </button>
 

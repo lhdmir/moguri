@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import PropTypes from "prop-types";
-import "./SignUpModal.css";
+import "./SignModal.css";
 
 function SignUpModal({ isOpen, onRequestClose }) {
   const handleSubmit = (event) => {
@@ -14,39 +14,38 @@ function SignUpModal({ isOpen, onRequestClose }) {
       onRequestClose={onRequestClose}
       contentLabel="회원가입 모달"
       className="modal-signup"
-      overlayClassName="overlay-signup"
+      overlayClassName="overlay"
     >
-      <h2>MOGURI</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="div-signup">
-          <label htmlFor="username">ID</label>
-          <input type="text" id="username" name="username" />
-        </div>
-        <div className="div-signup">
-          <label htmlFor="password">Pw</label>
-          <input type="password" id="password" name="password" />
-        </div>
-        <div className="div-signup">
-          <label htmlFor="confirmPassword">Pw check</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" />
-        </div>
-        <div className="div-signup">
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div className="button-group-signup">
-          <button
-            type="button"
-            className="button-signup"
-            onClick={onRequestClose}
-          >
-            close
-          </button>
-          <button type="submit" className="button-signup-close">
-            Sign up
-          </button>
-        </div>
-      </form>
+      <div className="modal-content">
+        <h2 className="moguri">MOGURI</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <label>ID</label>
+            <input type="text" name="username" />
+          </div>
+          <div className="input-group">
+            <label>PW</label>
+            <input type="password" name="password" />
+          </div>
+          <div className="input-group">
+            <label>PW Check</label>
+            <input type="password" name="password" />
+          </div>
+          <div className="input-group">
+            <label>Email</label>
+            <input type="email" name="email" />
+          </div>
+          <div className="button-group">
+            <button type="button" className="button" onClick={onRequestClose}>
+              close
+            </button>
+
+            <button type="submit" className="button">
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 }

@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 import PropTypes from "prop-types";
-import "./SignInModal.css";
+import "./SignModal.css";
 
 function SignInModal({ isOpen, onRequestClose }) {
   const handleSubmit = (event) => {
@@ -13,7 +13,7 @@ function SignInModal({ isOpen, onRequestClose }) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="로그인 모달"
-      className="modal"
+      className="modal-signin"
       overlayClassName="overlay"
     >
       <div className="modal-content">
@@ -28,15 +28,11 @@ function SignInModal({ isOpen, onRequestClose }) {
             <input type="password" name="password" />
           </div>
           <div className="button-group">
-            <button
-              type="button"
-              className="sign-in-button"
-              onClick={onRequestClose}
-            >
+            <button type="button" className="button" onClick={onRequestClose}>
               close
             </button>
 
-            <button type="submit" className="sign-in-button">
+            <button type="submit" className="button">
               Sign In
             </button>
           </div>
