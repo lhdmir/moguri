@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+.title {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../assets/image/title.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative; /* 부모 요소에 position 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 간격 조정 */
+  transform: translateY(180px); /* 여기서 Y축으로 50px 아래로 이동 */
+}
+
+.button {
+  background-color: #abe8b4;
+  color: #000;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-family: "Nanum Pen Script", cursive;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 200px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #98d8a8;
+}
