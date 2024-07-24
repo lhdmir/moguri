@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import "./SignUpModal.css";
 
 function SignUpModal({ isOpen, onRequestClose }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // 폼 제출 시 처리할 작업 추가
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -12,7 +17,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
       overlayClassName="overlay-signup"
     >
       <h2>MOGURI</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="div-signup">
           <label htmlFor="username">ID</label>
           <input type="text" id="username" name="username" />
@@ -52,4 +57,3 @@ SignUpModal.propTypes = {
 };
 
 export default SignUpModal;
-

@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import "./SignInModal.css";
 
 function SignInModal({ isOpen, onRequestClose }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // 폼 제출 시 처리할 작업 추가
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -13,7 +18,7 @@ function SignInModal({ isOpen, onRequestClose }) {
     >
       <div className="modal-content">
         <h2 className="moguri">MOGURI</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>ID</label>
             <input type="text" name="username" />
@@ -22,8 +27,12 @@ function SignInModal({ isOpen, onRequestClose }) {
             <label>PW</label>
             <input type="password" name="password" />
           </div>
-          <div className="button-group"> 
-            <button className="sign-in-button" onClick={onRequestClose}>
+          <div className="button-group">
+            <button
+              type="button"
+              className="sign-in-button"
+              onClick={onRequestClose}
+            >
               close
             </button>
 
