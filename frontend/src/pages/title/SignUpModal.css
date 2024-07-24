@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* 배경을 어둡게 */
+.overlay-signup {
+  background-color: rgba(0, 0, 0, 0.5); 
   position: fixed;
   top: 0;
   left: 0;
@@ -15,72 +14,60 @@
   z-index: 2;
 }
 
-.modal {
-  height: 400px;
-  width: 300px;
+.modal-signup {
+  height: 500px;
+  width: 350px; 
   padding: 20px;
   background: #dafdff;
   border-radius: 25px;
   border: solid 2px black;
+  outline: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  z-index: 2;
 }
 
-.modal-content {
-  width: 100%;
-}
-
-.moguri {
-  font-family: "Cherry Bomb", cursive;
+.modal-signup h2 {
+  font-family: 'Cherry Bomb', cursive;
   color: #edefa8;
   margin-bottom: 20px;
-  box-shadow: 20px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.input-group {
+.modal-signup form {
+  width: 100%;
+}
+
+.div-signup {
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  text-align: left;
-  width: 100%;
-  padding-left: 7px;
+  align-items: center;
 }
 
-.input-group label {
-  font-family: "Nanum Pen Script", cursive;
+.modal-signup label {
+  font-family: 'Nanum Pen Script', cursive;
   color: #000;
   margin-bottom: 5px;
-  display: block;
+  text-align: left;
+  width: 100%;
+  margin-left: 20px;
 }
 
-.input-group input {
-  display: block;
-  width: calc(100% - 60px);
+.modal-signup input {
+  width: 90%; 
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px; 
   border: 1px solid #ccc;
-  font-family: "Nanum Pen Script", cursive;
+  font-family: 'Nanum Pen Script', cursive;
   background-color: #fff;
   color: #000;
 }
 
-.input-group-item {
+.button-group-signup {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.input-group-item label {
-  margin-right: 10px;
-  width: 30px;
-}
-
-.button-group {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   margin-top: 10px;
@@ -88,8 +75,8 @@
   margin-left: 10px;
 }
 
-.sign-in-button {
-  background-color: #F6FFDB;
+.button-signup, .button-signup-close {
+ background-color: #F6FFDB;
   color: #000;
   border: none;
   padding: 10px 20px;
@@ -101,6 +88,20 @@
   margin-top: 20px;
 }
 
-.sign-in-button:hover {
+.button-signup:hover {
   background-color: #98d8a8;
 }
+
+.button-signup-close:hover {
+  background-color: #98d8a8;
+}
+
+
+.button-signup[type="submit"] {
+  background-color: #98d8a8;
+}
+
+.button-signup[type="submit"]:hover {
+  background-color: #86c79a;
+} 
+ 

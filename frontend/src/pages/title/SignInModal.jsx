@@ -12,7 +12,7 @@ function SignInModal({ isOpen, onRequestClose }) {
       overlayClassName="overlay"
     >
       <div className="modal-content">
-        <h2>MOGURI</h2>
+        <h2 className="moguri">MOGURI</h2>
         <form>
           <div className="input-group">
             <label>ID</label>
@@ -22,11 +22,15 @@ function SignInModal({ isOpen, onRequestClose }) {
             <label>PW</label>
             <input type="password" name="password" />
           </div>
-          <button onClick={onRequestClose}>close</button>
+          <div className="button-group"> 
+            <button className="sign-in-button" onClick={onRequestClose}>
+              close
+            </button>
 
-          <button type="submit" className="sign-in-button">
-            Sign In
-          </button>
+            <button type="submit" className="sign-in-button">
+              Sign In
+            </button>
+          </div>
         </form>
       </div>
     </Modal>

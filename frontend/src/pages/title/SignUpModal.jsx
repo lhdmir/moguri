@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import PropTypes from "prop-types";
+import "./SignUpModal.css";
 
 function SignUpModal({ isOpen, onRequestClose }) {
   return (
@@ -7,23 +8,39 @@ function SignUpModal({ isOpen, onRequestClose }) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="회원가입 모달"
+      className="modal-signup"
+      overlayClassName="overlay-signup"
     >
-      <h2>회원가입</h2>
-      <button onClick={onRequestClose}>닫기</button>
+      <h2>MOGURI</h2>
       <form>
-        <div>
-          <label>아이디</label>
-          <input type="text" name="username" />
+        <div className="div-signup">
+          <label htmlFor="username">ID</label>
+          <input type="text" id="username" name="username" />
         </div>
-        <div>
-          <label>비밀번호</label>
-          <input type="password" name="password" />
+        <div className="div-signup">
+          <label htmlFor="password">Pw</label>
+          <input type="password" id="password" name="password" />
         </div>
-        <div>
-          <label>비밀번호 확인</label>
-          <input type="password" name="confirmPassword" />
+        <div className="div-signup">
+          <label htmlFor="confirmPassword">Pw check</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" />
         </div>
-        <button type="submit">회원가입</button>
+        <div className="div-signup">
+          <label htmlFor="email">Email</label>
+          <input type="email" id="email" name="email" />
+        </div>
+        <div className="button-group-signup">
+          <button
+            type="button"
+            className="button-signup"
+            onClick={onRequestClose}
+          >
+            close
+          </button>
+          <button type="submit" className="button-signup-close">
+            Sign up
+          </button>
+        </div>
       </form>
     </Modal>
   );
@@ -35,3 +52,4 @@ SignUpModal.propTypes = {
 };
 
 export default SignUpModal;
+
