@@ -22,12 +22,12 @@ function Title() {
   };
 
   return (
-    <div className="title">
-      <div className="content">
-        <button className="button" onClick={openSignInModal}>
+    <div className="title-intro">
+      <div className="content-intro">
+        <button className="button-intro" onClick={openSignInModal}>
           Sign In
         </button>
-        <button className="button" onClick={openSignUpModal}>
+        <button className="button-intro" onClick={openSignUpModal}>
           Sign Up
         </button>
 
