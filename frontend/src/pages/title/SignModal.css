@@ -117,3 +117,8 @@
 .button:hover {
   background-color: #98d8a8;
 }
+
+.error-message {
+  font-family: "Nanum Pen Script", cursive;
+  color: #000;
+}
