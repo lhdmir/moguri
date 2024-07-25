@@ -1,10 +1,9 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import MemberViewSet
-
-router = DefaultRouter()
-router.register(r'member', MemberViewSet)
+# users/urls.py
+from django.urls import path
+from .views import register, login, create_moguri
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('register/', register, name='register'),
+    path('login/', login, name='login'),
+    path('moguri/', create_moguri, name='create_moguri'),
 ]
