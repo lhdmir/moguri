@@ -9,13 +9,14 @@ function SignUpModal({ isOpen, onRequestClose }) {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordCheckRef = useRef(null);
   const emailRef = useRef(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const usernamePattern = /^[a-zA-Z0-9]{1,13}$/;
@@ -59,9 +60,35 @@ function SignUpModal({ isOpen, onRequestClose }) {
       return;
     }
 
-    // 모든 검증 통과 후 폼 제출 처리
     setError("");
-    // 폼 제출 시 처리할 작업 추가
+    setSuccess("");
+
+    try {
+      const response = await fetch(
+        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: username, password, email }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccess(data.message);
+        setUsername("");
+        setPassword("");
+        setPasswordCheck("");
+        setEmail("");
+      } else {
+        setError("회원가입 실패: " + data.error);
+      }
+    } catch (error) {
+      setError("회원가입 실패: 서버와의 통신 오류");
+    }
   };
 
   const handleClose = () => {
@@ -70,6 +97,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
     setPasswordCheck("");
     setEmail("");
     setError("");
+    setSuccess("");
     onRequestClose();
   };
 
@@ -150,7 +178,8 @@ function SignUpModal({ isOpen, onRequestClose }) {
               ref={emailRef}
             />
           </div>
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="message">{error}</div>}
+          {success && <div className="message">{success}</div>}
           <div className="button-group">
             <button type="button" className="button" onClick={handleClose}>
               close

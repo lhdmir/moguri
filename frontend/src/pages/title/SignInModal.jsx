@@ -56,7 +56,7 @@ function SignInModal({ isOpen, onRequestClose }) {
     //       headers: {
     //         "Content-Type": "application/json",
     //       },
-    //       body: JSON.stringify({ username, password }),
+    //       body: JSON.stringify({ id: username, password }),
     //     }
     //   );
 
@@ -134,7 +134,7 @@ function SignInModal({ isOpen, onRequestClose }) {
               maxLength={13}
             />
           </div>
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="message">{error}</div>}
           <div className="button-group">
             <button type="button" className="button" onClick={handleClose}>
               close
