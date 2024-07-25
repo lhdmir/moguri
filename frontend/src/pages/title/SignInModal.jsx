@@ -45,7 +45,7 @@ function SignInModal({ isOpen, onRequestClose }) {
     // 임시 코드(첫 로그인으로 이동)
     // navigate("/first-login");
     // 임시 코드(홈화면 이동)
-    navigate("/home");
+    navigate("/first-login");
 
     // try {
     //   // API Endpoint 수정
