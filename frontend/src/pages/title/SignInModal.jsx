@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
 import "./SignModal.css";
+// Cookie 주석 해제
+// import Cookies from "js-cookie";
 
 function SignInModal({ isOpen, onRequestClose }) {
   const [username, setUsername] = useState("");
@@ -63,6 +65,14 @@ function SignInModal({ isOpen, onRequestClose }) {
     //   const data = await response.json();
 
     //   if (response.ok) {
+    //     // const { token, cookie_expiration_time, moguri } = data;
+    //     const { token, cookie_expiration_time } = data;
+
+    //     // 모구리 정보 Redux에 저장하는 코드 필요
+
+    //     // Save token and expiration time to cookies
+    //     const expirationDate = new Date(cookie_expiration_time);
+    //     Cookies.set("token", token, { expires: expirationDate });
     //     if (!data.moguri.name) {
     //       navigate("/first-login");
     //     } else {
