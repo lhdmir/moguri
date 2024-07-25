@@ -18,14 +18,25 @@ function SignUpModal({ isOpen, onRequestClose }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const usernamePattern = /^[a-zA-Z0-9]{1,13}$/;
+    const passwordPattern = /^[a-zA-Z0-9]{1,13}$/;
+
     if (username === "") {
       setError("아이디를 입력해주세요");
+      usernameRef.current.focus();
+      return;
+    } else if (!usernamePattern.test(username)) {
+      setError("아이디는 영문과 숫자로만 구성된 최대 13자까지 가능합니다");
       usernameRef.current.focus();
       return;
     }
 
     if (password === "") {
       setError("비밀번호를 입력해주세요");
+      passwordRef.current.focus();
+      return;
+    } else if (!passwordPattern.test(password)) {
+      setError("비밀번호는 영문과 숫자로만 구성된 최대 13자까지 가능합니다");
       passwordRef.current.focus();
       return;
     }
@@ -65,7 +76,15 @@ function SignUpModal({ isOpen, onRequestClose }) {
   useEffect(() => {
     if (error === "아이디를 입력해주세요") {
       usernameRef.current.focus();
+    } else if (
+      error === "아이디는 영문과 숫자로만 구성된 최대 13자까지 가능합니다"
+    ) {
+      usernameRef.current.focus();
     } else if (error === "비밀번호를 입력해주세요") {
+      passwordRef.current.focus();
+    } else if (
+      error === "비밀번호는 영문과 숫자로만 구성된 최대 13자까지 가능합니다"
+    ) {
       passwordRef.current.focus();
     } else if (
       error === "비밀번호 확인을 입력해주세요" ||
@@ -96,6 +115,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               ref={usernameRef}
+              maxLength={13}
             />
           </div>
           <div className="input-group">
@@ -106,6 +126,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               ref={passwordRef}
+              maxLength={13}
             />
           </div>
           <div className="input-group">
@@ -116,6 +137,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               value={passwordCheck}
               onChange={(e) => setPasswordCheck(e.target.value)}
               ref={passwordCheckRef}
+              maxLength={13}
             />
           </div>
           <div className="input-group">
