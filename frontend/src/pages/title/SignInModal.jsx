@@ -30,33 +30,39 @@ function SignInModal({ isOpen, onRequestClose }) {
 
     setError("");
 
-    try {
-      // API Endpoint 수정
-      const response = await fetch(
-        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ username, password }),
-        }
-      );
+    // 백엔드 API 서버 구축 완료시 삭제
+    // 임시 코드(첫 로그인으로 이동)
+    // navigate("/first-login");
+    // 임시 코드(홈화면 이동)
+    navigate("/home");
 
-      const data = await response.json();
+    // try {
+    //   // API Endpoint 수정
+    //   const response = await fetch(
+    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/login",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ username, password }),
+    //     }
+    //   );
 
-      if (response.ok) {
-        if (!data.moguri.name) {
-          navigate("/first-login");
-        } else {
-          navigate("/home");
-        }
-      } else {
-        setError("로그인 실패: " + data.error);
-      }
-    } catch (error) {
-      setError("로그인 실패: 서버와의 통신 오류");
-    }
+    //   const data = await response.json();
+
+    //   if (response.ok) {
+    //     if (!data.moguri.name) {
+    //       navigate("/first-login");
+    //     } else {
+    //       navigate("/home");
+    //     }
+    //   } else {
+    //     setError("로그인 실패: " + data.error);
+    //   }
+    // } catch (error) {
+    //   setError("로그인 실패: 서버와의 통신 오류");
+    // }
   };
 
   const handleClose = () => {
