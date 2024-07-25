@@ -52,7 +52,7 @@ function SignInModal({ isOpen, onRequestClose }) {
           navigate("/home");
         }
       } else {
-        setError("로그인 실패: " + data.message);
+        setError("로그인 실패: " + data.error);
       }
     } catch (error) {
       setError("로그인 실패: 서버와의 통신 오류");
