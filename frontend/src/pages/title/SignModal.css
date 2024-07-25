@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb&display=swap");
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* 배경을 어둡게 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.modal-signin {
+  height: 400px;
+  width: 300px;
+  padding: 20px;
+  background: #dafdff;
+  border-radius: 25px;
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.modal-signup {
+  height: 500px;
+  width: 350px;
+  padding: 20px;
+  background: #dafdff;
+  border-radius: 25px;
+  border: solid 2px black;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+.moguri {
+  font-family: "Cherry Bomb", cursive;
+  color: #edefa8;
+  margin-bottom: 20px;
+  box-shadow: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  padding-left: 7px;
+}
+
+.input-group label {
+  font-family: "Nanum Pen Script", cursive;
+  color: #000;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input-group input {
+  display: block;
+  width: calc(100% - 60px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: "Nanum Pen Script", cursive;
+  background-color: #fff;
+  color: #000;
+}
+
+.input-group-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-group-item label {
+  margin-right: 10px;
+  width: 30px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+  width: calc(100% - 40px);
+  margin-left: 10px;
+}
+
+.button {
+  background-color: #f6ffdb;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-family: "Nanum Pen Script", cursive;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #98d8a8;
+}
+
+.error-message {
+  font-family: "Nanum Pen Script", cursive;
+  color: #000;
+}

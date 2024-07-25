@@ -1,0 +1,80 @@
+.login-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.background-image-login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/image/title.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(50%);
+    z-index: -1;
+}
+
+.modal-login {
+    background: #DAFDFF;
+    padding: 20px;
+    border-radius: 10px;
+    border: solid 2px black;
+    text-align: center;
+    z-index: 1;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-family: 'Nanum Pen Script', cursive;
+    color: #FF6F61;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-family: 'Nanum Pen Script', cursive;
+    color: #000;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-login {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: 'Nanum Pen Script', cursive;
+    background-color: #FFF;
+    color: #000;
+}
+
+.login-button {
+    background-color: #ABE8B4;
+    color: #000;
+    border: none;
+    padding: 5px 15px;
+    margin: 20px;
+    font-size: 1.2rem;
+    font-family: 'Nanum Pen Script', cursive;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    margin-left: 70%;
+}
+
+.login-button:hover {
+    background-color: #98D8A8;
+} 
+
