@@ -9,23 +9,35 @@ function SignUpModal({ isOpen, onRequestClose }) {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordCheckRef = useRef(null);
   const emailRef = useRef(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const usernamePattern = /^[a-zA-Z0-9]{1,13}$/;
+    const passwordPattern = /^[a-zA-Z0-9]{1,13}$/;
 
     if (username === "") {
       setError("아이디를 입력해주세요");
+      usernameRef.current.focus();
+      return;
+    } else if (!usernamePattern.test(username)) {
+      setError("아이디는 영문과 숫자로만 구성된 최대 13자까지 가능합니다");
       usernameRef.current.focus();
       return;
     }
 
     if (password === "") {
       setError("비밀번호를 입력해주세요");
+      passwordRef.current.focus();
+      return;
+    } else if (!passwordPattern.test(password)) {
+      setError("비밀번호는 영문과 숫자로만 구성된 최대 13자까지 가능합니다");
       passwordRef.current.focus();
       return;
     }
@@ -48,9 +60,43 @@ function SignUpModal({ isOpen, onRequestClose }) {
       return;
     }
 
-    // 모든 검증 통과 후 폼 제출 처리
     setError("");
-    // 폼 제출 시 처리할 작업 추가
+    setSuccess("");
+
+    // 백엔드 API 서버 구축 완료시 삭제
+    setSuccess("회원가입 성공");
+    setUsername("");
+    setPassword("");
+    setPasswordCheck("");
+    setEmail("");
+
+    // try {
+    //   //   // API Endpoint 수정
+    //   const response = await fetch(
+    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/register",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ id: username, password, email }),
+    //     }
+    //   );
+
+    //   const data = await response.json();
+
+    //   if (response.ok) {
+    //     setSuccess(data.message);
+    //     setUsername("");
+    //     setPassword("");
+    //     setPasswordCheck("");
+    //     setEmail("");
+    //   } else {
+    //     setError("회원가입 실패: " + data.error);
+    //   }
+    // } catch (error) {
+    //   setError("회원가입 실패: 서버와의 통신 오류");
+    // }
   };
 
   const handleClose = () => {
@@ -59,13 +105,22 @@ function SignUpModal({ isOpen, onRequestClose }) {
     setPasswordCheck("");
     setEmail("");
     setError("");
+    setSuccess("");
     onRequestClose();
   };
 
   useEffect(() => {
     if (error === "아이디를 입력해주세요") {
       usernameRef.current.focus();
+    } else if (
+      error === "아이디는 영문과 숫자로만 구성된 최대 13자까지 가능합니다"
+    ) {
+      usernameRef.current.focus();
     } else if (error === "비밀번호를 입력해주세요") {
+      passwordRef.current.focus();
+    } else if (
+      error === "비밀번호는 영문과 숫자로만 구성된 최대 13자까지 가능합니다"
+    ) {
       passwordRef.current.focus();
     } else if (
       error === "비밀번호 확인을 입력해주세요" ||
@@ -96,6 +151,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               ref={usernameRef}
+              maxLength={13}
             />
           </div>
           <div className="input-group">
@@ -106,6 +162,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               ref={passwordRef}
+              maxLength={13}
             />
           </div>
           <div className="input-group">
@@ -116,6 +173,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               value={passwordCheck}
               onChange={(e) => setPasswordCheck(e.target.value)}
               ref={passwordCheckRef}
+              maxLength={13}
             />
           </div>
           <div className="input-group">
@@ -128,7 +186,8 @@ function SignUpModal({ isOpen, onRequestClose }) {
               ref={emailRef}
             />
           </div>
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="message">{error}</div>}
+          {success && <div className="message">{success}</div>}
           <div className="button-group">
             <button type="button" className="button" onClick={handleClose}>
               close
