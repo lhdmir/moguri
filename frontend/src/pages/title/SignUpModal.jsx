@@ -63,32 +63,40 @@ function SignUpModal({ isOpen, onRequestClose }) {
     setError("");
     setSuccess("");
 
-    try {
-      const response = await fetch(
-        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ id: username, password, email }),
-        }
-      );
+    // 백엔드 API 서버 구축 완료시 삭제
+    setSuccess("회원가입 성공");
+    setUsername("");
+    setPassword("");
+    setPasswordCheck("");
+    setEmail("");
 
-      const data = await response.json();
+    // try {
+    //   //   // API Endpoint 수정
+    //   const response = await fetch(
+    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/register",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ id: username, password, email }),
+    //     }
+    //   );
 
-      if (response.ok) {
-        setSuccess(data.message);
-        setUsername("");
-        setPassword("");
-        setPasswordCheck("");
-        setEmail("");
-      } else {
-        setError("회원가입 실패: " + data.error);
-      }
-    } catch (error) {
-      setError("회원가입 실패: 서버와의 통신 오류");
-    }
+    //   const data = await response.json();
+
+    //   if (response.ok) {
+    //     setSuccess(data.message);
+    //     setUsername("");
+    //     setPassword("");
+    //     setPasswordCheck("");
+    //     setEmail("");
+    //   } else {
+    //     setError("회원가입 실패: " + data.error);
+    //   }
+    // } catch (error) {
+    //   setError("회원가입 실패: 서버와의 통신 오류");
+    // }
   };
 
   const handleClose = () => {
