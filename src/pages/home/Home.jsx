@@ -1,60 +1,39 @@
-// import PropTypes from "prop-types";
-// import "./Home.css";
-// import background1 from "../../assets/image/background1.png";
-// import Nav from "../../components/Nav";
-
-// const Home = ({ selectedMoguri }) => {
-//   return (
-//     <div
-//       className="home-container"
-//       style={{ backgroundImage: `url(${background1})` }}
-//     >
-//       <Nav />
-//       {selectedMoguri && (
-//         <img
-//           src={selectedMoguri}
-//           alt="Selected Moguri"
-//           className="selected-moguri"
-//         />
-//       )}
-//     </div>
-//   );
-// };
-
-// Home.propTypes = {
-//   selectedMoguri: PropTypes.string,
-// };
-
-// export default Home;
-
-import { useState } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import "./Home.css";
 import background1 from "../../assets/image/background1.png";
 import Nav from "../../components/Nav";
+import closeButtonImage from "../../assets/icon/deletebutton.png";
+import backButtonImage from "../../assets/icon/backbutton.png";
 
-const Home = ({ selectedMoguri, targetWeight }) => {
+const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [todayWeight, setTodayWeight] = useState("");
-  const [result, setResult] = useState(null);
+  const [weight, setWeight] = useState("");
+  const [currentStep, setCurrentStep] = useState(1);
+  const selectedMoguri = useSelector((state) => state.moguri.image);
+  const targetWeight = useSelector((state) => state.moguri.target_weight);
 
-  const handleMoguriClick = () => {
-    setIsModalOpen(true);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+    setCurrentStep(1); // Reset to the first step when modal is toggled
   };
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setTodayWeight("");
-    setResult(null);
+  const handleNextStep = () => {
+    setCurrentStep(2);
   };
 
-  const handleNextClick = () => {
-    const weightDifference = targetWeight - todayWeight;
-    setResult(
-      `목표까지 ${Math.abs(weightDifference)}kg ${
-        weightDifference > 0 ? "남았어요!" : "초과했어요!"
-      }`
-    );
+  const handleBackStep = () => {
+    setCurrentStep(1);
+  };
+
+  const handleWeightChange = (e) => {
+    setWeight(e.target.value);
+  };
+
+  const calculateRemainingWeight = () => {
+    const currentWeight = parseFloat(weight);
+    return targetWeight - currentWeight;
   };
 
   return (
@@ -68,31 +47,40 @@ const Home = ({ selectedMoguri, targetWeight }) => {
           src={selectedMoguri}
           alt="Selected Moguri"
           className="selected-moguri"
-          onClick={handleMoguriClick}
+          onClick={toggleModal}
         />
       )}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content-home">
-            <button className="modal-close-button" onClick={handleModalClose}>
-              &times;
+            <button className="modal-close-button" onClick={toggleModal}>
+              <img src={closeButtonImage} alt="Close" />
             </button>
-            <div className="modal-header">모구리 성장 판</div>
-            {result === null ? (
+            {currentStep === 1 && (
               <>
-                <label>오늘의 몸무게:</label>
-                <input
-                  type="number"
-                  className="modal-input"
-                  value={todayWeight}
-                  onChange={(e) => setTodayWeight(e.target.value)}
-                />
-                <button className="modal-button" onClick={handleNextClick}>
+                <div className="modal-header">모구리 성장 판</div>
+                <div>
+                  오늘의 몸무게:
+                  <input
+                    type="number"
+                    value={weight}
+                    onChange={handleWeightChange}
+                    className="modal-input"
+                  />
+                </div>
+                <button className="modal-button" onClick={handleNextStep}>
                   다음
                 </button>
               </>
-            ) : (
-              <div className="modal-result">{result}</div>
+            )}
+            {currentStep === 2 && (
+              <>
+                <div className="modal-header">모구리 성장 판</div>
+                <button className="modal-back-button" onClick={handleBackStep}>
+                  <img src={backButtonImage} alt="Back" />
+                </button>
+                <div>목표까지 {calculateRemainingWeight()}kg 남았어요!</div>
+              </>
             )}
           </div>
         </div>
@@ -103,7 +91,8 @@ const Home = ({ selectedMoguri, targetWeight }) => {
 
 Home.propTypes = {
   selectedMoguri: PropTypes.string,
-  targetWeight: PropTypes.number,
 };
 
 export default Home;
+
+

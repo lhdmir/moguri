@@ -3,7 +3,7 @@
   "cookie_expiration_time": "2024-07-18T12:00:00Z",
   "moguri": {
     "id": 1,
-    "image": "assets/image/moguri_2-1.png",
+    "image": "",
     "name": "",
     "current_items": {
       "accessory": {
@@ -43,7 +43,7 @@
         }
       ]
     },
-    "target_weight": 70.0
+    "target_weight": 0.0
   },
   "todayMeal": {
     "breakfast": [

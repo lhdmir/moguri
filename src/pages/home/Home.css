@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
 
 body, html {
-  overflow: hidden; /* 스크롤 제거 */
+  overflow: hidden; 
   margin: 0;
   padding: 0;
   height: 100%;
@@ -10,21 +10,21 @@ body, html {
 
 .home-container {
   background-size: cover;
-  background-position: center; /* 배경 이미지 중앙 정렬 */
+  background-position: center; 
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  overflow-x: hidden; /* 좌우 스크롤 제거 */
+  overflow-x: hidden; 
 }
 
 .selected-moguri {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  height: 100px; /* 원하는 크기로 설정 */
+  bottom: 50px;
+  left: 100px;
+  height: 180px; 
   cursor: pointer;
 }
 
@@ -42,7 +42,7 @@ body, html {
 
 .modal-content-home {
   background: #F8E28E;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   border: solid 1px black;
   position: relative;
@@ -51,10 +51,13 @@ body, html {
   font-family: "Nanum Pen Script", cursive;
   font-size: 18px;
   color: black;
+  bottom: 20px;
+  right: 250px;
 }
 
 .modal-header {
   margin-bottom: 10px;
+  color: #557C56;
 }
 
 .modal-close-button {
@@ -65,6 +68,25 @@ body, html {
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+.modal-close-button img {
+  width: 20px; 
+  height: 20px; 
+}
+
+.modal-back-button {
+  position: absolute;
+  top: 10px;
+  left: 210px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-back-button img {
+  width: 20px; 
+  height: 20px; 
 }
 
 .modal-input {
@@ -80,19 +102,29 @@ body, html {
 }
 
 .modal-button {
+  padding: 10px;
   background-color: #FFFFFF;
   color: black;
-  border: none;
+  border: 1px solid black;
   border-radius: 5px;
   cursor: pointer;
   font-family: "Nanum Pen Script", cursive;
   font-size: 18px;
-  display: block;
-  margin-left: 212px;
+  display: block;  
+  margin-top: 10px; 
+  margin-left: 217px;
 }
 
 .modal-button:hover {
-  background-color: #45a049;
+  background-color: #D9D9D9;
+}
+
+.modal-close-button:hover {
+  background-color: #F8E28E;
+}
+
+.modal-back-button:hover {
+  background-color: #F8E28E;
 }
 
 .modal-result {
