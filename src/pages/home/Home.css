@@ -40,7 +40,7 @@ body, html {
   z-index: 1000;
 }
 
-.modal-content {
+.modal-content-home {
   background: #F8E28E;
   padding: 30px;
   border-radius: 10px;

@@ -73,7 +73,7 @@ const Home = ({ selectedMoguri, targetWeight }) => {
       )}
       {isModalOpen && (
         <div className="modal-overlay">
-          <div className="modal-content">
+          <div className="modal-content-home">
             <button className="modal-close-button" onClick={handleModalClose}>
               &times;
             </button>
