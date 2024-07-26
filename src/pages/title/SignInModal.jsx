@@ -14,7 +14,7 @@ import { setTodayMeal } from "../../features/meals/todayMealSlice";
 import { setTodayExercise } from "../../features/exercises/todayExerciseSlice";
 
 // 더미 데이터
-import data from "../../../../json/user.json";
+import data from "../../../json/user.json";
 
 function SignInModal({ isOpen, onRequestClose }) {
   //임시 코드
