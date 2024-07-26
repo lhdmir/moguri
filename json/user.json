@@ -1,0 +1,103 @@
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "cookie_expiration_time": "2024-07-18T12:00:00Z",
+  "moguri": {
+    "id": 1,
+    "image": "assets/image/moguri_2-1.png",
+    "name": "",
+    "current_items": {
+      "accessory": {
+        "id": 0,
+        "name": "",
+        "image_url": ""
+      },
+      "background": {
+        "id": 201,
+        "name": "Beach Background",
+        "image_url": "assets/image/background2.png"
+      }
+    },
+    "owned_items": {
+      "accessories": [
+        {
+          "id": 101,
+          "name": "밀짚모자",
+          "image_url": "{이미지 경로}"
+        },
+        {
+          "id": 104,
+          "name": "제빵모자",
+          "image_url": "{이미지 경로}"
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": 201,
+          "name": "초원",
+          "image_url": "{이미지 경로}"
+        },
+        {
+          "id": 202,
+          "name": "해변가",
+          "image_url": "{이미지 경로}"
+        }
+      ]
+    },
+    "target_weight": 70.0
+  },
+  "todayMeal": {
+    "breakfast": [
+      {
+        "id": 1,
+        "menu": "Oatmeal",
+        "calorie": 150
+      }
+    ],
+    "lunch": [
+      {
+        "id": 1,
+        "menu": "Chicken Salad",
+        "calorie": 350
+      },
+      {
+        "id": 2,
+        "menu": "Fruit Juice",
+        "calorie": 100
+      },
+      {
+        "id": 3,
+        "menu": "Greek Yogurt",
+        "calorie": 120
+      }
+    ],
+    "dinner": [
+      {
+        "id": 1,
+        "menu": "Grilled Salmon",
+        "calorie": 400
+      },
+      {
+        "id": 2,
+        "menu": "Steamed Vegetables",
+        "calorie": 150
+      }
+    ],
+    "snack": [
+      {
+        "id": 1,
+        "menu": "Almonds",
+        "calorie": 200
+      }
+    ]
+  },
+  "todayExercise": [
+    {
+      "id": 1,
+      "content": "Running"
+    },
+    {
+      "id": 2,
+      "content": "Yoga"
+    }
+  ]
+}

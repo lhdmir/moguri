@@ -125,33 +125,14 @@ import { useNavigate } from "react-router-dom";
 import "./FirstLogin.css";
 
 // Moguri 이미지 import
-import moguri1 from "../../assets/image/moguri_1-1.png";
-import moguri2 from "../../assets/image/moguri_1-2.png";
-import moguri3 from "../../assets/image/moguri_2-1.png";
-import moguri4 from "../../assets/image/moguri_2-2.png";
-import moguri5 from "../../assets/image/moguri_3-1.png";
-import moguri6 from "../../assets/image/moguri_3-2.png";
-import moguri7 from "../../assets/image/moguri_4-1.png";
-import moguri8 from "../../assets/image/moguri_4-2.png";
-import moguri9 from "../../assets/image/moguri_5-1.png";
-import moguri10 from "../../assets/image/moguri_5-2.png";
-import moguri11 from "../../assets/image/moguri_6-1.png";
-import moguri12 from "../../assets/image/moguri_6-2.png";
+import moguri1 from "assets/image/moguri_1-1.png";
+import moguri3 from "assets/image/moguri_2-1.png";
+import moguri5 from "assets/image/moguri_3-1.png";
+import moguri7 from "assets/image/moguri_4-1.png";
+import moguri9 from "assets/image/moguri_5-1.png";
+import moguri11 from "assets/image/moguri_6-1.png";
 
-const moguriImages = [
-  moguri1,
-  moguri2,
-  moguri3,
-  moguri4,
-  moguri5,
-  moguri6,
-  moguri7,
-  moguri8,
-  moguri9,
-  moguri10,
-  moguri11,
-  moguri12,
-];
+const moguriImages = [moguri1, moguri3, moguri5, moguri7, moguri9, moguri11];
 
 const FirstLogin = () => {
   const [selectedMoguri, setSelectedMoguri] = useState(null);
@@ -159,6 +140,8 @@ const FirstLogin = () => {
   const [moguriName, setMoguriName] = useState("");
   const [targetWeight, setTargetWeight] = useState("");
   const navigate = useNavigate();
+
+  // setSelectedMoguri("asset/");
 
   useEffect(() => {
     // Moguri 이미지 중 하나를 랜덤으로 선택

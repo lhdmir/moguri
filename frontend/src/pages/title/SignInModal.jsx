@@ -3,10 +3,26 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
 import "./SignModal.css";
-// Cookie 주석 해제
-// import Cookies from "js-cookie";
+
+// Cookie
+import Cookies from "js-cookie";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setMoguri } from "../../features/moguri/moguriSlice";
+import { setTodayMeal } from "../../features/meals/todayMealSlice";
+import { setTodayExercise } from "../../features/exercises/todayExerciseSlice";
+
+// 더미 데이터
+import data from "../../../../json/user.json";
 
 function SignInModal({ isOpen, onRequestClose }) {
+  //임시 코드
+  const dispatch = useDispatch();
+  const moguriState = useSelector((state) => state.moguri);
+
+  const [isMoguriUpdated, setIsMoguriUpdated] = useState(false);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -43,12 +59,31 @@ function SignInModal({ isOpen, onRequestClose }) {
 
     setError("");
 
-    // 백엔드 API 서버 구축 완료시 삭제
-    // 임시 코드(첫 로그인으로 이동)
-    // navigate("/first-login");
-    // 임시 코드(홈화면 이동)
-    navigate("/first-login");
+    // 더미 데이터 활용 기능 테스트
+    //  데이터 로드
+    const { token, cookieExpirationTime, moguri, todayMeal, todayExercise } =
+      data;
 
+    // 토큰, 토큰 만료 시간 쿠키 저장
+    const expirationDate = new Date(cookieExpirationTime);
+    Cookies.set("token", token, { expires: expirationDate });
+
+    // 모구리 데이터 업데이트
+    // const updatedMoguriStateData = {
+    //   ...moguriState,
+    //   ...moguri,
+    // };
+    // dispatch(setMoguri(updatedMoguriStateData));
+    dispatch(setMoguri(moguri));
+    // 오늘의 식단 업데이트
+    dispatch(setTodayMeal(todayMeal));
+    // 오늘의 운동 업데이트
+    dispatch(setTodayExercise(todayExercise));
+
+    // moguri 상태 업데이트 표시
+    setIsMoguriUpdated(true);
+
+    // 실제 API 연동
     // try {
     //   // API Endpoint 수정
     //   const response = await fetch(
@@ -65,19 +100,27 @@ function SignInModal({ isOpen, onRequestClose }) {
     //   const data = await response.json();
 
     //   if (response.ok) {
-    //     // const { token, cookie_expiration_time, moguri } = data;
-    //     const { token, cookie_expiration_time } = data;
-
-    //     // 모구리 정보 Redux에 저장하는 코드 필요
+    //     const {
+    //       token,
+    //       cookieExpirationTime,
+    //       moguri,
+    //       todayMeal,
+    //       todayExercise,
+    //     } = data;
 
     //     // Save token and expiration time to cookies
-    //     const expirationDate = new Date(cookie_expiration_time);
+    //     const expirationDate = new Date(cookieExpirationTime);
     //     Cookies.set("token", token, { expires: expirationDate });
-    //     if (!data.moguri.name) {
-    //       navigate("/first-login");
-    //     } else {
-    //       navigate("/home");
-    //     }
+
+    //     // // 모구리 데이터 업데이트
+    //     dispatch(setMoguri(moguri));
+    //     // 오늘의 식단 업데이트
+    //     dispatch(setTodayMeal(todayMeal));
+    //     // 오늘의 운동 업데이트
+    //     dispatch(setTodayExercise(todayExercise));
+
+    //     // moguri 상태 업데이트 표시
+    //     setIsMoguriUpdated(true);
     //   } else {
     //     setError("로그인 실패: " + data.error);
     //   }
@@ -85,6 +128,17 @@ function SignInModal({ isOpen, onRequestClose }) {
     //   setError("로그인 실패: 서버와의 통신 오류");
     // }
   };
+
+  useEffect(() => {
+    // 상태 업데이트 후 navigate 호출
+    if (isMoguriUpdated) {
+      if (!moguriState.name) {
+        navigate("/first-login");
+      } else {
+        navigate("/home");
+      }
+    }
+  }, [isMoguriUpdated, moguriState, navigate]);
 
   const handleClose = () => {
     setUsername("");
