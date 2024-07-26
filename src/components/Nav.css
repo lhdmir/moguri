@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+.nav-container {
+  width: 100%;
+  max-width: 100vw;
+  background-color: #C7F9FC;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.banner-image {
+  height: 70px;
+  width: 150px; /* 적절한 너비 설정 */
+  background-image: url('../assets/image/moguri-banner.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; /* 이미지를 중앙에 위치 */
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.community-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.community-image {
+  height: 70px;
+  width: 150px; /* 적절한 너비 설정 */
+  background-image: url('../assets/image/moguri-community.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; /* 이미지를 중앙에 위치 */
+  margin-left: 10px;
+}
+
+.logout, .community {
+  font-family: 'Cherry Bomb One', cursive;
+  font-size: 24px;
+  color: black;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.logout:hover, .community:hover {
+  color: #F29393;
+}
