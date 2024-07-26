@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+body, html {
+  overflow: hidden; /* 스크롤 제거 */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.home-container {
+  background-size: cover;
+  background-position: center; /* 배경 이미지 중앙 정렬 */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden; /* 좌우 스크롤 제거 */
+}
+
+.selected-moguri {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  height: 100px; /* 원하는 크기로 설정 */
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #F8E28E;
+  padding: 30px;
+  border-radius: 10px;
+  border: solid 1px black;
+  position: relative;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  color: black;
+}
+
+.modal-header {
+  margin-bottom: 10px;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-input {
+  background-color: white;
+  padding: 10px;
+  margin-left: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  color: black;
+}
+
+.modal-button {
+  background-color: #FFFFFF;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  display: block;
+  margin-left: 212px;
+}
+
+.modal-button:hover {
+  background-color: #45a049;
+}
+
+.modal-result {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  margin-top: 10px;
+}
