@@ -132,3 +132,50 @@ body, html {
   font-size: 18px;
   margin-top: 10px;
 }
+
+/* 새로운 모달 창 CSS */
+.evolved-modal-content {
+  background: #C7F9FC;
+  padding: 20px;
+  border-radius: 15px;
+  border: solid 1px black;
+  position: relative;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: opacity(95%);
+}
+
+.selected-moguri-evolved {
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.evolved-modal-header {
+  margin-bottom: 20px;
+  color: #557C56;
+  font-size: 24px;
+}
+
+.evolved-modal-button {
+  padding: 5px 15px;
+  background-color: #D9D9D9;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 250px;
+}
+
+.evolved-modal-button:hover {
+  background-color: #BFBFBF;
+}

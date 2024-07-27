@@ -9,6 +9,7 @@ import backButtonImage from "../../assets/icon/backbutton.png";
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEvolvedModalOpen, setIsEvolvedModalOpen] = useState(false);
   const [weight, setWeight] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const selectedMoguri = useSelector((state) => state.moguri.image);
@@ -17,10 +18,15 @@ const Home = () => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
     setCurrentStep(1); // Reset to the first step when modal is toggled
+    setIsEvolvedModalOpen(false); // Reset evolution modal when main modal is closed
   };
 
   const handleNextStep = () => {
+    const remainingWeight = calculateRemainingWeight();
     setCurrentStep(2);
+    if (remainingWeight === 0) {
+      setIsEvolvedModalOpen(true);
+    }
   };
 
   const handleBackStep = () => {
@@ -33,7 +39,20 @@ const Home = () => {
 
   const calculateRemainingWeight = () => {
     const currentWeight = parseFloat(weight);
+    if (isNaN(currentWeight)) {
+      return targetWeight; // If the input is not a number, assume no progress
+    }
     return targetWeight - currentWeight;
+  };
+
+  const getEvolvedImagePath = (imagePath) => {
+    const parts = imagePath.split("/");
+    const fileName = parts.pop();
+    const fileParts = fileName.split("-");
+    fileParts[1] = fileParts[1].replace("1", "2");
+    const newFileName = fileParts.join("-");
+    parts.push(newFileName);
+    return parts.join("/");
   };
 
   return (
@@ -85,6 +104,25 @@ const Home = () => {
           </div>
         </div>
       )}
+      {isEvolvedModalOpen && (
+        <div className="modal-overlay">
+          <div className="evolved-modal-content">
+            <div className="evolved-modal-header">모구리 진화</div>
+            <img
+              src={getEvolvedImagePath(selectedMoguri)}
+              alt="Evolved Moguri"
+              className="selected-moguri-evolved"
+            />
+            <div>모구리가 진화했습니다!</div>
+            <button
+              className="evolved-modal-button"
+              onClick={() => setIsEvolvedModalOpen(false)}
+            >
+              닫기
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -94,5 +132,6 @@ Home.propTypes = {
 };
 
 export default Home;
+
 
 
