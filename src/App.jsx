@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+
 import Title from "./pages/title/Title";
 import Home from "./pages/home/Home";
 import FirstLogin from "./pages/FirstLogin/FirstLogin";
-
-import { Provider } from "react-redux";
-import store from "./store";
 
 function App() {
   return (
