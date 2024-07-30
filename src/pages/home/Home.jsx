@@ -20,7 +20,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    console.log(moguriState);
+    // console.log(moguriState);
   }, [moguriState]);
 
   return (
