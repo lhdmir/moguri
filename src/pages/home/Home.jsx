@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./Home.css";
-import background1 from "../../assets/image/background1.png";
 import Nav from "../../components/Nav";
 import MoguriModal from "./MoguriModal";
 import Sidebar from "./Sidebar";
@@ -10,8 +9,8 @@ import slideButtonImage from "../../assets/icon/slidebutton.png";
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const selectedMoguri = useSelector((state) => state.moguri.image);
-  const targetWeight = useSelector((state) => state.moguri.target_weight);
+  
+  const moguriState = useSelector((state) => state.moguri);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -24,13 +23,15 @@ const Home = () => {
   return (
     <div
       className="home-container"
-      style={{ backgroundImage: `url(${background1})` }}
+      style={{
+        backgroundImage: `url(${moguriState.currentItems.background.imageUrl})`,
+      }}
     >
       <Nav />
       <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      {selectedMoguri && (
+      {moguriState && (
         <img
-          src={selectedMoguri}
+          src={moguriState.imageUrl}
           alt="Selected Moguri"
           className="selected-moguri"
           onClick={toggleModal}
@@ -39,8 +40,8 @@ const Home = () => {
       {isModalOpen && (
         <MoguriModal
           toggleModal={toggleModal}
-          selectedMoguri={selectedMoguri}
-          targetWeight={targetWeight}
+          selectedMoguri={moguriState.imageUrl}
+          targetWeight={moguriState.targetWeight}
         />
       )}
     </div>
