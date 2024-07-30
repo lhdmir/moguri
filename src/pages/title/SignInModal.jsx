@@ -29,6 +29,8 @@ function SignInModal({ isOpen, onRequestClose }) {
 
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const signInButtonRef = useRef(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -148,6 +150,14 @@ function SignInModal({ isOpen, onRequestClose }) {
   };
 
   useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        usernameRef.current.focus();
+      }, 10);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     if (error === "아이디를 입력해주세요") {
       usernameRef.current.focus();
     } else if (error === "비밀번호를 입력해주세요") {
@@ -163,6 +173,33 @@ function SignInModal({ isOpen, onRequestClose }) {
     }
   }, [error]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Tab") {
+      if (event.target === usernameRef.current && !event.shiftKey) {
+        event.preventDefault();
+        passwordRef.current.focus();
+      } else if (event.target === passwordRef.current && !event.shiftKey) {
+        event.preventDefault();
+        signInButtonRef.current.focus();
+      } else if (event.target === signInButtonRef.current && !event.shiftKey) {
+        event.preventDefault();
+        closeButtonRef.current.focus();
+      } else if (event.target === closeButtonRef.current && !event.shiftKey) {
+        event.preventDefault();
+        usernameRef.current.focus();
+      } else if (event.target === closeButtonRef.current && event.shiftKey) {
+        event.preventDefault();
+        signInButtonRef.current.focus();
+      } else if (event.target === signInButtonRef.current && event.shiftKey) {
+        event.preventDefault();
+        passwordRef.current.focus();
+      } else if (event.target === passwordRef.current && event.shiftKey) {
+        event.preventDefault();
+        usernameRef.current.focus();
+      }
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -173,7 +210,7 @@ function SignInModal({ isOpen, onRequestClose }) {
     >
       <div className="modal-content">
         <h2 className="moguri">MOGURI</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
           <div className="input-group">
             <label>ID</label>
             <input
@@ -182,8 +219,8 @@ function SignInModal({ isOpen, onRequestClose }) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               ref={usernameRef}
-              // pattern="[a-zA-Z0-9]{1,13}"
               maxLength={13}
+              tabIndex={1}
             />
           </div>
           <div className="input-group">
@@ -194,16 +231,28 @@ function SignInModal({ isOpen, onRequestClose }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               ref={passwordRef}
-              // pattern="[a-zA-Z0-9]{1,13}"
               maxLength={13}
+              autoComplete="current-password"
+              tabIndex={2}
             />
           </div>
           {error && <div className="message">{error}</div>}
           <div className="button-group">
-            <button type="button" className="button" onClick={handleClose}>
+            <button
+              type="button"
+              className="button"
+              onClick={handleClose}
+              ref={closeButtonRef}
+              tabIndex={4}
+            >
               close
             </button>
-            <button type="submit" className="button">
+            <button
+              type="submit"
+              className="button"
+              ref={signInButtonRef}
+              tabIndex={3}
+            >
               Sign In
             </button>
           </div>
