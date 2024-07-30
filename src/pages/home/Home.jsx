@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./Home.css";
 import Nav from "../../components/Nav";
@@ -9,7 +9,7 @@ import slideButtonImage from "../../assets/icon/slidebutton.png";
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
+
   const moguriState = useSelector((state) => state.moguri);
 
   const toggleModal = () => {
@@ -19,6 +19,10 @@ const Home = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    console.log(moguriState);
+  }, [moguriState]);
 
   return (
     <div
