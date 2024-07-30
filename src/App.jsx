@@ -11,7 +11,9 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router>
+        <Router
+          basename={process.env.NODE_ENV === "production" ? "/moguri_fe" : "/"}
+        >
           <Routes>
             <Route path="/" element={<Title />} />
             <Route path="/home" element={<Home />} />
