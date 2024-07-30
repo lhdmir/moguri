@@ -18,7 +18,7 @@
 
 .banner-image {
   height: 70px;
-  width: 150px; /* 적절한 너비 설정 */
+  width: 200px; /* 적절한 너비 설정 */
   background-image: url('../assets/image/moguri-banner.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
 
 .community-image {
   height: 70px;
-  width: 150px; /* 적절한 너비 설정 */
+  width: 200px; /* 적절한 너비 설정 */
   background-image: url('../assets/image/moguri-community.png');
   background-size: contain;
   background-repeat: no-repeat;
