@@ -2,13 +2,13 @@ name: Deploy to GitHub Pages
 
 on:
   pull_request:
+    types: [closed]
     branches:
       - main
-    types: [closed]
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true && github.base_ref == 'main' && github.head_ref == 'develop'
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'develop'
     runs-on: ubuntu-latest
 
     steps:
