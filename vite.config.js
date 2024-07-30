@@ -8,13 +8,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  base: "/moguri_fe/", // GitHub Pages 배포 경로로 설정
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-      assets: path.resolve(__dirname, "src/assets"),
+export default defineConfig(({ command, mode }) => {
+  return {
+    base: mode === "production" ? "/moguri_fe/" : "/",
+    plugins: [react()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+        assets: path.resolve(__dirname, "src/assets"),
+      },
     },
-  },
+  };
 });
