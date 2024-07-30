@@ -4,11 +4,10 @@ on:
   pull_request:
     branches:
       - main
-    types: [closed]
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true && github.base_ref == 'main' && github.head_ref == 'develop'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +21,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Configure git
+        run: |
+          git config --global user.email "lhdmir@naver.com"
+          git config --global user.name "lhdmir"
 
       - name: Build the project
         run: npm run build
