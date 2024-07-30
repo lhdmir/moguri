@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/moguri_fe/", // GitHub Pages 배포 경로로 설정
+  base: "/", // GitHub Pages 배포 경로로 설정
   plugins: [react()],
   resolve: {
     alias: {
