@@ -23,23 +23,15 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
   };
 
   const addMealItem = (meal) => {
-    if (mealDetails[meal].length < 6) {
-      const newMealDetails = { ...mealDetails };
-      newMealDetails[meal].push({ name: "", calories: 0 });
-      setMealDetails(newMealDetails);
-    } else {
-      alert("최대 6개의 항목만 추가할 수 있습니다.");
-    }
+    const newMealDetails = { ...mealDetails };
+    newMealDetails[meal].push({ name: "", calories: 0 });
+    setMealDetails(newMealDetails);
   };
 
   const addExerciseItem = () => {
-    if (exerciseDetails.length < 6) {
-      const newExerciseDetails = [...exerciseDetails];
-      newExerciseDetails.push({ name: "" });
-      setExerciseDetails(newExerciseDetails);
-    } else {
-      alert("최대 6개의 항목만 추가할 수 있습니다.");
-    }
+    const newExerciseDetails = [...exerciseDetails];
+    newExerciseDetails.push({ name: "" });
+    setExerciseDetails(newExerciseDetails);
   };
 
   const removeMealItem = (meal, index) => {
@@ -73,7 +65,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
 
   const closeMealDetails = () => {
     setCurrentView("main");
-    setIsSidebarOpen(false);
+    toggleSidebar();
   };
 
   const calculateTotalCalories = (meal) => {
@@ -164,7 +156,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
               />
             </button>
             <div className="meal-header">{currentMeal}</div>
-            <div className="meal-item-detail-container">
+            <div className="scroll-container">
               {mealDetails[currentMeal].map((item, index) => (
                 <div key={index} className="meal-item-detail">
                   <input
@@ -225,7 +217,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
                 className="meal-main-close"
               />
             </button>
-            <div className="exercise-item-detail-container">
+            <div className="scroll-container">
               {exerciseDetails.map((item, index) => (
                 <div key={index} className="meal-item-detail">
                   <input

@@ -4,7 +4,6 @@ import "./Home.css";
 import Nav from "../../components/Nav";
 import MoguriModal from "./MoguriModal";
 import Sidebar from "./Sidebar";
-import slideButtonImage from "../../assets/icon/slidebutton.png";
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

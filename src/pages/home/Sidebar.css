@@ -174,6 +174,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  margin-left: -15px;
 }
 
 .meal-delete-button img {
@@ -196,6 +197,7 @@
   height: 45px;
   background-color: white;
   border-radius: 10px;
+  margin-right: 10px;
 }
 
 .add-button-container { 
@@ -386,3 +388,15 @@
   color: black;
   width: 70px;
 }
+
+.scroll-container {
+  max-height: 300px; /* 원하는 최대 높이 설정 */
+  overflow-y: auto;
+  padding-right: 10px; /* 스크롤 바를 피하기 위한 패딩 */
+}
+
+::-webkit-scrollbar {
+  width: 0; /* 스크롤바의 너비 */
+  background-color: #f8e28e; /* 스크롤바의 배경 색상 */
+}
+
