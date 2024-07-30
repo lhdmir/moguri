@@ -20,20 +20,14 @@ jobs:
         with:
           node-version: "20.12.0"
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Configure git
-        run: |
-          git config --global user.email "lhdmir@naver.com"
-          git config --global user.name "lhdmir"
-
-      - name: Build the project
+      - name: Build Project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        run: |
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          GIT_USER=$(git config user.name) GIT_EMAIL=$(git config user.email) npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy  to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_ACTIONS_TOKEN }}
+          publish_dir: ./dist
