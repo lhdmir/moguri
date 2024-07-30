@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/https://github.com/lhdmir/moguri_fe.git/",
   plugins: [react()],
   resolve: {
     alias: {
