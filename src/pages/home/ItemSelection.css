@@ -1,0 +1,80 @@
+.item-selection {
+  position: relative;
+  width: 250px; 
+  height: 100%;
+  background-color: #f8e28e;
+  padding: 10px;
+  border-radius: 20px;
+  border: solid 2px black;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  margin: 10px;
+}
+
+.item img {
+  width: 50px;
+  height: 50px;
+}
+
+.slide-left, .slide-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.slide-left {
+  left: -20px;
+}
+
+.slide-right {
+  right: -20px;
+}
+
+.slide-left img, .slide-right img {
+  width: 10px;
+  height: 20px;
+}
+
+.slide-right img {
+  transform: scaleX(-1);
+}
+
+.meal-main-close {
+  position: absolute; 
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.meal-main-close img {
+  width: 20px;
+  height: 20px;
+  background: none;
+  display: block;
+}
+
+.item-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-left: 10px;
+  margin-top: 10px;
+}
