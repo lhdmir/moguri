@@ -15,6 +15,8 @@ function SignUpModal({ isOpen, onRequestClose }) {
   const passwordRef = useRef(null);
   const passwordCheckRef = useRef(null);
   const emailRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const signUpButtonRef = useRef(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -79,7 +81,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
     //       headers: {
     //         "Content-Type": "application/json",
     //       },
-    //       body: JSON.stringify({ id: username, password, email }),
+    //       body: JSON.stringify({ username, password, email }),
     //     }
     //   );
 
@@ -110,6 +112,14 @@ function SignUpModal({ isOpen, onRequestClose }) {
   };
 
   useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        usernameRef.current.focus();
+      }, 10);
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     if (error === "아이디를 입력해주세요") {
       usernameRef.current.focus();
     } else if (
@@ -132,6 +142,45 @@ function SignUpModal({ isOpen, onRequestClose }) {
     }
   }, [error]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Tab") {
+      if (event.target === usernameRef.current && !event.shiftKey) {
+        event.preventDefault();
+        passwordRef.current.focus();
+      } else if (event.target === passwordRef.current && !event.shiftKey) {
+        event.preventDefault();
+        passwordCheckRef.current.focus();
+      } else if (event.target === passwordCheckRef.current && !event.shiftKey) {
+        event.preventDefault();
+        emailRef.current.focus();
+      } else if (event.target === emailRef.current && !event.shiftKey) {
+        event.preventDefault();
+        signUpButtonRef.current.focus();
+      } else if (event.target === signUpButtonRef.current && !event.shiftKey) {
+        event.preventDefault();
+        closeButtonRef.current.focus();
+      } else if (event.target === closeButtonRef.current && !event.shiftKey) {
+        event.preventDefault();
+        usernameRef.current.focus();
+      } else if (event.target === closeButtonRef.current && event.shiftKey) {
+        event.preventDefault();
+        signUpButtonRef.current.focus();
+      } else if (event.target === signUpButtonRef.current && event.shiftKey) {
+        event.preventDefault();
+        emailRef.current.focus();
+      } else if (event.target === emailRef.current && event.shiftKey) {
+        event.preventDefault();
+        passwordCheckRef.current.focus();
+      } else if (event.target === passwordCheckRef.current && event.shiftKey) {
+        event.preventDefault();
+        passwordRef.current.focus();
+      } else if (event.target === passwordRef.current && event.shiftKey) {
+        event.preventDefault();
+        usernameRef.current.focus();
+      }
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -142,7 +191,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
     >
       <div className="modal-content">
         <h2 className="moguri">MOGURI</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
           <div className="input-group">
             <label>ID</label>
             <input
@@ -163,6 +212,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               onChange={(e) => setPassword(e.target.value)}
               ref={passwordRef}
               maxLength={13}
+              autoComplete="new-password"
             />
           </div>
           <div className="input-group">
@@ -174,6 +224,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
               onChange={(e) => setPasswordCheck(e.target.value)}
               ref={passwordCheckRef}
               maxLength={13}
+              autoComplete="new-password"
             />
           </div>
           <div className="input-group">
@@ -189,10 +240,15 @@ function SignUpModal({ isOpen, onRequestClose }) {
           {error && <div className="message">{error}</div>}
           {success && <div className="message">{success}</div>}
           <div className="button-group">
-            <button type="button" className="button" onClick={handleClose}>
+            <button
+              type="button"
+              className="button"
+              onClick={handleClose}
+              ref={closeButtonRef}
+            >
               close
             </button>
-            <button type="submit" className="button">
+            <button type="submit" className="button" ref={signUpButtonRef}>
               Sign Up
             </button>
           </div>

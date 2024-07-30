@@ -1,49 +1,49 @@
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "cookie_expiration_time": "2024-07-18T12:00:00Z",
+  "cookieExpirationTime": "2024-07-18T12:00:00Z",
   "moguri": {
     "id": 1,
-    "image": "assets/image/moguri_2-1.png",
+    "imageUrl": "http://158.180.71.193/image/moguri_1-1.png",
     "name": "",
-    "current_items": {
+    "currentItems": {
       "accessory": {
         "id": 0,
         "name": "",
-        "image_url": ""
+        "imageUrl": ""
       },
       "background": {
         "id": 201,
         "name": "Beach Background",
-        "image_url": "assets/image/background2.png"
+        "imageUrl": "assets/image/background2.png"
       }
     },
-    "owned_items": {
+    "ownedItems": {
       "accessories": [
         {
           "id": 101,
           "name": "밀짚모자",
-          "image_url": "{이미지 경로}"
+          "imageUrl": "{이미지 경로}"
         },
         {
           "id": 104,
           "name": "제빵모자",
-          "image_url": "{이미지 경로}"
+          "imageUrl": "{이미지 경로}"
         }
       ],
       "backgrounds": [
         {
           "id": 201,
           "name": "초원",
-          "image_url": "{이미지 경로}"
+          "imageUrl": "{이미지 경로}"
         },
         {
           "id": 202,
           "name": "해변가",
-          "image_url": "{이미지 경로}"
+          "imageUrl": "{이미지 경로}"
         }
       ]
     },
-    "target_weight": 70.0
+    "targetWeight": 0.0
   },
   "todayMeal": {
     "breakfast": [
