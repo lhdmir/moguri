@@ -143,7 +143,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
   }, [error]);
 
   const handleKeyDown = (event) => {
-    if (event.key === "Tab") {
+    if (event.key === "Tab" && event.nativeEvent.isComposing === false) {
       if (event.target === usernameRef.current && !event.shiftKey) {
         event.preventDefault();
         passwordRef.current.focus();
