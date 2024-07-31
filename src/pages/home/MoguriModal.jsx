@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
 import PropTypes from "prop-types";
-import closeButtonImage from "../../assets/icon/deletebutton.png";
-import backButtonImage from "../../assets/icon/backbutton.png";
+import { useSelector } from "react-redux";
+import closeButtonImage from "assets/icon/deletebutton.png";
+import backButtonImage from "assets/icon/backbutton.png";
 import "./MoguriModal.css";
 
-const MoguriModal = ({ toggleModal, selectedMoguri, targetWeight }) => {
+const MoguriModal = ({ isOpen, onRequestClose }) => {
   const [weight, setWeight] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isEvolvedModalOpen, setIsEvolvedModalOpen] = useState(false);
+
+  const moguriState = useSelector((state) => state.moguri);
 
   const handleNextStep = () => {
     const remainingWeight = calculateRemainingWeight();
@@ -28,9 +32,9 @@ const MoguriModal = ({ toggleModal, selectedMoguri, targetWeight }) => {
   const calculateRemainingWeight = () => {
     const currentWeight = parseFloat(weight);
     if (isNaN(currentWeight)) {
-      return targetWeight;
+      return moguriState.targetWeight;
     }
-    return targetWeight - currentWeight;
+    return moguriState.targetWeight - currentWeight;
   };
 
   const getEvolvedImagePath = (imagePath) => {
@@ -43,47 +47,56 @@ const MoguriModal = ({ toggleModal, selectedMoguri, targetWeight }) => {
     return parts.join("/");
   };
 
+  const handleClose = () => {
+    onRequestClose();
+    setIsEvolvedModalOpen(false);
+  };
+
   return (
-    <>
-      <div className="modal-overlay">
-        <div className="modal-content-home">
-          <button className="modal-close-button" onClick={toggleModal}>
-            <img src={closeButtonImage} alt="Close" />
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={handleClose}
+      contentLabel="일일 몸무게 입력 창"
+      className="modal-content-home"
+      overlayClassName="modal-overlay"
+      shouldCloseOnOverlayClick={true} // 모달 외부 클릭 시 모달 닫힘
+    >
+      <button className="modal-close-button" onClick={handleClose}>
+        <img src={closeButtonImage} alt="Close" />
+      </button>
+      {currentStep === 1 && (
+        <>
+          <div className="modal-header">모구리 성장 판</div>
+          <div>
+            오늘의 몸무게:
+            <input
+              type="number"
+              value={weight}
+              onChange={handleWeightChange}
+              className="modal-input"
+            />
+          </div>
+          <button className="modal-button" onClick={handleNextStep}>
+            다음
           </button>
-          {currentStep === 1 && (
-            <>
-              <div className="modal-header">모구리 성장 판</div>
-              <div>
-                오늘의 몸무게:
-                <input
-                  type="number"
-                  value={weight}
-                  onChange={handleWeightChange}
-                  className="modal-input"
-                />
-              </div>
-              <button className="modal-button" onClick={handleNextStep}>
-                다음
-              </button>
-            </>
-          )}
-          {currentStep === 2 && (
-            <>
-              <div className="modal-header">모구리 성장 판</div>
-              <button className="modal-back-button" onClick={handleBackStep}>
-                <img src={backButtonImage} alt="Back" />
-              </button>
-              <div>목표까지 {calculateRemainingWeight()}kg 남았어요!</div>
-            </>
-          )}
-        </div>
-      </div>
+        </>
+      )}
+      {currentStep === 2 && (
+        <>
+          <div className="modal-header">모구리 성장 판</div>
+          <button className="modal-back-button" onClick={handleBackStep}>
+            <img src={backButtonImage} alt="Back" />
+          </button>
+          <div>목표까지 {calculateRemainingWeight()}kg 남았어요!</div>
+        </>
+      )}
+
       {isEvolvedModalOpen && (
         <div className="modal-overlay">
           <div className="evolved-modal-content">
             <div className="evolved-modal-header">모구리 진화</div>
             <img
-              src={getEvolvedImagePath(selectedMoguri)}
+              src={getEvolvedImagePath(moguriState.imageUrl)}
               alt="Evolved Moguri"
               className="selected-moguri-evolved"
             />
@@ -97,14 +110,13 @@ const MoguriModal = ({ toggleModal, selectedMoguri, targetWeight }) => {
           </div>
         </div>
       )}
-    </>
+    </Modal>
   );
 };
 
 MoguriModal.propTypes = {
-  toggleModal: PropTypes.func.isRequired,
-  selectedMoguri: PropTypes.string.isRequired,
-  targetWeight: PropTypes.number.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
 };
 
 export default MoguriModal;
