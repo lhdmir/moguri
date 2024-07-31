@@ -4,20 +4,26 @@ import "./Home.css";
 import Nav from "../../components/Nav";
 import MoguriModal from "./MoguriModal";
 import Sidebar from "./Sidebar";
+import slideButtonImage from "assets/icon/slidebutton.png";
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const openSidebar = () => {
+    setIsSidebarOpen(true);
+  };
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   const moguriState = useSelector((state) => state.moguri);
-
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   useEffect(() => {
     // console.log(moguriState);
@@ -31,22 +37,24 @@ const Home = () => {
       }}
     >
       <Nav />
-      <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      {moguriState && (
-        <img
-          src={moguriState.imageUrl}
-          alt="Selected Moguri"
-          className="selected-moguri"
-          onClick={toggleModal}
-        />
-      )}
-      {isModalOpen && (
-        <MoguriModal
-          toggleModal={toggleModal}
-          selectedMoguri={moguriState.imageUrl}
-          targetWeight={moguriState.targetWeight}
-        />
-      )}
+      <div className="sidebar">
+        <button className="slide-button" onClick={openSidebar}>
+          <img src={slideButtonImage} alt="Slide" />
+        </button>
+      </div>
+
+      <img
+        src={moguriState.imageUrl}
+        alt="Selected Moguri"
+        className="selected-moguri"
+        onClick={openModal}
+      />
+
+      <MoguriModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+      ></MoguriModal>
+      <Sidebar isOpen={isSidebarOpen} onRequestClose={closeSidebar}></Sidebar>
     </div>
   );
 };
