@@ -1,24 +1,64 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import closeButtonImage from "assets/icon/deletebutton.png";
 import backButtonImage from "assets/icon/backbutton.png";
 import "./MoguriModal.css";
+import Cookies from "js-cookie";
+
+import EvolvedModal from "./EvolvedModal";
+
+import { setId, setImage } from "../../features/moguri/moguriSlice";
 
 const MoguriModal = ({ isOpen, onRequestClose }) => {
+  const dispatch = useDispatch();
+
   const [weight, setWeight] = useState("");
   const [currentStep, setCurrentStep] = useState(1);
   const [isEvolvedModalOpen, setIsEvolvedModalOpen] = useState(false);
 
-  const moguriState = useSelector((state) => state.moguri);
+  const [targetDifference, setTargetDifference] = useState("");
 
-  const handleNextStep = () => {
-    const remainingWeight = calculateRemainingWeight();
-    setCurrentStep(2);
-    if (remainingWeight === 0) {
-      setIsEvolvedModalOpen(true);
-    }
+  const openEvolvedModal = () => {
+    setIsEvolvedModalOpen(true);
+  };
+  const closeEvolvedModal = () => {
+    setIsEvolvedModalOpen(false);
+  };
+
+  const handleNextStep = async () => {
+    // try {
+    //   // 토큰
+    //   // 저장된 토큰 불러오기
+    //   const token = Cookies.get("token");
+    //   // API Endpoint 수정
+    //   const response = await fetch(
+    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri/grow",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //       body: JSON.stringify({ weight }),
+    //     }
+    //   );
+    //   const data = await response.json();
+    //   if (response.ok) {
+    //     if (data.moguri) {
+    //       dispatch(setId(data.moguri.id));
+    //       dispatch(setImage(data.moguri.imageUrl));
+    //       openEvolvedModal();
+    //     }
+    //     setTargetDifference(data.target_difference);
+    //     setCurrentStep(2);
+    //   } else {
+    //     console.log(data.error);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const handleBackStep = () => {
@@ -29,27 +69,8 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
     setWeight(e.target.value);
   };
 
-  const calculateRemainingWeight = () => {
-    const currentWeight = parseFloat(weight);
-    if (isNaN(currentWeight)) {
-      return moguriState.targetWeight;
-    }
-    return moguriState.targetWeight - currentWeight;
-  };
-
-  const getEvolvedImagePath = (imagePath) => {
-    const parts = imagePath.split("/");
-    const fileName = parts.pop();
-    const fileParts = fileName.split("-");
-    fileParts[1] = fileParts[1].replace("1", "2");
-    const newFileName = fileParts.join("-");
-    parts.push(newFileName);
-    return parts.join("/");
-  };
-
   const handleClose = () => {
     onRequestClose();
-    setIsEvolvedModalOpen(false);
   };
 
   return (
@@ -59,7 +80,6 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
       contentLabel="일일 몸무게 입력 창"
       className="modal-content-home"
       overlayClassName="modal-overlay"
-      shouldCloseOnOverlayClick={true} // 모달 외부 클릭 시 모달 닫힘
     >
       <button className="modal-close-button" onClick={handleClose}>
         <img src={closeButtonImage} alt="Close" />
@@ -87,29 +107,14 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
           <button className="modal-back-button" onClick={handleBackStep}>
             <img src={backButtonImage} alt="Back" />
           </button>
-          <div>목표까지 {calculateRemainingWeight()}kg 남았어요!</div>
+          <div>{targetDifference}</div>
         </>
       )}
 
-      {isEvolvedModalOpen && (
-        <div className="modal-overlay">
-          <div className="evolved-modal-content">
-            <div className="evolved-modal-header">모구리 진화</div>
-            <img
-              src={getEvolvedImagePath(moguriState.imageUrl)}
-              alt="Evolved Moguri"
-              className="selected-moguri-evolved"
-            />
-            <div>모구리가 진화했습니다!</div>
-            <button
-              className="evolved-modal-button"
-              onClick={() => setIsEvolvedModalOpen(false)}
-            >
-              닫기
-            </button>
-          </div>
-        </div>
-      )}
+      <EvolvedModal
+        isOpen={isEvolvedModalOpen}
+        onRequestClose={closeEvolvedModal}
+      ></EvolvedModal>
     </Modal>
   );
 };
