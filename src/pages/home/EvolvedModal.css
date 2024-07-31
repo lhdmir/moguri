@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.evolved-modal-content {
+  background: #c7f9fc;
+  padding: 20px;
+  border-radius: 15px;
+  border: solid 1px black;
+  position: relative;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: opacity(95%);
+}
+
+.selected-moguri-evolved {
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.evolved-modal-header {
+  margin-bottom: 20px;
+  color: #557c56;
+  font-size: 24px;
+}
+
+.evolved-modal-button {
+  padding: 5px 15px;
+  background-color: #d9d9d9;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.evolved-modal-button:hover {
+  background-color: #bfbfbf;
+}

@@ -37,11 +37,11 @@ const Home = () => {
       }}
     >
       <Nav />
-      <div className="sidebar">
+      {/* <div className="sidebar">
         <button className="slide-button" onClick={openSidebar}>
           <img src={slideButtonImage} alt="Slide" />
         </button>
-      </div>
+      </div> */}
 
       <img
         src={moguriState.imageUrl}
@@ -54,7 +54,7 @@ const Home = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
       ></MoguriModal>
-      <Sidebar isOpen={isSidebarOpen} onRequestClose={closeSidebar}></Sidebar>
+      {/* <Sidebar isOpen={isSidebarOpen} onRequestClose={closeSidebar}></Sidebar> */}
     </div>
   );
 };

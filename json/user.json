@@ -4,7 +4,7 @@
   "moguri": {
     "id": 1,
     "imageUrl": "http://158.180.71.193/image/moguri_1-1.png",
-    "name": "",
+    "name": "qqqq",
     "currentItems": {
       "accessory": {
         "id": 0,
@@ -43,7 +43,7 @@
         }
       ]
     },
-    "targetWeight": 0.0
+    "targetWeight": 80
   },
   "todayMeal": {
     "breakfast": [
