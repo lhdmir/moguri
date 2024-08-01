@@ -39,24 +39,17 @@
 }
 
 .sidebar-content {
-  /* position: relative;
-  width: 250px; 
-  height: 100%;
-  background-color: #f8e28e;
-  border-left: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 20px;
-  border: solid 2px black; */
   position: absolute;
-  top: 130px;
-  bottom: 120px;
-  right: 50px;
-  width: 20%;
+  top: 150px;
+  bottom: 150px;
+  right: 20px;
+  width: 270px;
   background-color: #f8e28e;
   transition: transform 0.3s ease;
   z-index: 1001;
   border-radius: 20px;
   border: 2px solid black;
+  padding-bottom: 30px;
 }
 
 .meal-main-close {
@@ -113,7 +106,6 @@
   background-color: #f8e28e;
 }
 
-.sidebar-content,
 .meal-details {
   width: 250px;
   height: 100%;
@@ -248,7 +240,7 @@
   margin-bottom: 10px;
   font-family: "Nanum Pen Script", cursive;
   color: black;
-  margin-left: 10px;
+  margin-left: 25px;
   margin-top: 10px;
 }
 
