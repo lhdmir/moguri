@@ -1,0 +1,157 @@
+.todaymeal-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-left: 25px;
+  margin-top: 5px;
+}
+
+.todaymeal-input {
+  background-color: white;
+  padding: 5px 5px;
+  color: black;
+}
+
+.todaymeal-add-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: black;
+  font-family: "Nanum Pen Script", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0;
+  width: 200px;
+  height: 45px;
+  background-color: white;
+  border-radius: 10px;
+  margin-right: 35px;
+}
+
+/* 새로운 스타일 추가 */
+.todaymeal-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8e28e;
+  padding: 10px;
+  margin: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.todaymeal-item-day {
+  font-size: 1.2em;
+  color: black;
+}
+
+.todaymeal-item-calories {
+  font-size: 1.2em;
+  color: black;
+}
+
+.todaymeal-details {
+  padding: 20px;
+}
+
+.todaymeal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8e28e;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.todaymeal-item input[type="text"],
+.todaymeal-item input[type="number"] {
+  width: 40%;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.todaymeal-item button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.todaymeal-scroll-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.todaymeal-add-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.todaymeal-add-button {
+  background-color: #b69064;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.todaymeal-input {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.todaymeal-back-button {
+  background-color: #b69064;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.todaymeal-modal {
+  padding: 20px;
+}
+
+.todaymeal-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todaymeal-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todaymeal-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.todaymeal-delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 10px;
+}
