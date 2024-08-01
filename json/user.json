@@ -22,24 +22,44 @@
         {
           "id": 101,
           "name": "밀짚모자",
-          "imageUrl": "{이미지 경로}"
+          "imageUrl": "http://158.180.71.193/image/hat_1.png"
+        },
+        {
+          "id": 102,
+          "name": "곰돌이모자",
+          "imageUrl": "http://158.180.71.193/image/hat_2.png"
+        },
+        {
+          "id": 103,
+          "name": "감귤모자",
+          "imageUrl": "http://158.180.71.193/image/hat_3.png"
+        },
+        {
+          "id": 105,
+          "name": "학사모",
+          "imageUrl": "http://158.180.71.193/image/hat_5.png"
         },
         {
           "id": 104,
           "name": "제빵모자",
-          "imageUrl": "{이미지 경로}"
+          "imageUrl": "http://158.180.71.193/image/hat_4.png"
         }
       ],
       "backgrounds": [
         {
           "id": 201,
           "name": "초원",
-          "imageUrl": "{이미지 경로}"
+          "imageUrl": "http://158.180.71.193/image/background1.png"
+        },
+        {
+          "id": 203,
+          "name": "초원",
+          "imageUrl": "http://158.180.71.193/image/background3.png"
         },
         {
           "id": 202,
           "name": "해변가",
-          "imageUrl": "{이미지 경로}"
+          "imageUrl": "http://158.180.71.193/image/background2.png"
         }
       ]
     },

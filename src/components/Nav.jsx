@@ -1,18 +1,19 @@
 import "../components/Nav.css";
+import "../assets/image/banner.png"
 
 const Nav = () => {
   return (
     <div className="nav-container">
       <div className="nav-left">
-        <div className="banner-image" />
+        <span className="moguri-banner">MOGURI</span>
       </div>
-      <div className="nav-right">
-        <span className="logout">Logout</span>
-        <div className="community-container">
-          <div className="community-image" />
+        <div className="nav-container-logout">
+          <span className="nav-logout">Logout</span>
+        </div>
+        <div className="nav-container-banner">
+          <span className="community-banner">community</span>
         </div>
       </div>
-    </div>
   );
 };
 
