@@ -1,14 +1,23 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux"; // 리덕스 훅 임포트
+// Button Image
 import closeButtonImage from "../../assets/icon/deletebutton.png";
 import backButtonImage from "../../assets/icon/backbutton.png";
 import slideButtonImage from "../../assets/icon/slidebutton.png";
 import todoDeleteImage from "../../assets/icon/tododelete.png";
 import "./Sidebar.css";
+
+// menu
+import TodayMeal from "./TodayMeal";
+import TodayExercise from "./TodayExercise";
+import OwnedItem from "./OwnedItem";
+import Shop from "./Shop";
+
 import ItemSelection from "./ItemSelection"; // 새로 추가한 컴포넌트 import
 
-const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
+const Sidebar1 = ({ isOpen, onRequestClose }) => {
   const moguriName = useSelector((state) => state.moguri.name); // 리덕스 스토어에서 moguriName 가져오기
   const [currentView, setCurrentView] = useState("main");
   const [currentMeal, setCurrentMeal] = useState("");
@@ -272,9 +281,43 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
   );
 };
 
+const Sidebar = ({ isOpen, onRequestClose }) => {
+  const [currentScreen, setCurrentScreen] = useState(1);
+
+  const handleNext = () => {
+    setCurrentScreen((prevScreen) => (prevScreen % 4) + 1);
+  };
+
+  const handlePrev = () => {
+    setCurrentScreen((prevScreen) => (prevScreen === 1 ? 4 : prevScreen - 1));
+  };
+
+  const handleClose = () => {
+    onRequestClose();
+  };
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={handleClose}
+      contentLabel="사이드 바"
+      className="sidebar-content"
+      overlayClassName="modal-overlay"
+    >
+      {currentScreen === 1 && <TodayMeal />}
+      {currentScreen === 2 && <TodayExercise />}
+      {currentScreen === 3 && <OwnedItem />}
+      {currentScreen === 4 && <Shop />}
+      <button onClick={handlePrev}>이전</button>
+      <button onClick={handleNext}>다음</button>
+      <button onClick={handleClose}>닫기</button>
+    </Modal>
+  );
+};
+
 Sidebar.propTypes = {
-  isSidebarOpen: PropTypes.bool.isRequired,
-  toggleSidebar: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

@@ -1,4 +1,4 @@
- @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
 .sidebar {
   position: absolute;
@@ -8,24 +8,24 @@
   height: 75%;
   background-color: #f8e28e;
   transition: transform 0.3s ease;
-  z-index: 1001; 
+  z-index: 1001;
   border-radius: 20px;
   border: 2px solid black;
 }
 
 .sidebar.open .sidebar-content {
-  border-left: none; 
+  border-left: none;
 }
 
 .sidebar.open {
-  transform: translateX(-240px); 
+  transform: translateX(-240px);
   height: 60%;
 }
 
 .slide-button {
   position: absolute;
   top: 50%;
-  left: 9px; 
+  left: 9px;
   background: none;
   border: none;
   cursor: pointer;
@@ -34,23 +34,33 @@
 }
 
 .slide-button img {
-  width: 10px; 
-  height: 20px; 
+  width: 10px;
+  height: 20px;
 }
 
 .sidebar-content {
-  position: relative;
+  /* position: relative;
   width: 250px; 
   height: 100%;
   background-color: #f8e28e;
   border-left: 1px solid #ccc;
   padding: 10px;
   border-radius: 20px;
-  border: solid 2px black;
+  border: solid 2px black; */
+  position: absolute;
+  top: 130px;
+  bottom: 120px;
+  right: 50px;
+  width: 20%;
+  background-color: #f8e28e;
+  transition: transform 0.3s ease;
+  z-index: 1001;
+  border-radius: 20px;
+  border: 2px solid black;
 }
 
 .meal-main-close {
-  position: absolute; 
+  position: absolute;
   top: 10px;
   right: 10px;
   background: none;
@@ -100,11 +110,12 @@
 }
 
 .slide-button:hover {
-  background-color: #F8E28E;
+  background-color: #f8e28e;
 }
 
-.sidebar-content, .meal-details {
-  width: 250px; 
+.sidebar-content,
+.meal-details {
+  width: 250px;
   height: 100%;
   background-color: #f8e28e;
   padding: 10px;
@@ -200,16 +211,15 @@
   margin-right: 10px;
 }
 
-.add-button-container { 
+.add-button-container {
   position: fixed;
-  bottom: 0px; 
+  bottom: 0px;
   left: 455%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
 }
 
 .add-button:hover {
@@ -294,7 +304,7 @@
 
 .meal-details .slide-button {
   display: none;
-} 
+}
 
 .slide-left {
   position: absolute;
@@ -312,7 +322,6 @@
   height: 20px;
   margin-left: 10px;
 }
-
 
 .slide-right {
   position: absolute;
@@ -332,7 +341,8 @@
   transform: scaleX(-1);
 }
 
-.slide-left:hover, .slide-right:hover {
+.slide-left:hover,
+.slide-right:hover {
   background: none;
 }
 
@@ -345,12 +355,11 @@
 .slide-right:hover img {
   background: none;
   outline: none;
-  
 }
 
 .exercise-details {
   position: relative;
-  width: 250px; 
+  width: 250px;
   height: 100%;
   background-color: #f8e28e;
   padding: 10px;
@@ -399,4 +408,3 @@
   width: 0; /* 스크롤바의 너비 */
   background-color: #f8e28e; /* 스크롤바의 배경 색상 */
 }
-
