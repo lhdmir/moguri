@@ -95,6 +95,7 @@ const Sidebar1 = ({ isOpen, onRequestClose }) => {
     } else {
       setCurrentView("main");
     }
+      
   };
 
   const goToPreviousView = () => {
