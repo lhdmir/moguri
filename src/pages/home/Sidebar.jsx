@@ -283,6 +283,7 @@ const Sidebar1 = ({ isOpen, onRequestClose }) => {
 
 const Sidebar = ({ isOpen, onRequestClose }) => {
   const [currentScreen, setCurrentScreen] = useState(1);
+  const [isMealSelected, setIsMealSelected] = useState(false);
 
   const handleNext = () => {
     setCurrentScreen((prevScreen) => (prevScreen % 4) + 1);
@@ -293,7 +294,12 @@ const Sidebar = ({ isOpen, onRequestClose }) => {
   };
 
   const handleClose = () => {
+    setCurrentScreen(1);
     onRequestClose();
+  };
+
+  const handleMealSelect = (isSelected) => {
+    setIsMealSelected(isSelected);
   };
 
   return (
@@ -304,13 +310,19 @@ const Sidebar = ({ isOpen, onRequestClose }) => {
       className="sidebar-content"
       overlayClassName="modal-overlay"
     >
-      {currentScreen === 1 && <TodayMeal />}
+      <button onClick={handleClose}>닫기</button>
+
+      {currentScreen === 1 && <TodayMeal onMealSelect={handleMealSelect} />}
       {currentScreen === 2 && <TodayExercise />}
       {currentScreen === 3 && <OwnedItem />}
       {currentScreen === 4 && <Shop />}
-      <button onClick={handlePrev}>이전</button>
-      <button onClick={handleNext}>다음</button>
-      <button onClick={handleClose}>닫기</button>
+
+      {!isMealSelected && (
+        <>
+          <button onClick={handlePrev}>이전</button>
+          <button onClick={handleNext}>다음</button>
+        </>
+      )}
     </Modal>
   );
 };
