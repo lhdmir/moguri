@@ -39,7 +39,10 @@ const Sidebar = ({ isOpen, onRequestClose }) => {
       className="sidebar-content"
       overlayClassName="modal-overlay"
     >
-      <button onClick={handleClose}>닫기</button>
+      {/* <button onClick={handleClose}>닫기</button> */}
+      <button onClick={handleClose} className="close-button">
+        <img src={closeButtonImage} alt="Close" />
+      </button>
 
       {currentScreen === 1 && <TodayMeal onMealSelect={handleMealSelect} />}
       {currentScreen === 2 && <TodayExercise />}
@@ -48,8 +51,13 @@ const Sidebar = ({ isOpen, onRequestClose }) => {
 
       {!isMealSelected && (
         <>
-          <button onClick={handlePrev}>이전</button>
-          <button onClick={handleNext}>다음</button>
+            <button onClick={handlePrev} className="slide-left-button">
+              <img src={slideButtonImage} />
+            </button>
+          
+          <button onClick={handleNext} className="slide-right-button">
+            <img src={slideButtonImage} />
+          </button>
         </>
       )}
     </Modal>

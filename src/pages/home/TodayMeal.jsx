@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import "./TodayMeal.css";
 import {
   addBreakfast,
   removeBreakfast,
@@ -112,13 +113,13 @@ const TodayMeal = ({ onMealSelect }) => {
   if (selectedMeal !== null) {
     const mealDetail = meals[selectedMeal];
     return (
-      <div ref={modalRef}>
-        <div className="meal-header">{mealDetail.name}</div>
-        <ul>
+      <div ref={modalRef} className="todaymeal-modal">
+        <div className="todaymeal-header">{mealDetail.name}</div>
+        <ul className="todaymeal-list">
           {mealDetail.details.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="todaymeal-item">
               {editingItem && editingItem.id === item.id ? (
-                <span>
+                <span className="todaymeal-edit">
                   <input
                     type="text"
                     value={editingItem.menu}
@@ -126,6 +127,7 @@ const TodayMeal = ({ onMealSelect }) => {
                       setEditingItem({ ...editingItem, menu: e.target.value })
                     }
                     onKeyDown={(e) => handleKeyDown(e, editingItem)}
+                    className="todaymeal-input"
                   />
                   <input
                     type="number"
@@ -137,12 +139,19 @@ const TodayMeal = ({ onMealSelect }) => {
                       })
                     }
                     onKeyDown={(e) => handleKeyDown(e, editingItem)}
+                    className="todaymeal-input"
                   />
                 </span>
               ) : (
-                <span onClick={() => setEditingItem(item)}>
+                <span
+                  className="todaymeal-display"
+                  onClick={() => setEditingItem(item)}
+                >
                   {item.menu}: {item.calorie} kcal
-                  <button onClick={() => handleDeleteItem(item.id)}>
+                  <button
+                    onClick={() => handleDeleteItem(item.id)}
+                    className="todaymeal-delete-button"
+                  >
                     삭제
                   </button>
                 </span>
@@ -150,20 +159,33 @@ const TodayMeal = ({ onMealSelect }) => {
             </li>
           ))}
         </ul>
-        <input
-          type="text"
-          placeholder="메뉴"
-          value={newItem.menu}
-          onChange={(e) => setNewItem({ ...newItem, menu: e.target.value })}
-        />
-        <input
-          type="number"
-          placeholder="칼로리"
-          value={newItem.calorie}
-          onChange={(e) => setNewItem({ ...newItem, calorie: e.target.value })}
-        />
-        <button onClick={handleAddItem}>추가</button>
-        <button onClick={() => setSelectedMeal(null)}>뒤로</button>
+        <div className="todaymeal-add-container">
+          <input
+            type="text"
+            placeholder="메뉴"
+            value={newItem.menu}
+            onChange={(e) => setNewItem({ ...newItem, menu: e.target.value })}
+            className="todaymeal-input"
+          />
+          <input
+            type="number"
+            placeholder="칼로리"
+            value={newItem.calorie}
+            onChange={(e) =>
+              setNewItem({ ...newItem, calorie: e.target.value })
+            }
+            className="todaymeal-input"
+          />
+          <button className="todaymeal-add-button" onClick={handleAddItem}>
+            추가
+          </button>
+        </div>
+        <button
+          className="todaymeal-back-button"
+          onClick={() => setSelectedMeal(null)}
+        >
+          뒤로
+        </button>
       </div>
     );
   }
