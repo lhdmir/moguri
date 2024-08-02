@@ -6,6 +6,8 @@ import {
   updateExercise,
 } from "../../features/exercises/todayExerciseSlice.js";
 
+import Cookies from "js-cookie";
+
 const TodayExercise = () => {
   const [newItem, setNewItem] = useState({ content: "" });
   const [editingItem, setEditingItem] = useState(null);
@@ -38,14 +40,99 @@ const TodayExercise = () => {
     }
   };
 
+  // const handleAddItem = async () => {
+  //   if (newItem.content) {
+  //     try {
+  //       const token = Cookies.get("token");
+
+  //       // API Endpoint 수정
+  //       const response = await fetch(
+  //         "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/exercise",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //           body: JSON.stringify({ ...newItem }),
+  //         }
+  //       );
+
+  //       const data = await response.json();
+
+  //       if (response.ok) {
+  //         dispatch(addExercise({ ...data }));
+  //         setNewItem({ content: "" });
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
+
   const handleDeleteItem = (id) => {
     dispatch(removeExercise(id));
   };
+
+  // const handleDeleteItem = async (id) => {
+  //   try {
+  //     const token = Cookies.get("token");
+
+  //     // API Endpoint 수정
+  //     const response = await fetch(
+  //       `https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/exercise/${id}`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       dispatch(removeExercise(data.deleted_id));
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleUpdateItem = (id, updatedItem) => {
     dispatch(updateExercise({ id, newItem: updatedItem }));
     setEditingItem(null);
   };
+
+  // const handleUpdateItem = async (id, updatedItem) => {
+  //   try {
+  //     const token = Cookies.get("token");
+
+  //     // API Endpoint 수정
+  //     const response = await fetch(
+  //       `https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/exercise/${id}`,
+  //       {
+  //         method: "PUT",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({ ...updatedItem }),
+  //       }
+  //     );
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       const { id, ...newItemWithoutId } = data;
+  //       dispatch(updateExercise({ id: data.id, newItem: newItemWithoutId }));
+  //       setEditingItem(null);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleKeyDown = (event, item) => {
     if (event.key === "Enter") {
