@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
 // Button Image
+import closeButtonImage from "../../assets/icon/deletebutton.png";
+import slideButtonImage from "../../assets/icon/slidebutton.png";
+
 import "./Sidebar.css";
 
 // menu
@@ -51,10 +54,10 @@ const Sidebar = ({ isOpen, onRequestClose }) => {
 
       {!isMealSelected && (
         <>
-            <button onClick={handlePrev} className="slide-left-button">
-              <img src={slideButtonImage} />
-            </button>
-          
+          <button onClick={handlePrev} className="slide-left-button">
+            <img src={slideButtonImage} />
+          </button>
+
           <button onClick={handleNext} className="slide-right-button">
             <img src={slideButtonImage} />
           </button>
