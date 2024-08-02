@@ -55,10 +55,10 @@ const TodayMeal = ({ onMealSelect }) => {
   };
 
   // 임시 코드
-  const getLastId = (meal) => {
-    if (meal.length === 0) return 0;
-    return meal[meal.length - 1].id;
-  };
+  // const getLastId = (meal) => {
+  //   if (meal.length === 0) return 0;
+  //   return meal[meal.length - 1].id;
+  // };
 
   const meals = [
     {
@@ -109,9 +109,9 @@ const TodayMeal = ({ onMealSelect }) => {
 
   const handleAddItem = () => {
     if (newItem.menu && newItem.calorie) {
-      const lastId = getLastId(meals[selectedMeal].details);
+      // const lastId = getLastId(meals[selectedMeal].details);
       const action = meals[selectedMeal].addAction;
-      dispatch(action({ id: lastId + 1, ...newItem }));
+      dispatch(action({ id: Date.now(), ...newItem }));
       // console.log(todayMealState);
       setNewItem({ menu: "", calorie: "" });
     }
