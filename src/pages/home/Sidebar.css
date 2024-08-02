@@ -286,7 +286,7 @@
 .slide-left-button {
   position: absolute;
   top: 50%;
-  right: -20px;
+  right: 235px;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -297,7 +297,6 @@
 .slide-left-button img {
   width: 10px;
   height: 20px;
-  margin-right: 255px;
 }
 
 .slide-right-button {
