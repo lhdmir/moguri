@@ -22,6 +22,7 @@ import Cookies from "js-cookie";
 
 const TodayMeal = ({ onMealSelect }) => {
   const [selectedMeal, setSelectedMeal] = useState(null);
+  const [newItem, setNewItem] = useState({ menu: "", calorie: "" });
   const [editingItem, setEditingItem] = useState(null);
 
   const dispatch = useDispatch();
@@ -114,7 +115,6 @@ const TodayMeal = ({ onMealSelect }) => {
       // console.log(todayMealState);
       setNewItem({ menu: "", calorie: "" });
     }
-
   };
 
   // const handleAddItem = async () => {
@@ -256,23 +256,39 @@ const TodayMeal = ({ onMealSelect }) => {
                     className="todaymeal-delete-button"
                   >
                     <img src={todoDeleteImage} alt="Delete" />
-
                   </button>
                 </span>
               )}
             </li>
           ))}
         </ul>
-        <button className="todaymeal-add-button" onClick={handleAddItem}>
-          추가
-        </button>
+        <div className="todaymeal-add-container">
+          <input
+            type="text"
+            placeholder="메뉴"
+            value={newItem.menu}
+            onChange={(e) => setNewItem({ ...newItem, menu: e.target.value })}
+            className="todaymeal-input"
+          />
+          <input
+            type="number"
+            placeholder="칼로리"
+            value={newItem.calorie}
+            onChange={(e) =>
+              setNewItem({ ...newItem, calorie: e.target.value })
+            }
+            className="todaymeal-input"
+          />
+          <button className="todaymeal-add-button" onClick={handleAddItem}>
+            추가
+          </button>
+        </div>
 
         <button
           className="todaymeal-back-button"
           onClick={() => setSelectedMeal(null)}
         >
           <img src={backButtonImage} alt="back" />
-
         </button>
       </div>
     );
