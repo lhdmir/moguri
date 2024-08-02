@@ -1,157 +1,237 @@
-.todaymeal-header {
+/* .todaymeal-header {
   font-size: 1.5em;
   margin-bottom: 10px;
   font-family: "Nanum Pen Script", cursive;
   color: black;
   margin-left: 25px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
-.todaymeal-input {
-  background-color: white;
-  padding: 5px 5px;
-  color: black;
-}
-
-.todaymeal-add-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-  color: black;
-  font-family: "Nanum Pen Script", cursive;
+.todaymeal-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto 0;
+  flex-direction: column;
+  padding-left: 35px;
   width: 200px;
-  height: 45px;
-  background-color: white;
-  border-radius: 10px;
-  margin-right: 35px;
-}
 
-/* 새로운 스타일 추가 */
-.todaymeal-item-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f8e28e;
-  padding: 10px;
-  margin: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.todaymeal-item-day {
-  font-size: 1.2em;
-  color: black;
-}
-
-.todaymeal-item-calories {
-  font-size: 1.2em;
-  color: black;
-}
-
-.todaymeal-details {
-  padding: 20px;
+  overflow-y: auto;
+  max-height: 300px;
+  margin-top: 10px;
 }
 
 .todaymeal-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8e28e;
+  background: #ffffff;
   padding: 10px;
-  margin: 10px 0;
   border-radius: 10px;
-}
-
-.todaymeal-item input[type="text"],
-.todaymeal-item input[type="number"] {
-  width: 40%;
-  padding: 5px;
-  margin-right: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.todaymeal-item button {
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.todaymeal-scroll-container {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.todaymeal-add-button-container {
-  display: flex;
-  justify-content: center;
+  padding-left: 20px;
   margin-top: 10px;
+  height: 25px;
 }
 
-.todaymeal-add-button {
-  background-color: #b69064;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
+.todaymeal-add-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
 }
 
 .todaymeal-input {
-  width: 70%;
-  padding: 10px;
-  margin: 10px 0;
+  background: white;
+  color: black;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
+  padding-left: 10px;
+  font-family: "Nanum Pen Script", cursive;
+}
+
+.todaymeal-input-add {
+  background: white;
+  color: black;
+  border-radius: 5px;
+  border: none;
+  margin-left: 35px;
+  width: 166px;
+  height: 30px;
+  font-family: "Nanum Pen Script", cursive;
+  padding-left: 30px;
+}
+
+.todaymeal-display {
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+}
+
+.todaymeal-delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 75px;
+  margin-top: 5px;
+  padding: 0;
+}
+
+.todaymeal-delete-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.todaymeal-delete-button:hover,
+.todaymeal-delete-button:focus,
+.todaymeal-delete-button:active {
+  background: none;
+  transform: none;
+  outline: none;
 }
 
 .todaymeal-back-button {
-  background-color: #b69064;
-  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 50px;
+}
+
+.todaymeal-back-button img {
+  width: 26px;
+  height: 26px;
+}
+
+.todaymeal-back-button:hover,
+.todaymeal-back-button:focus,
+.todaymeal-back-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}
+
+.todaymeal-add-button {
+  background-color: white;
+  color: black;
+
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  margin-top: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+  font-family: "Nanum Pen Script", cursive;
+  width: 200px;
+  margin-left: 34px;
+  position: fixed;
+  bottom: 170px;
+} */
 
-.todaymeal-modal {
-  padding: 20px;
+.todaymeal-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-left: 25px;
+  margin-top: 15px;
 }
 
 .todaymeal-list {
-  list-style-type: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  width: 200px;
+  overflow-y: auto;
+  max-height: 300px;
+  margin-top: 10px;
 }
 
-.todaymeal-edit {
+.todaymeal-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  padding-left: 20px;
+  margin-top: 10px;
+  height: 25px;
+  position: relative;
+}
+
+.todaymeal-add-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.todaymeal-input {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding-left: 10px;
+  font-family: "Nanum Pen Script", cursive;
 }
 
 .todaymeal-display {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
 }
 
 .todaymeal-delete-button {
-  background-color: transparent;
+  background: none;
   border: none;
   cursor: pointer;
+  position: absolute;
+  right: 10px; /* fixed right position */
+  top: 15px;
   padding: 0;
-  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.todaymeal-delete-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.todaymeal-delete-button:hover,
+.todaymeal-delete-button:focus,
+.todaymeal-delete-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}
+
+.todaymeal-back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 50px;
+}
+
+.todaymeal-back-button img {
+  width: 26px;
+  height: 26px;
+}
+
+.todaymeal-back-button:hover,
+.todaymeal-back-button:focus,
+.todaymeal-back-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}
+
+.todaymeal-add-button {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: "Nanum Pen Script", cursive;
+  width: 200px;
+  margin-left: 34px;
+  position: fixed;
+  bottom: 165px;
 }
