@@ -79,6 +79,7 @@
   border: 1px solid black;
   padding-left: 10px;
   font-family: "Nanum Pen Script", cursive;
+  height: 25px;
 }
 
 
@@ -88,12 +89,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 80%;
 }
 
-.todaymeal-display-calorie {
-  padding-left: 90px;
-  position: fixed;
-}
 
 .todaymeal-delete-button {
   background: none;
@@ -153,7 +151,7 @@
   width: 20px;
   margin-left: auto; 
   position: fixed;
-  bottom: 180px; 
+  bottom: 24.5%; 
   right: 75px; 
 }
 
