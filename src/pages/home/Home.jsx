@@ -33,7 +33,7 @@ const Home = () => {
     <div
       className="home-container"
       style={{
-        backgroundImage: `url(${moguriState.currentItems.background.imageUrl})`,
+        backgroundImage: `url(${moguriState.currentItem.background.imageUrl})`,
       }}
     >
       <Nav />

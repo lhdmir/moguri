@@ -4,8 +4,8 @@
   "moguri": {
     "id": 1,
     "imageUrl": "http://158.180.71.193/image/moguri_1-1.png",
-    "name": "qqqq",
-    "currentItems": {
+    "name": "momo",
+    "currentItem": {
       "accessory": {
         "id": 0,
         "name": "",
@@ -17,7 +17,7 @@
         "imageUrl": "http://158.180.71.193/image/background1.png"
       }
     },
-    "ownedItems": {
+    "ownedItem": {
       "accessories": [
         {
           "id": 101,
@@ -35,14 +35,14 @@
           "imageUrl": "http://158.180.71.193/image/hat_3.png"
         },
         {
-          "id": 105,
-          "name": "학사모",
-          "imageUrl": "http://158.180.71.193/image/hat_5.png"
-        },
-        {
           "id": 104,
           "name": "제빵모자",
           "imageUrl": "http://158.180.71.193/image/hat_4.png"
+        },
+        {
+          "id": 105,
+          "name": "학사모",
+          "imageUrl": "http://158.180.71.193/image/hat_5.png"
         }
       ],
       "backgrounds": [

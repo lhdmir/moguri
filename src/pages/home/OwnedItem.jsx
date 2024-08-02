@@ -14,17 +14,22 @@ const OwnedItem = () => {
   const [selectedCategory, setSelectedCategory] = useState("accessories");
 
   // 선택된 카테고리의 아이템들 가져오기
-  const items = moguriState.ownedItems[selectedCategory];
+  const items = moguriState.ownedItem[selectedCategory];
 
   // 아이템 클릭 시 현재 아이템으로 설정하는 함수
   const handleItemClick = (item) => {
+    console.log(moguriState.currentItem);
     if (selectedCategory === "accessories") {
-      dispatch(setCurrentAccessory(item));
-      console.log(moguriState.currentItems);
+      if (moguriState.currentItem.accessory.id === item.id) {
+        dispatch(setCurrentAccessory({ id: 0, name: "", imageUrl: "" }));
+      } else {
+        dispatch(setCurrentAccessory(item));
+      }
     } else if (selectedCategory === "backgrounds") {
       dispatch(setCurrentBackground(item));
     }
   };
+
   return (
     <div>
       <div className="item-header">{moguriState.name}</div>
