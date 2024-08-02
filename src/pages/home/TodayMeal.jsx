@@ -251,7 +251,7 @@ const TodayMeal = ({ onMealSelect }) => {
                   onClick={() => setEditingItem(item)}
                 >
                   <span>{item.menu}</span>
-                  <span className="todaymeal-display-calorie">{item.calorie} kcal</span>
+                  <span>{item.calorie} kcal</span>
                   <button
                     onClick={() => handleDeleteItem(item.id)}
                     className="todaymeal-delete-button"
