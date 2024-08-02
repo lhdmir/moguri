@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   setCurrentAccessory,
@@ -9,12 +9,22 @@ import {
 import "./OwnedItem.css";
 
 const OwnedItem = () => {
+  const dispatch = useDispatch();
   const moguriState = useSelector((state) => state.moguri);
   const [selectedCategory, setSelectedCategory] = useState("accessories");
 
   // 선택된 카테고리의 아이템들 가져오기
   const items = moguriState.ownedItems[selectedCategory];
 
+  // 아이템 클릭 시 현재 아이템으로 설정하는 함수
+  const handleItemClick = (item) => {
+    if (selectedCategory === "accessories") {
+      dispatch(setCurrentAccessory(item));
+      console.log(moguriState.currentItems);
+    } else if (selectedCategory === "backgrounds") {
+      dispatch(setCurrentBackground(item));
+    }
+  };
   return (
     <div>
       <div className="item-header">{moguriState.name}</div>
@@ -38,7 +48,11 @@ const OwnedItem = () => {
       </div>
       <div className="item-container">
         {items.map((item) => (
-          <div className="item" key={item.id}>
+          <div
+            className="item"
+            key={item.id}
+            onClick={() => handleItemClick(item)}
+          >
             <img src={item.imageUrl} alt={item.name} />
           </div>
         ))}
