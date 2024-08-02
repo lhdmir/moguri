@@ -217,6 +217,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import todoDeleteImage from "../../assets/icon/tododelete.png";
 import backButtonImage from "../../assets/icon/backbutton.png";
+
 import "./TodayMeal.css";
 import {
   addBreakfast,
@@ -366,6 +367,7 @@ const TodayMeal = ({ onMealSelect }) => {
                     className="todaymeal-delete-button"
                   >
                     <img src={todoDeleteImage} alt="Delete" />
+
                   </button>
                 </span>
               )}
@@ -375,11 +377,13 @@ const TodayMeal = ({ onMealSelect }) => {
         <button className="todaymeal-add-button" onClick={handleAddItem}>
           추가
         </button>
+
         <button
           className="todaymeal-back-button"
           onClick={() => setSelectedMeal(null)}
         >
           <img src={backButtonImage} alt="back" />
+
         </button>
       </div>
     );
