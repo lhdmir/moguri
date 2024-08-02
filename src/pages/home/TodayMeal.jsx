@@ -250,7 +250,8 @@ const TodayMeal = ({ onMealSelect }) => {
                   className="todaymeal-display"
                   onClick={() => setEditingItem(item)}
                 >
-                  {item.menu}: {item.calorie} kcal
+                  <span>{item.menu}</span>
+                  <span className="todaymeal-display-calorie">{item.calorie} kcal</span>
                   <button
                     onClick={() => handleDeleteItem(item.id)}
                     className="todaymeal-delete-button"
@@ -268,7 +269,7 @@ const TodayMeal = ({ onMealSelect }) => {
             placeholder="메뉴"
             value={newItem.menu}
             onChange={(e) => setNewItem({ ...newItem, menu: e.target.value })}
-            className="todaymeal-input"
+            className="todaymeal-input-add"
           />
           <input
             type="number"
@@ -277,10 +278,10 @@ const TodayMeal = ({ onMealSelect }) => {
             onChange={(e) =>
               setNewItem({ ...newItem, calorie: e.target.value })
             }
-            className="todaymeal-input"
+            className="todaymeal-input-add"
           />
           <button className="todaymeal-add-button" onClick={handleAddItem}>
-            추가
+            +
           </button>
         </div>
 
