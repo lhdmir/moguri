@@ -1,0 +1,126 @@
+.exercise-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-left: 25px;
+  margin-top: 15px;
+}
+
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 35px;
+  width: 200px;
+  overflow-y: auto;
+  max-height: 300px;
+  margin-top: 10px;
+}
+
+.exercise-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  padding-left: 20px;
+  margin-top: 10px;
+  height: 25px;
+  position: relative;
+}
+
+.exercise-add-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background: white;
+  width: 180px;
+  height: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 170px;
+  left: 1280px;
+}
+
+.exercise-input-add {
+  width: 100px;
+  height: 20px;
+  background: white;
+  color: black;
+  border: none;
+  font-family: "Nanum Pen Script", cursive;
+  padding-left: 10px;
+}
+
+.exercise-edit {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.exercise-edit input[type="text"] {
+  width: 70%;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  height: 25px;
+}
+
+.exercise-display {
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.exercise-delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.exercise-delete-button img {
+  width: 16px;
+  height: 16px;
+}
+
+.exercise-delete-button:hover,
+.exercise-delete-button:focus,
+.exercise-delete-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}
+
+.exercise-add-button {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+  cursor: pointer;
+  font-family: "Nanum Pen Script", cursive;
+  width: 40px;
+  margin-left: auto;
+  position: fixed;
+  bottom: 180px;
+  right: 75px;
+}
+
+.exercise-add-button:hover,
+.exercise-add-button:focus,
+.exercise-add-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}

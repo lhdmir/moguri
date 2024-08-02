@@ -5,6 +5,8 @@ import {
   removeExercise,
   updateExercise,
 } from "../../features/exercises/todayExerciseSlice.js";
+import "./TodayExercise.css";
+import todoDeleteImage from "../../assets/icon/tododelete.png";
 
 import Cookies from "js-cookie";
 
@@ -140,14 +142,50 @@ const TodayExercise = () => {
     }
   };
 
+  // return (
+  //   <div ref={modalRef}>
+  //     <div className="exercise-header">오늘의 운동 !</div>
+  //     <ul>
+  //       {todayExerciseState.map((item) => (
+  //         <li key={item.id}>
+  //           {editingItem && editingItem.id === item.id ? (
+  //             <span>
+  //               <input
+  //                 type="text"
+  //                 value={editingItem.content}
+  //                 onChange={(e) =>
+  //                   setEditingItem({ ...editingItem, content: e.target.value })
+  //                 }
+  //                 onKeyDown={(e) => handleKeyDown(e, editingItem)}
+  //               />
+  //             </span>
+  //           ) : (
+  //             <span onClick={() => setEditingItem(item)}>
+  //               {item.content}
+  //               <button onClick={() => handleDeleteItem(item.id)}>삭제</button>
+  //             </span>
+  //           )}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //     <input
+  //       type="text"
+  //       placeholder="운동 추가"
+  //       value={newItem.content}
+  //       onChange={(e) => setNewItem({ content: e.target.value })}
+  //     />
+  //     <button onClick={handleAddItem}>추가</button>
+  //   </div>
+  // );
+
   return (
     <div ref={modalRef}>
       <div className="exercise-header">오늘의 운동 !</div>
-      <ul>
+      <ul className="exercise-list">
         {todayExerciseState.map((item) => (
-          <li key={item.id}>
+          <li key={item.id} className="exercise-item">
             {editingItem && editingItem.id === item.id ? (
-              <span>
+              <span className="exercise-edit">
                 <input
                   type="text"
                   value={editingItem.content}
@@ -155,26 +193,41 @@ const TodayExercise = () => {
                     setEditingItem({ ...editingItem, content: e.target.value })
                   }
                   onKeyDown={(e) => handleKeyDown(e, editingItem)}
+                  className="exercise-input"
                 />
               </span>
             ) : (
-              <span onClick={() => setEditingItem(item)}>
-                {item.content}
-                <button onClick={() => handleDeleteItem(item.id)}>삭제</button>
+              <span
+                className="exercise-display"
+                onClick={() => setEditingItem(item)}
+              >
+                <span>{item.content}</span>
+                <button
+                  onClick={() => handleDeleteItem(item.id)}
+                  className="exercise-delete-button"
+                >
+                  <img src={todoDeleteImage} alt="Delete" />
+                </button>
               </span>
             )}
           </li>
         ))}
       </ul>
-      <input
-        type="text"
-        placeholder="운동 추가"
-        value={newItem.content}
-        onChange={(e) => setNewItem({ content: e.target.value })}
-      />
-      <button onClick={handleAddItem}>추가</button>
+      <div className="exercise-add-container">
+        <input
+          type="text"
+          placeholder="운동 추가"
+          value={newItem.content}
+          onChange={(e) => setNewItem({ content: e.target.value })}
+          className="exercise-input-add"
+        />
+        <button onClick={handleAddItem} className="exercise-add-button">
+          추가
+        </button>
+      </div>
     </div>
   );
+
 };
 
 export default TodayExercise;
