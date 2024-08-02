@@ -19,6 +19,8 @@ const OwnedItem = () => {
   // 아이템 클릭 시 현재 아이템으로 설정하는 함수
   const handleItemClick = (item) => {
     console.log(moguriState.currentItem);
+    // 임시코드
+    // 현재 착용중인 악세서리가 교체할려는 악세서리와 같을때 악세서리 장착 해제
     if (selectedCategory === "accessories") {
       if (moguriState.currentItem.accessory.id === item.id) {
         dispatch(setCurrentAccessory({ id: 0, name: "", imageUrl: "" }));
