@@ -15,6 +15,7 @@ import {
   removeSnack,
   updateSnack,
 } from "../../features/meals/todayMealSlice.js";
+import Cookies from "js-cookie";
 
 const TodayMeal = ({ onMealSelect }) => {
   const [selectedMeal, setSelectedMeal] = useState(null);
@@ -50,6 +51,12 @@ const TodayMeal = ({ onMealSelect }) => {
     return meal.reduce((total, item) => total + Number(item.calorie), 0);
   };
 
+  // 임시 코드
+  const getLastId = (meal) => {
+    if (meal.length === 0) return 0;
+    return meal[meal.length - 1].id;
+  };
+
   const meals = [
     {
       name: "아침",
@@ -58,6 +65,9 @@ const TodayMeal = ({ onMealSelect }) => {
       addAction: addBreakfast,
       removeAction: removeBreakfast,
       updateAction: updateBreakfast,
+      // API Endpoint 수정
+      apiEndpoint:
+        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/breakfast",
     },
     {
       name: "점심",
@@ -66,6 +76,9 @@ const TodayMeal = ({ onMealSelect }) => {
       addAction: addLunch,
       removeAction: removeLunch,
       updateAction: updateLunch,
+      // API Endpoint 수정
+      apiEndpoint:
+        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/lunch",
     },
     {
       name: "저녁",
@@ -74,6 +87,9 @@ const TodayMeal = ({ onMealSelect }) => {
       addAction: addDinner,
       removeAction: removeDinner,
       updateAction: updateDinner,
+      // API Endpoint 수정
+      apiEndpoint:
+        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/dinner",
     },
     {
       name: "간식",
@@ -82,27 +98,111 @@ const TodayMeal = ({ onMealSelect }) => {
       addAction: addSnack,
       removeAction: removeSnack,
       updateAction: updateSnack,
+      // API Endpoint 수정
+      apiEndpoint:
+        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/snack",
     },
   ];
 
   const handleAddItem = () => {
     if (newItem.menu && newItem.calorie) {
+      const lastId = getLastId(meals[selectedMeal].details);
       const action = meals[selectedMeal].addAction;
-      dispatch(action({ ...newItem, id: Date.now() }));
+      dispatch(action({ id: lastId + 1, ...newItem }));
+      // console.log(todayMealState);
       setNewItem({ menu: "", calorie: "" });
     }
   };
+
+  // const handleAddItem = async () => {
+  //   if (newItem.menu && newItem.calorie) {
+  //     try {
+  //       const token = Cookies.get("token");
+
+  //       // API Endpoint 수정
+  //       const response = await fetch(meals[selectedMeal].apiEndpoint, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({ ...newItem }),
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (response.ok) {
+  //         const action = meals[selectedMeal].addAction;
+  //         dispatch(action({ ...data }));
+  //         setNewItem({ menu: "", calorie: "" });
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
 
   const handleDeleteItem = (id) => {
     const action = meals[selectedMeal].removeAction;
     dispatch(action(id));
   };
 
+  // const handleDeleteItem = async (id) => {
+  //   try {
+  //     const token = Cookies.get("token");
+
+  //     // API Endpoint 수정
+  //     const response = await fetch(`${meals[selectedMeal].apiEndpoint}/${id}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       const action = meals[selectedMeal].removeAction;
+  //       dispatch(action(data.deleted_id));
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const handleUpdateItem = (id, updatedItem) => {
     const action = meals[selectedMeal].updateAction;
     dispatch(action({ id, newItem: updatedItem }));
     setEditingItem(null);
   };
+
+  // const handleUpdateItem = async (id, updatedItem) => {
+  //   try {
+  //     const token = Cookies.get("token");
+
+  //     // API Endpoint 수정
+  //     const response = await fetch(`${meals[selectedMeal].apiEndpoint}/${id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify({ ...updatedItem }),
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       const action = meals[selectedMeal].updateAction;
+  //       const { id, ...newItemWithoutId } = data;
+  //       dispatch(action({ id: data.id, newItem: newItemWithoutId }));
+  //       setEditingItem(null);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleKeyDown = (event, item) => {
     if (event.key === "Enter") {
