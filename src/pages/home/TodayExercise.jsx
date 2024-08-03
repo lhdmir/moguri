@@ -179,7 +179,7 @@ const TodayExercise = () => {
   // );
 
   return (
-    <div ref={modalRef}>
+    <div ref={modalRef} className="exercise-modal">
       <div className="exercise-header">오늘의 운동 !</div>
       <ul className="exercise-list">
         {todayExerciseState.map((item) => (

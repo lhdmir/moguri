@@ -1,180 +1,15 @@
-/* .todaymeal-header {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  font-family: "Nanum Pen Script", cursive;
-  color: black;
-  margin-left: 25px;
-  margin-top: 15px;
-}
-
-.todaymeal-list {
-  display: flex;
-  flex-direction: column;
-  padding-left: 35px;
-  width: 200px;
-  overflow-y: auto;
-  max-height: 300px;
-  margin-top: 10px;
-}
-
-.todaymeal-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 10px;
-  padding-left: 20px;
-  margin-top: 10px;
-  height: 25px;
-  position: relative;
-}
-
-.todaymeal-add-container {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  background: white;
-  width: 180px; 
-  height: 20px; 
-  padding: 10px;
-  border-radius: 10px;
-  position: fixed;
-  bottom: 170px; 
-  left: 1280px; 
-}
-
-.todaymeal-input-add {
-  width: 50px; 
-  height: 20px;
-  background: white;
-  color: black;
-  border: none;
-  font-family: "Nanum Pen Script", cursive;
-  padding-left: 10px;
-}
-
-.todaymeal-edit {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.todaymeal-edit input[type="text"] {
-  width: 40%; 
-  background: white;
-  color: black;
-  border-radius: 5px;
-  border: 1px solid black;
-  padding-left: 10px;
-  font-family: "Nanum Pen Script", cursive;
-  height: 25px;
-}
-
-.todaymeal-edit input[type="number"] {
-  width: 40%; 
-  background: white;
-  color: black;
-  border-radius: 5px;
-  border: 1px solid black;
-  padding-left: 10px;
-  font-family: "Nanum Pen Script", cursive;
-  height: 25px;
-}
-
-
-.todaymeal-display {
-  font-family: "Nanum Pen Script", cursive;
-  color: black;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-}
-
-
-.todaymeal-delete-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  right: 10px; 
-  top: 15px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-.todaymeal-delete-button img {
-  width: 16px;
-  height: 16px;
-}
-
-.todaymeal-delete-button:hover,
-.todaymeal-delete-button:focus,
-.todaymeal-delete-button:active {
-  background: none;
-  transform: none;
-  outline: none;
-}
-
-.todaymeal-back-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  top: 8px;
-  right: 50px;
-}
-
-.todaymeal-back-button img {
-  width: 26px;
-  height: 26px;
-}
-
-.todaymeal-back-button:hover,
-.todaymeal-back-button:focus,
-.todaymeal-back-button:active {
-  background: none;
-  transform: none;
-  outline: none;
-}
-
-.todaymeal-add-button {
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 10px;
-  padding: 0;
-  cursor: pointer;
-  font-family: "Nanum Pen Script", cursive;
-  width: 20px;
-  margin-left: auto; 
-  position: fixed;
-  bottom: 24.5%; 
-  right: 75px; 
-}
-
-.todaymeal-add-button:hover,
-.todaymeal-add-button:focus,
-.todaymeal-add-button:active {
-  background: none;
-  transform: none;
-  outline: none;
-} */
-
 .todaymeal-modal {
   position: relative;
   margin: 0 auto;
   padding: 10px;
   width: 300px;
-  height: 405px;
+  height: 100%;
   max-width: 90%;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background: none;
   margin-right: 30px;
+  bottom: 5;
 }
 
   .todaymeal-header {
@@ -187,24 +22,17 @@
     padding-left: 20px;
   }
 
-  .todaymeal-list {
+ .todaymeal-list {
     display: flex;
     flex-direction: column;
     padding-left: 35px;
-    width: 200px;
+    width: 90%;
     overflow-y: auto;
     max-height: 300px;
     margin-top: 10px;
+    max-height: 100%;
+    height: 65%;
   }
-
-.todaymeal-list {
-  display: flex;
-  flex-direction: column;
-  width: 90%; /* 부모 컴포넌트에 맞게 너비 설정 */
-  overflow-y: auto;
-  max-height: 300px;
-  margin-top: 10px;
-}
 
 .todaymeal-item {
   display: flex;
@@ -219,6 +47,16 @@
   right: 25px;
 }
 
+.display-left {
+  flex: 0 0 50%;
+  text-align: left;
+}
+
+.display-right {
+  flex: 0 0 35%;
+  text-align: right;
+}
+
 .todaymeal-add-container {
   display: flex;
   flex-direction: row;
@@ -228,10 +66,10 @@
   width: 197px;
   padding: 10px;
   border-radius: 10px;
-  position: absolute; /* 부모 컴포넌트 내부에서 위치를 절대적으로 설정 */
-  bottom: 15px; /* 부모 컴포넌트 하단에서 20px 위에 위치 */
-  left: 49%; /* 부모 컴포넌트 가로 중앙에 위치 */
-  transform: translateX(-50%); /* 가로 중앙 정렬 */
+  position: absolute; 
+  bottom: 15px; 
+  left: 49%; 
+  transform: translateX(-50%); 
 }
 
 .todaymeal-input-add {
@@ -299,7 +137,7 @@
   cursor: pointer;
   position: absolute;
   top: 8px;
-  right: 40px; /* 오른쪽 여백 조정 */
+  right: 40px; 
 }
 
 .todaymeal-back-button img {
@@ -337,8 +175,6 @@
   outline: none;
 }
 
-
-/* 미디어 쿼리: 큰 화면 (1920x1080) */
 @media (min-width: 1920px) {
   .todaymeal-modal {
     width: 350px;
@@ -359,7 +195,6 @@
   }
 }
 
-/* 미디어 쿼리: 작은 화면 (모바일) */
 @media (max-width: 600px) {
   .todaymeal-modal {
     width: 90%;
