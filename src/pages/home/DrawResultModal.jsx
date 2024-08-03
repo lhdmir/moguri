@@ -17,6 +17,11 @@ function DrawResultModal({ isOpen, onRequestClose, newItem }) {
 DrawResultModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
+  newItem: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default DrawResultModal;
