@@ -83,7 +83,7 @@ const OwnedItem = () => {
   // };
 
   return (
-    <div className=" item-modal">
+    <div>
       <div className="item-header">{moguriState.name}</div>
       <div className="category-buttons">
         <button
