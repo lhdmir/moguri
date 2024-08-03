@@ -27,12 +27,11 @@ html {
   left: 100px;
   height: 180px;
   cursor: pointer;
+  transform: scaleX(-1);
 }
 
 .current-accessory {
   position: absolute;
-  bottom: 100px;
-  left: 100px;
-  height: 180px;
   cursor: pointer;
+  z-index: 10;
 }
