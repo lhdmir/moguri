@@ -21,8 +21,11 @@ const OwnedItem = () => {
   // 아이템 클릭 시 현재 아이템으로 설정하는 함수
   const handleItemClick = (item) => {
     if (selectedCategory === "accessory") {
-      dispatch(setCurrentAccessory(item));
-      console.log(moguriState.currentItem);
+      if (moguriState.currentItem.accessory.id === item.id) {
+        dispatch(setCurrentAccessory({ id: 0, name: "", imageUrl: "" }));
+      } else {
+        dispatch(setCurrentAccessory(item));
+      }
     } else if (selectedCategory === "background") {
       dispatch(setCurrentBackground(item));
     }
