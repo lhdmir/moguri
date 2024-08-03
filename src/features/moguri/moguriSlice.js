@@ -18,8 +18,8 @@ const initialState = {
     },
   },
   ownedItem: {
-    accessories: [],
-    backgrounds: [],
+    accessory: [],
+    background: [],
   },
   targetWeight: 0,
 };
@@ -92,7 +92,7 @@ const moguriSlice = createSlice({
     //   dispatch(addOwnedAccessory({ id: 2, name: "Scarf", image_url: "https://example.com/scarf.png" }));
     // };
     addOwnedAccessory: (state, action) => {
-      state.ownedItem.accessories.push(action.payload);
+      state.ownedItem.accessory.push(action.payload);
     },
 
     // 액션 생성자: addOwnedBackground
@@ -101,7 +101,7 @@ const moguriSlice = createSlice({
     //   dispatch(addOwnedBackground({ id: 2, name: "Beach", image_url: "https://example.com/beach.png" }));
     // };
     addOwnedBackground: (state, action) => {
-      state.ownedItem.backgrounds.push(action.payload);
+      state.ownedItem.background.push(action.payload);
     },
 
     // 액션 생성자: setTargetWeight
@@ -125,7 +125,7 @@ export const {
   setCurrentAccessory,
   setCurrentBackground,
   addOwnedAccessory,
-  addOwnedBackgroundset,
+  addOwnedBackground,
   setTargetWeight,
 } = moguriSlice.actions;
 

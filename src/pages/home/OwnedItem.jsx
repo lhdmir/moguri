@@ -6,31 +6,78 @@ import {
   setCurrentBackground,
 } from "../../features/moguri/moguriSlice";
 
+import Cookies from "js-cookie";
+
 import "./OwnedItem.css";
 
 const OwnedItem = () => {
   const dispatch = useDispatch();
   const moguriState = useSelector((state) => state.moguri);
-  const [selectedCategory, setSelectedCategory] = useState("accessories");
+  const [selectedCategory, setSelectedCategory] = useState("accessory");
 
   // 선택된 카테고리의 아이템들 가져오기
   const items = moguriState.ownedItem[selectedCategory];
 
   // 아이템 클릭 시 현재 아이템으로 설정하는 함수
   const handleItemClick = (item) => {
-    console.log(moguriState.currentItem);
-    // 임시코드
-    // 현재 착용중인 악세서리가 교체할려는 악세서리와 같을때 악세서리 장착 해제
-    if (selectedCategory === "accessories") {
-      if (moguriState.currentItem.accessory.id === item.id) {
-        dispatch(setCurrentAccessory({ id: 0, name: "", imageUrl: "" }));
-      } else {
-        dispatch(setCurrentAccessory(item));
-      }
-    } else if (selectedCategory === "backgrounds") {
+    if (selectedCategory === "accessory") {
+      dispatch(setCurrentAccessory(item));
+      console.log(moguriState.currentItem);
+    } else if (selectedCategory === "background") {
       dispatch(setCurrentBackground(item));
     }
   };
+
+  // 아이템 클릭 시 현재 아이템으로 설정하는 함수
+  // const handleItemClick = async (item) => {
+  //   if (selectedCategory === "accessory") {
+  //     try {
+  //       const response = await fetch(
+  //         "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri/accessory",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
+  //           },
+  //           body: JSON.stringify({ accessory: item }),
+  //         }
+  //       );
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+
+  //         dispatch(setCurrentAccessory(data.accessory));
+  //       }
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   } else if (selectedCategory === "background") {
+  //     try {
+  //       const response = await fetch(
+  //         "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri/background",
+  //         {
+  //           method: "PUT",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${Cookies.get("token")}`,
+  //           },
+  //           body: JSON.stringify({ background: item }),
+  //         }
+  //       );
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+
+  //         dispatch(setCurrentBackground(data.background));
+  //       }
+  //     } catch (error) {
+  //       console.error("Error:", error);
+  //     }
+  //   }
+
+  //   console.log(moguriState.currentItem);
+  // };
 
   return (
     <div>
@@ -38,17 +85,17 @@ const OwnedItem = () => {
       <div className="category-buttons">
         <button
           className={`category-button ${
-            selectedCategory === "accessories" ? "selected" : ""
+            selectedCategory === "accessory" ? "selected" : ""
           }`}
-          onClick={() => setSelectedCategory("accessories")}
+          onClick={() => setSelectedCategory("accessory")}
         >
           액세서리
         </button>
         <button
           className={`category-button ${
-            selectedCategory === "backgrounds" ? "selected" : ""
+            selectedCategory === "background" ? "selected" : ""
           }`}
-          onClick={() => setSelectedCategory("backgrounds")}
+          onClick={() => setSelectedCategory("background")}
         >
           배경화면
         </button>

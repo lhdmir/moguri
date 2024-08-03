@@ -18,7 +18,7 @@
       }
     },
     "ownedItem": {
-      "accessories": [
+      "accessory": [
         {
           "id": 101,
           "name": "밀짚모자",
@@ -45,7 +45,7 @@
           "imageUrl": "http://158.180.71.193/image/hat_5.png"
         }
       ],
-      "backgrounds": [
+      "background": [
         {
           "id": 201,
           "name": "초원",
@@ -53,7 +53,7 @@
         },
         {
           "id": 203,
-          "name": "초원",
+          "name": "동굴",
           "imageUrl": "http://158.180.71.193/image/background3.png"
         },
         {
