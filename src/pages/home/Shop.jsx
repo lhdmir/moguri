@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
   addOwnedAccessory,
   addOwnedBackground,
 } from "../../features/moguri/moguriSlice";
+
+import DrawResultModal from "./DrawResultModal";
 
 import Cookies from "js-cookie";
 
@@ -14,6 +16,17 @@ import backgroundImage from "../../assets/image/shop-background.png"; // 배경 
 
 const Shop = () => {
   const dispatch = useDispatch();
+
+  const [newItem, setNewItem] = useState("");
+
+  const [isDrawResultModalOpen, setIsDrawResultModal] = useState(false);
+
+  const openDrawResultModal = () => {
+    setIsDrawResultModal(true);
+  };
+  const closeDrawResultModal = () => {
+    setIsDrawResultModal(false);
+  };
 
   // const handleAccessoryDraw = async () => {
   //   try {
@@ -32,6 +45,8 @@ const Shop = () => {
   //       const data = await response.json();
 
   //       dispatch(addOwnedAccessory(data.accessory));
+  //       setNewItem(data.accessory);
+  //       openDrawResultModal();
   //     }
   //   } catch (error) {
   //     console.log(error);
@@ -55,6 +70,8 @@ const Shop = () => {
   //       const data = await response.json();
 
   //       dispatch(addOwnedBackground(data.background));
+  //       setNewItem(data.background);
+  //       openDrawResultModal();
   //     }
   //   } catch (error) {
   //     console.log(error);
@@ -69,6 +86,12 @@ const Shop = () => {
         imageUrl: "http://158.180.71.193/image/hat_4.png",
       })
     );
+    setNewItem({
+      code: 104,
+      name: "제빵모자",
+      imageUrl: "http://158.180.71.193/image/hat_4.png",
+    });
+    openDrawResultModal();
   };
 
   const handleBackgroundDraw = async () => {
@@ -79,7 +102,14 @@ const Shop = () => {
         imageUrl: "http://158.180.71.193/image/background2.png",
       })
     );
+    setNewItem({
+      code: 202,
+      name: "해변가",
+      imageUrl: "http://158.180.71.193/image/background2.png",
+    });
+    openDrawResultModal();
   };
+
   return (
     <div>
       <div className="shop-header">상점</div>
@@ -95,6 +125,12 @@ const Shop = () => {
           <div className="shop-item-price">6990원</div>
         </div>
       </div>
+
+      <DrawResultModal
+        isOpen={isDrawResultModalOpen}
+        onRequestClose={closeDrawResultModal}
+        newItem={newItem}
+      ></DrawResultModal>
     </div>
   );
 };
