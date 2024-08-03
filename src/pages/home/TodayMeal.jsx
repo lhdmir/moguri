@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import todoDeleteImage from "../../assets/icon/tododelete.png";
 import backButtonImage from "../../assets/icon/backbutton.png";
+import closeButtonImage from "../../assets/icon/deletebutton.png";
 
 import "./TodayMeal.css";
 import {

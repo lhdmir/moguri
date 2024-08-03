@@ -10,6 +10,7 @@
   background: none;
   margin-right: 30px;
   bottom: 5;
+  z-index: 10;
 }
 
   .todaymeal-header {
@@ -175,64 +176,4 @@
   outline: none;
 }
 
-@media (min-width: 1920px) {
-  .todaymeal-modal {
-    width: 350px;
-    height: 550px;
-    max-width: 100%;
-  }
 
-  .todaymeal-list {
-    max-height: 400px;
-  }
-
-  .todaymeal-add-container {
-    width: 250px;
-  }
-
-  .todaymeal-input-add {
-    width: 100px;
-  }
-}
-
-@media (max-width: 600px) {
-  .todaymeal-modal {
-    width: 90%;
-    height: 90%;
-    max-width: 100%;
-  }
-
-  .todaymeal-header {
-    font-size: 1.2em;
-    margin-left: 0;
-    margin-top: 10px;
-  }
-
-  .todaymeal-list {
-    padding-left: 10px;
-    max-height: calc(100% - 150px);
-  }
-
-  .todaymeal-item {
-    padding: 5px;
-    height: auto;
-  }
-
-  .todaymeal-add-container {
-    width: calc(100% - 20px);
-    padding: 5px;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .todaymeal-input-add {
-    padding-left: 5px;
-  }
-
-  .todaymeal-add-button {
-    padding: 5px;
-    bottom: 20px;
-    right: 10px;
-  }
-}
