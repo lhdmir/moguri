@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 130px;
   right: 3px;
   width: 30px;
@@ -50,31 +50,6 @@
   border-radius: 20px;
   border: 2px solid black;
   padding-bottom: 30px;
-}
-
-.meal-main-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.meal-main-close img {
-  width: 20px;
-  height: 20px;
-  background: none;
-  display: block;
-}
-
-.meal-main-close:hover,
-.meal-main-close:focus,
-.meal-main-close:active {
-  background: none;
-  transform: none;
-  outline: none;
 }
 
 .close-button {
