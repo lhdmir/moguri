@@ -17,7 +17,7 @@ import backgroundImage from "../../assets/image/shop-background.png"; // 배경 
 const Shop = () => {
   const dispatch = useDispatch();
 
-  const [newItem, setNewItem] = useState("");
+  const [newItem, setNewItem] = useState({ id: 0, name: "", imageUrl: "" });
 
   const [isDrawResultModalOpen, setIsDrawResultModal] = useState(false);
 
@@ -81,13 +81,13 @@ const Shop = () => {
   const handleAccessoryDraw = () => {
     dispatch(
       addOwnedAccessory({
-        code: 104,
+        id: 104,
         name: "제빵모자",
         imageUrl: "http://158.180.71.193/image/hat_4.png",
       })
     );
     setNewItem({
-      code: 104,
+      id: 104,
       name: "제빵모자",
       imageUrl: "http://158.180.71.193/image/hat_4.png",
     });
@@ -97,13 +97,13 @@ const Shop = () => {
   const handleBackgroundDraw = async () => {
     dispatch(
       addOwnedBackground({
-        code: 202,
+        id: 202,
         name: "해변가",
         imageUrl: "http://158.180.71.193/image/background2.png",
       })
     );
     setNewItem({
-      code: 202,
+      id: 202,
       name: "해변가",
       imageUrl: "http://158.180.71.193/image/background2.png",
     });
