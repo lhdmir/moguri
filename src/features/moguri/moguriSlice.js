@@ -5,7 +5,7 @@ const initialState = {
   id: 0,
   imageUrl: "",
   name: "",
-  currentItems: {
+  currentItem: {
     accessory: {
       id: 0,
       name: "",
@@ -17,9 +17,9 @@ const initialState = {
       imageUrl: "",
     },
   },
-  ownedItems: {
-    accessories: [],
-    backgrounds: [],
+  ownedItem: {
+    accessory: [],
+    background: [],
   },
   targetWeight: 0,
 };
@@ -74,7 +74,7 @@ const moguriSlice = createSlice({
     //   dispatch(setCurrentAccessory({ id: 1, name: "Hat", image_url: "https://example.com/hat.png" }));
     // };
     setCurrentAccessory: (state, action) => {
-      state.currentItems.accessory = action.payload;
+      state.currentItem.accessory = action.payload;
     },
 
     // 액션 생성자: setCurrentBackground
@@ -83,7 +83,7 @@ const moguriSlice = createSlice({
     //   dispatch(setCurrentBackground({ id: 1, name: "Forest", image_url: "https://example.com/forest.png" }));
     // };
     setCurrentBackground: (state, action) => {
-      state.currentItems.background = action.payload;
+      state.currentItem.background = action.payload;
     },
 
     // 액션 생성자: addOwnedAccessory
@@ -92,7 +92,7 @@ const moguriSlice = createSlice({
     //   dispatch(addOwnedAccessory({ id: 2, name: "Scarf", image_url: "https://example.com/scarf.png" }));
     // };
     addOwnedAccessory: (state, action) => {
-      state.ownedItems.accessories.push(action.payload);
+      state.ownedItem.accessory.push(action.payload);
     },
 
     // 액션 생성자: addOwnedBackground
@@ -101,7 +101,7 @@ const moguriSlice = createSlice({
     //   dispatch(addOwnedBackground({ id: 2, name: "Beach", image_url: "https://example.com/beach.png" }));
     // };
     addOwnedBackground: (state, action) => {
-      state.ownedItems.backgrounds.push(action.payload);
+      state.ownedItem.background.push(action.payload);
     },
 
     // 액션 생성자: setTargetWeight
@@ -125,7 +125,7 @@ export const {
   setCurrentAccessory,
   setCurrentBackground,
   addOwnedAccessory,
-  addOwnedBackgroundset,
+  addOwnedBackground,
   setTargetWeight,
 } = moguriSlice.actions;
 
