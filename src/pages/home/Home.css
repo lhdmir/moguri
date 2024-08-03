@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
-body, html {
-  overflow: hidden; 
+body,
+html {
+  overflow: hidden;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -10,20 +11,28 @@ body, html {
 
 .home-container {
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 .selected-moguri {
   position: absolute;
   bottom: 50px;
   left: 100px;
-  height: 180px; 
+  height: 180px;
+  cursor: pointer;
+}
+
+.current-accessory {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  height: 180px;
   cursor: pointer;
 }

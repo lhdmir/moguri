@@ -45,12 +45,19 @@ const Home = () => {
         </div>
       )}
 
-      <img
-        src={moguriState.imageUrl}
-        alt="Selected Moguri"
-        className="selected-moguri"
-        onClick={openModal}
-      />
+      <div>
+        <img
+          src={moguriState.currentItem.accessory.imageUrl}
+          alt=""
+          className="current-accessory"
+        />
+        <img
+          src={moguriState.imageUrl}
+          alt="Selected Moguri"
+          className="selected-moguri"
+          onClick={openModal}
+        />
+      </div>
 
       <MoguriModal
         isOpen={isModalOpen}
