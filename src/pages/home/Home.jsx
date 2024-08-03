@@ -166,38 +166,38 @@ const Home = () => {
         switch (accessoryId) {
           case 101:
             return {
-              bottom: "120px",
-              left: "165px",
-              width: "110px",
-              height: "110px",
+              bottom: "125px",
+              left: "175px",
+              width: "90px",
+              height: "90px",
             };
           case 102:
             return {
-              bottom: "125px",
-              left: "165px",
-              width: "110px",
-              height: "110px",
+              bottom: "130px",
+              left: "177px",
+              width: "90px",
+              height: "90px",
             };
           case 103:
             return {
-              bottom: "125px",
-              left: "165px",
-              width: "110px",
-              height: "110px",
+              bottom: "130px",
+              left: "177px",
+              width: "90px",
+              height: "90px",
             };
           case 104:
             return {
-              bottom: "135px",
-              left: "165px",
-              width: "110px",
-              height: "110px",
+              bottom: "143px",
+              left: "175px",
+              width: "90px",
+              height: "90px",
             };
           case 105:
             return {
-              bottom: "125px",
-              left: "165px",
-              width: "110px",
-              height: "110px",
+              bottom: "137px",
+              left: "175px",
+              width: "90px",
+              height: "90px",
             };
           default:
             return {};
