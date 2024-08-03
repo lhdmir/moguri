@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 130px;
   right: 3px;
   width: 30px;
@@ -38,6 +38,22 @@
   height: 20px;
 }
 
+/* .sidebar-content {
+  position: absolute;
+  top: 30px;
+  bottom: 200px;
+  right: 20px;
+  width: 270px;
+  background-color: #f8e28e;
+  transition: transform 0.3s ease;
+  z-index: 1001;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding-bottom: 20px;
+  margin-top: 20px
+  ;
+} */
+
 .sidebar-content {
   position: absolute;
   top: 150px;
@@ -51,6 +67,7 @@
   border: 2px solid black;
   padding-bottom: 30px;
 }
+
 
 .meal-main-close {
   position: absolute;
