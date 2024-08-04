@@ -8,10 +8,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
-export default defineConfig(() => {
+export default defineConfig((command, mode) => {
   return {
-    //
-    base: "/",
+    base: mode === "production" ? "/moguri_fe/" : "/",
     plugins: [react()],
     resolve: {
       alias: {
