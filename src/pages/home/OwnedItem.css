@@ -124,3 +124,7 @@
   border-radius: 5px;
   padding: 5px 10px;
 }
+
+.item.equipped {
+  background: #f0e68c; /* 장착된 아이템 배경 색상 */
+}

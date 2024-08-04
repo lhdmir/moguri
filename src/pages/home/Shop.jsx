@@ -115,12 +115,16 @@ const Shop = () => {
       <div className="shop-header">상점</div>
       <div className="shop-items">
         <div className="shop-item" onClick={() => handleAccessoryDraw()}>
-          <img src={itemImage} alt="아이템" className="shop-item-image" />
+          <button className="shop-item-button">
+            <img src={itemImage} alt="아이템" className="shop-item-image" />
+          </button>
           <div className="shop-item-title">아이템 뽑기 !</div>
           <div className="shop-item-price">5990원</div>
         </div>
         <div className="shop-item" onClick={() => handleBackgroundDraw()}>
-          <img src={backgroundImage} alt="배경" className="shop-item-image" />
+          <button className="shop-item-button">
+            <img src={backgroundImage} alt="배경" className="shop-item-image" />
+          </button>
           <div className="shop-item-title">배경 뽑기 !</div>
           <div className="shop-item-price">6990원</div>
         </div>
