@@ -35,7 +35,12 @@ const FirstLogin = () => {
   const handleNextClick = () => {
     // 입력 조건 검사 로직
     const nameRegex = /^[a-zA-Z0-9가-힣]{1,13}$/;
-    if (!nameRegex.test(moguriName.trim())) {
+
+    if (moguriName.trim() === "") {
+      setNameError("모구리의 이름을 입력해 주세요!");
+      moguriNameRef.current.focus();
+      return;
+    } else if (!nameRegex.test(moguriName.trim())) {
       setNameError("특수문자는 포함할 수 없습니다.");
       moguriNameRef.current.focus();
       return;
@@ -55,11 +60,11 @@ const FirstLogin = () => {
     event.preventDefault();
 
     // 입력 조건 검사 로직
-    if (
-      isNaN(targetWeightLocal) ||
-      targetWeightLocal < 0 ||
-      targetWeightLocal > 200
-    ) {
+    if (targetWeightLocal === "") {
+      setWeightError("목표 몸무게를 입력해주세요!");
+      targetWeightLocalRef.current.focus();
+      return;
+    } else if (targetWeightLocal < 0 || targetWeightLocal > 200) {
       setWeightError("목표 몸무게는 0에서 200 사이를 입력해주세요.");
       targetWeightLocalRef.current.focus();
       return;
@@ -120,11 +125,11 @@ const FirstLogin = () => {
   }, [isMoguriUpdated, moguriState, navigate]);
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && event.nativeEvent.isComposing === false) {
       if (step === 1) {
         handleNextClick();
       } else if (step === 2) {
-        handleCompleteClick();
+        handleCompleteClick(event);
       }
     }
   };

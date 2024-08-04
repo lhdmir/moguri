@@ -1,0 +1,56 @@
+ .shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5em;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.shop-items {
+  display: flex;
+  justify-content: space-around;
+  background-color: #B69064;
+  padding-top: 20px; /* 패딩 줄임 */
+  width: 220px;
+  margin-left: 24px;
+  border-radius: 10px;
+  padding-bottom: 20px;
+}
+
+.shop-item {
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px; /* 마진 줄임 */
+}
+
+.shop-item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  margin-bottom: 10px; /* 마진 줄임 */
+}
+
+.shop-item-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.shop-item-price {
+  font-size: 14px;
+  color: white;
+}
+
+.shop-item-button {
+  background-color: #C8ADEB;
+  padding: 1px 3px;
+}
+
+.shop-item-button:hover {
+  background-color: #cda4ff;
+  border: 1px solid black;
+}

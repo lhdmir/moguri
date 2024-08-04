@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
 .modal-overlay {
   position: fixed;
@@ -13,7 +13,8 @@
 }
 
 .modal-content-home {
-  background: #F8E28E;
+  /* background: #f8e28e; */
+  background: rgba(248, 226, 142, 0.9);
   padding: 20px;
   border-radius: 10px;
   border: solid 1px black;
@@ -29,7 +30,7 @@
 
 .modal-header {
   margin-bottom: 10px;
-  color: #557C56;
+  color: #557c56;
 }
 
 .modal-close-button {
@@ -43,8 +44,8 @@
 }
 
 .modal-close-button img {
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
 }
 
 .modal-back-button {
@@ -57,8 +58,8 @@
 }
 
 .modal-back-button img {
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
 }
 
 .modal-input {
@@ -75,77 +76,48 @@
 
 .modal-button {
   padding: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   border: 1px solid black;
   border-radius: 5px;
   cursor: pointer;
   font-family: "Nanum Pen Script", cursive;
   font-size: 18px;
-  display: block;  
-  margin-top: 10px; 
+  display: block;
+  margin-top: 10px;
   margin-left: 217px;
 }
 
 .modal-button:hover {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
 
 .modal-close-button:hover {
-  background-color: #F8E28E;
+  background-color: #f8e28e;
 }
 
 .modal-back-button:hover {
-  background-color: #F8E28E;
+  background-color: #f8e28e;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus,
+.modal-close-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}
+
+.modal-back-button:hover,
+.modal-back-button:focus,
+.modal-back-button:active {
+  background: none;
+  transform: none;
+  outline: none;
 }
 
 .modal-result {
   font-family: "Nanum Pen Script", cursive;
   font-size: 18px;
   margin-top: 10px;
-}
-
-.evolved-modal-content {
-  background: #C7F9FC;
-  padding: 20px;
-  border-radius: 15px;
-  border: solid 1px black;
-  position: relative;
-  width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 20px;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  filter: opacity(95%);
-}
-
-.selected-moguri-evolved {
-  height: 150px;
-  margin-bottom: 20px;
-}
-
-.evolved-modal-header {
-  margin-bottom: 20px;
-  color: #557C56;
-  font-size: 24px;
-}
-
-.evolved-modal-button {
-  padding: 5px 15px;
-  background-color: #D9D9D9;
-  color: black;
-  border: 1px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.evolved-modal-button:hover {
-  background-color: #BFBFBF;
 }

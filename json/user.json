@@ -1,11 +1,11 @@
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "cookieExpirationTime": "2024-07-18T12:00:00Z",
+  "cookieExpirationTime": "2025-08-18T12:00:00Z",
   "moguri": {
-    "id": 1,
-    "imageUrl": "http://158.180.71.193/image/moguri_1-1.png",
-    "name": "aa",
-    "currentItems": {
+    "id": 11,
+    "imageUrl": "http://158.180.71.193/image/moguri_6-1.png",
+    "name": "momo",
+    "currentItem": {
       "accessory": {
         "id": 0,
         "name": "",
@@ -17,33 +17,28 @@
         "imageUrl": "http://158.180.71.193/image/background1.png"
       }
     },
-    "ownedItems": {
-      "accessories": [
+    "ownedItem": {
+      "accessory": [
         {
           "id": 101,
           "name": "밀짚모자",
-          "imageUrl": "{이미지 경로}"
+          "imageUrl": "http://158.180.71.193/image/hat_1.png"
         },
         {
-          "id": 104,
-          "name": "제빵모자",
-          "imageUrl": "{이미지 경로}"
+          "id": 102,
+          "name": "곰돌이모자",
+          "imageUrl": "http://158.180.71.193/image/hat_2.png"
         }
       ],
-      "backgrounds": [
+      "background": [
         {
           "id": 201,
           "name": "초원",
-          "imageUrl": "{이미지 경로}"
-        },
-        {
-          "id": 202,
-          "name": "해변가",
-          "imageUrl": "{이미지 경로}"
+          "imageUrl": "http://158.180.71.193/image/background1.png"
         }
       ]
     },
-    "targetWeight": 0.0
+    "targetWeight": 80
   },
   "todayMeal": {
     "breakfast": [

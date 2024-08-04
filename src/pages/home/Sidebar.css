@@ -1,31 +1,32 @@
- @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   top: 130px;
   right: 3px;
   width: 30px;
   height: 75%;
   background-color: #f8e28e;
   transition: transform 0.3s ease;
-  z-index: 1001; 
+  z-index: 1001;
   border-radius: 20px;
   border: 2px solid black;
 }
 
 .sidebar.open .sidebar-content {
-  border-left: none; 
+  border-left: none;
 }
 
 .sidebar.open {
-  transform: translateX(-240px); 
+  transform: translateX(-240px);
   height: 60%;
+  
 }
 
 .slide-button {
   position: absolute;
   top: 50%;
-  left: 9px; 
+  left: 9px;
   background: none;
   border: none;
   cursor: pointer;
@@ -34,47 +35,26 @@
 }
 
 .slide-button img {
-  width: 10px; 
-  height: 20px; 
+  width: 10px;
+  height: 20px;
 }
 
 .sidebar-content {
-  position: relative;
-  width: 250px; 
-  height: 100%;
-  background-color: #f8e28e;
-  border-left: 1px solid #ccc;
-  padding: 10px;
+  position: absolute;
+  top: 150px;
+  bottom: 150px;
+  right: 20px;
+  width: 270px;
+  /* background-color: #f8e28e; */
+  background: rgba(248, 226, 142, 0.9);
+  transition: transform 0.3s ease;
+  z-index: 1001;
   border-radius: 20px;
-  border: solid 2px black;
+  border: 2px solid black;
+  padding-bottom: 30px;
 }
 
-.meal-main-close {
-  position: absolute; 
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.meal-main-close img {
-  width: 20px;
-  height: 20px;
-  background: none;
-  display: block;
-}
-
-.meal-main-close:hover,
-.meal-main-close:focus,
-.meal-main-close:active {
-  background: none;
-  transform: none;
-  outline: none;
-}
-
-.meal-details-close {
+.close-button {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -82,34 +62,46 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  z-index: 1001;
 }
 
-.meal-details-close img {
+.close-button img {
   width: 20px;
   height: 20px;
   background: none;
   display: block;
+  padding: 10px 15px;
 }
 
-.meal-details-close:hover,
-.meal-details-close:focus,
-.meal-details-close:active {
+.close-button:hover,
+.close-button:focus,
+.close-button:active {
   background: none;
   transform: none;
   outline: none;
 }
 
 .slide-button:hover {
-  background-color: #F8E28E;
+  background-color: #f8e28e;
 }
 
-.sidebar-content, .meal-details {
-  width: 250px; 
+.meal-details {
+  width: 250px;
   height: 100%;
   background-color: #f8e28e;
   padding: 10px;
   border-radius: 20px;
   border: solid 2px black;
+}
+
+.meal-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-left: 25px;
+  margin-top: 20px;
+  padding-bottom: 20px;
 }
 
 .meal-item {
@@ -182,34 +174,15 @@
   height: 20px;
 }
 
-.add-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-  color: black;
-  font-family: "Nanum Pen Script", cursive;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto 0;
-  width: 200px;
-  height: 45px;
-  background-color: white;
-  border-radius: 10px;
-  margin-right: 10px;
-}
-
-.add-button-container { 
+.add-button-container {
   position: fixed;
-  bottom: 0px; 
+  bottom: 0px;
   left: 455%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
 }
 
 .add-button:hover {
@@ -231,15 +204,6 @@
 .back-button img {
   width: 20px;
   height: 20px;
-}
-
-.meal-header {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  font-family: "Nanum Pen Script", cursive;
-  color: black;
-  margin-left: 10px;
-  margin-top: 10px;
 }
 
 .meal-detail-close {
@@ -294,12 +258,12 @@
 
 .meal-details .slide-button {
   display: none;
-} 
+}
 
-.slide-left {
+.slide-left-button {
   position: absolute;
   top: 50%;
-  left: -20px;
+  right: 235px;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -307,14 +271,12 @@
   z-index: 1002;
 }
 
-.slide-left img {
+.slide-left-button img {
   width: 10px;
   height: 20px;
-  margin-left: 10px;
 }
 
-
-.slide-right {
+.slide-right-button {
   position: absolute;
   top: 50%;
   right: -20px;
@@ -325,32 +287,40 @@
   z-index: 1002;
 }
 
-.slide-right img {
+.slide-right-button img {
   width: 10px;
   height: 20px;
-  margin-right: 10px;
+  margin-right: 6px;
   transform: scaleX(-1);
 }
 
-.slide-left:hover, .slide-right:hover {
+.slide-left-button:hover,
+.slide-right-button:hover {
   background: none;
 }
 
-.slide-left:hover img {
+.slide-left-button:hover img {
   background: none;
   transform: none;
   outline: none;
 }
 
-.slide-right:hover img {
+.slide-right-button:hover img {
   background: none;
   outline: none;
-  
+}
+
+.slide-left-button:focus,
+.slide-right-button:focus,
+.slide-left-button:active,
+.slide-right-button:active {
+  outline: none;
+  box-shadow: none;
 }
 
 .exercise-details {
   position: relative;
-  width: 250px; 
+  width: 250px;
   height: 100%;
   background-color: #f8e28e;
   padding: 10px;
@@ -399,4 +369,3 @@
   width: 0; /* 스크롤바의 너비 */
   background-color: #f8e28e; /* 스크롤바의 배경 색상 */
 }
-

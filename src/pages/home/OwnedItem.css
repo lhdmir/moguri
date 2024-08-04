@@ -1,0 +1,121 @@
+.item-container {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-strt;
+  align-items: flex-start;
+  background-color: #b69064;
+  width: 80%; 
+  border-radius: 20px;
+  height: 235px;
+  margin: 0 auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #c8b685;
+  border-radius: 5px;
+  margin: 5px; 
+  border: 1px solid black;
+  width: calc(33.33% - 10px); 
+  box-sizing: border-box;
+  margin-top: 65px;
+}
+
+.item:nth-child(n+4) {
+  margin-top: -20px; 
+}
+
+.item img {
+  width: 60px;
+  height: 60px;
+}
+
+.slide-left,
+.slide-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.slide-left {
+  left: -20px;
+}
+
+.slide-right {
+  right: -20px;
+}
+
+.slide-left img,
+.slide-right img {
+  width: 10px;
+  height: 20px;
+}
+
+.slide-right img {
+  transform: scaleX(-1);
+}
+
+.meal-main-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.meal-main-close img {
+  width: 20px;
+  height: 20px;
+  background: none;
+  display: block;
+}
+
+.item-header {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  font-family: "Nanum Pen Script", cursive;
+  color: black;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.category-buttons {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.category-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: black;
+  font-family: "Nanum Pen Script", cursive;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.category-button.selected {
+  background-color: #c8b685;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.item.equipped {
+  background: #f0e68c; 
+} 
+
