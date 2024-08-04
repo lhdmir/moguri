@@ -3,7 +3,7 @@
   "cookieExpirationTime": "2025-08-18T12:00:00Z",
   "moguri": {
     "id": 11,
-    "imageUrl": "http://158.180.71.193/image/moguri_6-1.png",
+    "imageUrl": "https://moguri.site/image/moguri_6-1.png",
     "name": "momo",
     "currentItem": {
       "accessory": {
@@ -14,7 +14,7 @@
       "background": {
         "id": 201,
         "name": "Beach Background",
-        "imageUrl": "http://158.180.71.193/image/background1.png"
+        "imageUrl": "https://moguri.site/image/background1.png"
       }
     },
     "ownedItem": {
@@ -22,19 +22,19 @@
         {
           "id": 101,
           "name": "밀짚모자",
-          "imageUrl": "http://158.180.71.193/image/hat_1.png"
+          "imageUrl": "https://moguri.site/image/hat_1.png"
         },
         {
           "id": 102,
           "name": "곰돌이모자",
-          "imageUrl": "http://158.180.71.193/image/hat_2.png"
+          "imageUrl": "https://moguri.site/image/hat_2.png"
         }
       ],
       "background": [
         {
           "id": 201,
           "name": "초원",
-          "imageUrl": "http://158.180.71.193/image/background1.png"
+          "imageUrl": "https://moguri.site/image/background1.png"
         }
       ]
     },
