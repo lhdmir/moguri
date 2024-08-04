@@ -18,5 +18,8 @@ export default defineConfig(({ command, mode }) => {
         assets: path.resolve(__dirname, "src/assets"),
       },
     },
+    server: {
+      historyApiFallback: true,
+    },
   };
 });
