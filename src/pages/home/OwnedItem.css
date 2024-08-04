@@ -1,13 +1,13 @@
 .item-container {
   display: flex;
   flex-wrap: wrap; 
-  justify-content: flex-start;
+  justify-content: flex-strt;
   align-items: flex-start;
   background-color: #b69064;
   width: 80%; 
   border-radius: 20px;
   height: 235px;
-  margin-left: 25px;
+  margin: 0 auto;
 }
 
 .item {
@@ -83,8 +83,8 @@
   margin-bottom: 10px;
   font-family: "Nanum Pen Script", cursive;
   color: black;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-left: 30px;
+  margin-top: 20px;
 }
 
 .category-buttons {
