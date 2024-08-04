@@ -1,28 +1,13 @@
-.item-selection {
-  position: relative;
-  width: 300px; 
-  height: 100%;
-  background-color: #f8e28e;
-  padding: 10px;
-  border-radius: 20px;
-  border: solid 2px black;
-  display: flex;
-  flex-direction: column;
-}
-
 .item-container {
   display: flex;
   flex-wrap: wrap; 
-  justify-content: flex-start;
+  justify-content: flex-strt;
   align-items: flex-start;
   background-color: #b69064;
   width: 80%; 
   border-radius: 20px;
-  padding: 10px 0;
-  height: 225px;
-  margin-top: 15px;
-  margin-left: 25px;
-  row-gap: 5px; /* 세로 간격을 최소화 */
+  height: 235px;
+  margin: 0 auto;
 }
 
 .item {
@@ -35,7 +20,11 @@
   border: 1px solid black;
   width: calc(33.33% - 10px); 
   box-sizing: border-box;
-  margin-top: 45px;
+  margin-top: 65px;
+}
+
+.item:nth-child(n+4) {
+  margin-top: -20px; 
 }
 
 .item img {
@@ -94,8 +83,8 @@
   margin-bottom: 10px;
   font-family: "Nanum Pen Script", cursive;
   color: black;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-left: 30px;
+  margin-top: 20px;
 }
 
 .category-buttons {
@@ -106,7 +95,7 @@
   display: flex;
   justify-content: space-around;
   width: 80%;
-  margin-top: 1px;
+  margin-bottom: 20px;
 }
 
 .category-button {
@@ -117,6 +106,7 @@
   color: black;
   font-family: "Nanum Pen Script", cursive;
   border: 1px solid black;
+  margin-bottom: 20px;
 }
 
 .category-button.selected {
@@ -126,5 +116,6 @@
 }
 
 .item.equipped {
-  background: #f0e68c; /* 장착된 아이템 배경 색상 */
-}
+  background: #f0e68c; 
+} 
+

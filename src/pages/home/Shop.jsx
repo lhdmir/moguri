@@ -111,9 +111,22 @@ const Shop = () => {
     openDrawResultModal();
   };
 
-  const handleBackgroundDraw = async () => {
+  const handleBackgroundDraw =  () => {
     setAlertMessage("모든 배경화면을 보유중입니다!");
     openItemAlertModal();
+      //  dispatch(
+      //    addOwnedBackground({
+      //      id: 203,
+      //      name: "동굴",
+      //      imageUrl: "http://158.180.71.193/image/background3.png",
+      //    })
+      //  );
+      //  setNewItem({
+      //    id: 203,
+      //    name: "동굴",
+      //    imageUrl: "http://158.180.71.193/image/background3.png",
+      //  });
+      //  openDrawResultModal();
   };
 
   return (
