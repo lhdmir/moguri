@@ -104,10 +104,23 @@ const OwnedItem = () => {
         </button>
       </div>
       <div className="item-container">
-        {items.map((item) => (
+        {/* {items.map((item, index) => (
           <div
             className="item"
-            key={item.id}
+            key={index}
+            onClick={() => handleItemClick(item)}
+          >
+            <img src={item.imageUrl} alt={item.name} />
+          </div>
+        ))} */}
+        {items.map((item, index) => (
+          <div
+            className={`item ${
+              moguriState.currentItem[selectedCategory].id === item.id
+                ? "equipped"
+                : ""
+            }`}
+            key={index}
             onClick={() => handleItemClick(item)}
           >
             <img src={item.imageUrl} alt={item.name} />

@@ -44,3 +44,13 @@
   font-size: 14px;
   color: white;
 }
+
+.shop-item-button {
+  background-color: #C8ADEB;
+  padding: 1px 3px;
+}
+
+.shop-item-button:hover {
+  background-color: #cda4ff;
+  border: 1px solid black;
+}

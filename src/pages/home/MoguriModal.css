@@ -13,7 +13,8 @@
 }
 
 .modal-content-home {
-  background: #f8e28e;
+  /* background: #f8e28e; */
+  background: rgba(248, 226, 142, 0.9);
   padding: 20px;
   border-radius: 10px;
   border: solid 1px black;
@@ -97,6 +98,22 @@
 
 .modal-back-button:hover {
   background-color: #f8e28e;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus,
+.modal-close-button:active {
+  background: none;
+  transform: none;
+  outline: none;
+}
+
+.modal-back-button:hover,
+.modal-back-button:focus,
+.modal-back-button:active {
+  background: none;
+  transform: none;
+  outline: none;
 }
 
 .modal-result {

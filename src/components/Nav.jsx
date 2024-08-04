@@ -41,23 +41,12 @@ const Nav = () => {
   };
 
   return (
-    // <div className="nav-container">
-    //   <div className="nav-left">
-    //     <span className="moguri-banner">MOGURI</span>
-    //   </div>
-    //   <div className="nav-container-logout" onClick={handleLogout}>
-    //     <span className="nav-logout">Logout</span>
-    //   </div>
-    //   <div className="nav-container-banner">
-    //     <span className="community-banner">community</span>
-    //   </div>
-    // </div>
-    <div class="nav-container">
-  <div class="nav-left">
+    <div className="nav-container">
+  <div className="nav-left">
     MOGURI
   </div>
-  <div class="nav-container-right">
-    <div class="nav-container-logout">Logout</div>
+  <div className="nav-container-right">
+    <div className="nav-container-logout" onClick={handleLogout}>Logout</div>
   </div>
 </div>
   );
