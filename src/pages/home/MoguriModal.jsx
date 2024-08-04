@@ -29,7 +29,7 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
 
   // 임시 코드
   const handleNextStep = () => {
-    dispatch(setId(2));
+    dispatch(setId(12));
     dispatch(setImage("https://moguri.site/image/moguri_6-2.png"));
     openEvolvedModal();
     setTargetDifference("축하합니다! 목표에 도달하셨네요!");
