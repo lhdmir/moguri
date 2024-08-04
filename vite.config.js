@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig(({ command, mode }) => {
   return {
     // base: mode === "production" ? "/moguri_fe/" : "/",
+    base: "/",
     plugins: [react()],
     resolve: {
       alias: {
