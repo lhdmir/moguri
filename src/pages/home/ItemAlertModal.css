@@ -1,0 +1,43 @@
+.full-modal-content {
+  background: rgba(199, 249, 252, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  border: solid 2px black;
+  width: 250px;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 20px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+.full-modal-overlay {
+ position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.full-message {
+  margin-bottom: 30px;
+}
+
+.full-close-button {
+  background-color: #F8E28E;
+  color: #000;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-left: 70%;
+  font-family: "Nanum Pen Script", cursive;
+  cursor: pointer;
+  margin-top: 30px;
+}
