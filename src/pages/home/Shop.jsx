@@ -100,13 +100,13 @@ const Shop = () => {
       addOwnedAccessory({
         id: 104,
         name: "제빵모자",
-        imageUrl: "http://158.180.71.193/image/hat_4.png",
+        imageUrl: "https://moguri.site/image/hat_4.png",
       })
     );
     setNewItem({
       id: 104,
       name: "제빵모자",
-      imageUrl: "http://158.180.71.193/image/hat_4.png",
+      imageUrl: "https://moguri.site/image/hat_4.png",
     });
     openDrawResultModal();
   };
