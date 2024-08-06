@@ -85,7 +85,7 @@ const FirstLogin = () => {
       console.log(token);
 
       // API Endpoint 수정
-      const response = await fetch("http://localhost:8000/api/moguri", {
+      const response = await fetch("https://www.moguri.site:8000/api/moguri", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

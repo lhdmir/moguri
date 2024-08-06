@@ -48,14 +48,17 @@ const TodayExercise = () => {
         const token = Cookies.get("token");
 
         // API Endpoint 수정
-        const response = await fetch("https://moguri.site:8000/api/exercise", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ ...newItem }),
-        });
+        const response = await fetch(
+          "https://www.moguri.site:8000/api/exercise",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ ...newItem }),
+          }
+        );
 
         const data = await response.json();
 
@@ -78,13 +81,16 @@ const TodayExercise = () => {
       const token = Cookies.get("token");
 
       // API Endpoint 수정
-      const response = await fetch(`http://localhost:8000/api/exercise/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://www.moguri.site:8000/api/exercise/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -106,14 +112,17 @@ const TodayExercise = () => {
       const token = Cookies.get("token");
 
       // API Endpoint 수정
-      const response = await fetch(`http://localhost:8000/api/exercise/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ ...updatedItem }),
-      });
+      const response = await fetch(
+        `https://www.moguri.site:8000/api/exercise/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ ...updatedItem }),
+        }
+      );
 
       const data = await response.json();
 

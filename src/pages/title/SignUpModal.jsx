@@ -74,13 +74,16 @@ function SignUpModal({ isOpen, onRequestClose }) {
 
     try {
       //   // API Endpoint 수정
-      const response = await fetch("https://moguri.site:8000/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password, email }),
-      });
+      const response = await fetch(
+        "https://www.moguri.site:8000/api/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password, email }),
+        }
+      );
 
       const data = await response.json();
 
