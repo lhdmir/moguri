@@ -57,7 +57,6 @@ const TodayExercise = () => {
           body: JSON.stringify({ ...newItem }),
         });
 
-
         const data = await response.json();
 
         if (response.ok) {
@@ -81,7 +80,6 @@ const TodayExercise = () => {
       // API Endpoint 수정
       const response = await fetch(
         `https://www.moguri.site/api/exercise/${id}`,
-
         {
           method: "DELETE",
           headers: {
@@ -113,7 +111,6 @@ const TodayExercise = () => {
       // API Endpoint 수정
       const response = await fetch(
         `https://www.moguri.site/api/exercise/${id}`,
-
         {
           method: "PUT",
           headers: {

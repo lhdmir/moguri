@@ -71,7 +71,6 @@ const TodayMeal = ({ onMealSelect }) => {
       updateAction: updateBreakfast,
       // API Endpoint 수정
       apiEndpoint: "https://www.moguri.site/api/breakfast",
-
     },
     {
       name: "점심",
@@ -82,7 +81,6 @@ const TodayMeal = ({ onMealSelect }) => {
       updateAction: updateLunch,
       // API Endpoint 수정
       apiEndpoint: "https://www.moguri.site/api/lunch",
-
     },
     {
       name: "저녁",
