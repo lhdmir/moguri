@@ -17,6 +17,7 @@ const Nav = () => {
 
     try {
       const response = await fetch("https://www.moguri.site/api/logout", {
+
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

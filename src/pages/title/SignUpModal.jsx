@@ -82,6 +82,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
         body: JSON.stringify({ username, password, email }),
       });
 
+
       const data = await response.json();
 
       if (response.ok) {

@@ -43,6 +43,7 @@ const Shop = () => {
     try {
       const response = await fetch(
         "https://www.moguri.site/api/shop/accessory",
+
         {
           method: "POST",
           headers: {
@@ -71,6 +72,7 @@ const Shop = () => {
     try {
       const response = await fetch(
         "https://www.moguri.site/api/shop/background",
+
         {
           method: "POST",
           headers: {
