@@ -42,7 +42,7 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
       // 저장된 토큰 불러오기
       const token = Cookies.get("token");
       // API Endpoint 수정
-      const response = await fetch("https://www.moguri.sites/api/moguri/grow", {
+      const response = await fetch("https://www.moguri.site/api/moguri/grow", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
