@@ -70,8 +70,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeBreakfast,
       updateAction: updateBreakfast,
       // API Endpoint 수정
-      apiEndpoint:
-        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/breakfast",
+      apiEndpoint: "http://localhost:8000/api/breakfast",
     },
     {
       name: "점심",
@@ -81,8 +80,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeLunch,
       updateAction: updateLunch,
       // API Endpoint 수정
-      apiEndpoint:
-        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/lunch",
+      apiEndpoint: "https://moguri.site:8000/api/lunch",
     },
     {
       name: "저녁",
@@ -92,8 +90,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeDinner,
       updateAction: updateDinner,
       // API Endpoint 수정
-      apiEndpoint:
-        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/dinner",
+      apiEndpoint: "https://moguri.site:8000/api/dinner",
     },
     {
       name: "간식",
@@ -103,110 +100,109 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeSnack,
       updateAction: updateSnack,
       // API Endpoint 수정
-      apiEndpoint:
-        "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/snack",
+      apiEndpoint: "https://moguri.site:8000/api/snack",
     },
   ];
 
-  const handleAddItem = () => {
+  // const handleAddItem = () => {
+  //   if (newItem.menu && newItem.calorie) {
+  //     // const lastId = getLastId(meals[selectedMeal].details);
+  //     const action = meals[selectedMeal].addAction;
+  //     dispatch(action({ id: Date.now(), ...newItem }));
+  //     // console.log(todayMealState);
+  //     setNewItem({ menu: "", calorie: "" });
+  //   }
+  // };
+
+  const handleAddItem = async () => {
     if (newItem.menu && newItem.calorie) {
-      // const lastId = getLastId(meals[selectedMeal].details);
-      const action = meals[selectedMeal].addAction;
-      dispatch(action({ id: Date.now(), ...newItem }));
-      // console.log(todayMealState);
-      setNewItem({ menu: "", calorie: "" });
+      try {
+        const token = Cookies.get("token");
+
+        // API Endpoint 수정
+        const response = await fetch(meals[selectedMeal].apiEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ ...newItem }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          const action = meals[selectedMeal].addAction;
+          dispatch(action({ ...data }));
+          setNewItem({ menu: "", calorie: "" });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  // const handleAddItem = async () => {
-  //   if (newItem.menu && newItem.calorie) {
-  //     try {
-  //       const token = Cookies.get("token");
-
-  //       // API Endpoint 수정
-  //       const response = await fetch(meals[selectedMeal].apiEndpoint, {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify({ ...newItem }),
-  //       });
-
-  //       const data = await response.json();
-
-  //       if (response.ok) {
-  //         const action = meals[selectedMeal].addAction;
-  //         dispatch(action({ ...data }));
-  //         setNewItem({ menu: "", calorie: "" });
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
+  // const handleDeleteItem = (id) => {
+  //   const action = meals[selectedMeal].removeAction;
+  //   dispatch(action(id));
   // };
 
-  const handleDeleteItem = (id) => {
-    const action = meals[selectedMeal].removeAction;
-    dispatch(action(id));
+  const handleDeleteItem = async (id) => {
+    try {
+      const token = Cookies.get("token");
+
+      // API Endpoint 수정
+      const response = await fetch(`${meals[selectedMeal].apiEndpoint}/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const action = meals[selectedMeal].removeAction;
+        dispatch(action(data.deleted_id));
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  // const handleDeleteItem = async (id) => {
-  //   try {
-  //     const token = Cookies.get("token");
-
-  //     // API Endpoint 수정
-  //     const response = await fetch(`${meals[selectedMeal].apiEndpoint}/${id}`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (response.ok) {
-  //       const action = meals[selectedMeal].removeAction;
-  //       dispatch(action(data.deleted_id));
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
+  // const handleUpdateItem = (id, updatedItem) => {
+  //   const action = meals[selectedMeal].updateAction;
+  //   dispatch(action({ id, newItem: updatedItem }));
+  //   setEditingItem(null);
   // };
 
-  const handleUpdateItem = (id, updatedItem) => {
-    const action = meals[selectedMeal].updateAction;
-    dispatch(action({ id, newItem: updatedItem }));
-    setEditingItem(null);
+  const handleUpdateItem = async (id, updatedItem) => {
+    try {
+      const token = Cookies.get("token");
+
+      // API Endpoint 수정
+      const response = await fetch(`${meals[selectedMeal].apiEndpoint}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ ...updatedItem }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        const action = meals[selectedMeal].updateAction;
+        const { id, ...newItemWithoutId } = data;
+        dispatch(action({ id: data.id, newItem: newItemWithoutId }));
+        setEditingItem(null);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  // const handleUpdateItem = async (id, updatedItem) => {
-  //   try {
-  //     const token = Cookies.get("token");
-
-  //     // API Endpoint 수정
-  //     const response = await fetch(`${meals[selectedMeal].apiEndpoint}/${id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify({ ...updatedItem }),
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (response.ok) {
-  //       const action = meals[selectedMeal].updateAction;
-  //       const { id, ...newItemWithoutId } = data;
-  //       dispatch(action({ id: data.id, newItem: newItemWithoutId }));
-  //       setEditingItem(null);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const handleKeyDown = (event, item) => {
     if (event.key === "Enter") {

@@ -9,6 +9,7 @@ import slideButtonImage from "assets/icon/slidebutton.png";
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [accessoryStyle, setAccessoryStyle] = useState({});
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -487,6 +488,14 @@ const Home = () => {
     }
   };
 
+  useEffect(() => {
+    const style = getAccessoryStyle(
+      moguriState.id,
+      moguriState.currentItem.accessory.id
+    );
+    setAccessoryStyle(style);
+  }, [moguriState.id, moguriState.currentItem.accessory.id]);
+
   return (
     <div
       className="home-container"
@@ -508,10 +517,7 @@ const Home = () => {
           src={moguriState.currentItem.accessory.imageUrl}
           alt=""
           className="current-accessory"
-          style={getAccessoryStyle(
-            moguriState.id,
-            moguriState.currentItem.accessory.id
-          )}
+          style={accessoryStyle}
         />
         <img
           src={moguriState.imageUrl}

@@ -72,45 +72,44 @@ const FirstLogin = () => {
     setWeightError("");
 
     // 더미데이터 코드 나중에 삭제
-    dispatch(setName(moguriName));
-    dispatch(setTargetWeight(targetWeightLocal));
-    setIsMoguriUpdated(true);
+    // dispatch(setName(moguriName));
+    // dispatch(setTargetWeight(targetWeightLocal));
+    // setIsMoguriUpdated(true);
 
     // 실제 API 연동
-    // try {
-    //   // 토큰
-    //   // 저장된 토큰 불러오기
-    //   const token = Cookies.get("token");
+    try {
+      // 토큰
+      // 저장된 토큰 불러오기
+      const token = Cookies.get("token");
 
-    //   // API Endpoint 수정
-    //   const response = await fetch(
-    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //       body: JSON.stringify({
-    //         moguri: {
-    //           name: moguriName,
-    //           targetWeight: targetWeightLocal,
-    //         },
-    //       }),
-    //     }
-    //   );
+      console.log(token);
 
-    //   const data = await response.json();
+      // API Endpoint 수정
+      const response = await fetch("http://localhost:8000/api/moguri", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          moguri: {
+            name: moguriName,
+            targetWeight: targetWeightLocal,
+          },
+        }),
+      });
 
-    //   // 응답 데이터를 바탕으로 상태 업데이트
-    //   dispatch(setName(data.moguri.name));
-    //   dispatch(setTargetWeight(data.moguri.targetWeight));
+      const data = await response.json();
 
-    //   // moguri 상태 업데이트 표시
-    //   setIsMoguriUpdated(true);
-    // } catch (error) {
-    //   console.error("Error updating moguri:", error);
-    // }
+      // 응답 데이터를 바탕으로 상태 업데이트
+      dispatch(setName(data.moguri.name));
+      dispatch(setTargetWeight(data.moguri.targetWeight));
+
+      // moguri 상태 업데이트 표시
+      setIsMoguriUpdated(true);
+    } catch (error) {
+      console.error("Error updating moguri:", error);
+    }
   };
 
   useEffect(() => {

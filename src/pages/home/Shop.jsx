@@ -39,95 +39,95 @@ const Shop = () => {
     setIsItemAlertModal(false);
   };
 
-  // const handleAccessoryDraw = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/shop/accessory",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
-  //         },
-  //       }
-  //     );
+  const handleAccessoryDraw = async () => {
+    try {
+      const response = await fetch(
+        "https://moguri.site:8000/api/shop/accessory",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
+          },
+        }
+      );
 
-  //     const data = await response.json();
+      const data = await response.json();
 
-  //     if (response.ok) {
-  //       dispatch(addOwnedAccessory(data.accessory));
-  //       setNewItem(data.accessory);
-  //       openDrawResultModal();
-  //     } else if (response.status === 409) {
-  //       setAlertMessage(data.error);
-  //       openItemAlertModal();
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleBackgroundDraw = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/shop/background",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
-  //         },
-  //       }
-  //     );
-
-  //     const data = await response.json();
-
-  //     if (response.ok) {
-  //       dispatch(addOwnedBackground(data.background));
-  //       setNewItem(data.background);
-  //       openDrawResultModal();
-  //     } else if (response.status === 409) {
-  //       setAlertMessage(data.error);
-  //       openItemAlertModal();
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const handleAccessoryDraw = () => {
-    dispatch(
-      addOwnedAccessory({
-        id: 104,
-        name: "제빵모자",
-        imageUrl: "https://moguri.site/image/hat_4.png",
-      })
-    );
-    setNewItem({
-      id: 104,
-      name: "제빵모자",
-      imageUrl: "https://moguri.site/image/hat_4.png",
-    });
-    openDrawResultModal();
+      if (response.ok) {
+        dispatch(addOwnedAccessory(data.item));
+        setNewItem(data.item);
+        openDrawResultModal();
+      } else if (response.status === 409) {
+        setAlertMessage(data.error);
+        openItemAlertModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleBackgroundDraw =  () => {
-    setAlertMessage("모든 배경화면을 보유중입니다!");
-    openItemAlertModal();
-      //  dispatch(
-      //    addOwnedBackground({
-      //      id: 203,
-      //      name: "동굴",
-      //      imageUrl: "http://158.180.71.193/image/background3.png",
-      //    })
-      //  );
-      //  setNewItem({
-      //    id: 203,
-      //    name: "동굴",
-      //    imageUrl: "http://158.180.71.193/image/background3.png",
-      //  });
-      //  openDrawResultModal();
+  const handleBackgroundDraw = async () => {
+    try {
+      const response = await fetch(
+        "https://moguri.site:8000/api/shop/background",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        dispatch(addOwnedBackground(data.item));
+        setNewItem(data.item);
+        openDrawResultModal();
+      } else if (response.status === 409) {
+        setAlertMessage(data.error);
+        openItemAlertModal();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  // const handleAccessoryDraw = () => {
+  //   dispatch(
+  //     addOwnedAccessory({
+  //       id: 104,
+  //       name: "제빵모자",
+  //       imageUrl: "https://moguri.site/image/hat_4.png",
+  //     })
+  //   );
+  //   setNewItem({
+  //     id: 104,
+  //     name: "제빵모자",
+  //     imageUrl: "https://moguri.site/image/hat_4.png",
+  //   });
+  //   openDrawResultModal();
+  // };
+
+  // const handleBackgroundDraw =  () => {
+  //   setAlertMessage("모든 배경화면을 보유중입니다!");
+  //   openItemAlertModal();
+  //     //  dispatch(
+  //     //    addOwnedBackground({
+  //     //      id: 203,
+  //     //      name: "동굴",
+  //     //      imageUrl: "http://158.180.71.193/image/background3.png",
+  //     //    })
+  //     //  );
+  //     //  setNewItem({
+  //     //    id: 203,
+  //     //    name: "동굴",
+  //     //    imageUrl: "http://158.180.71.193/image/background3.png",
+  //     //  });
+  //     //  openDrawResultModal();
+  // };
 
   return (
     <div>

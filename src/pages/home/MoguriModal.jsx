@@ -28,51 +28,52 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
   };
 
   // 임시 코드
-  const handleNextStep = () => {
-    dispatch(setId(12));
-    dispatch(setImage("https://moguri.site/image/moguri_6-2.png"));
-    openEvolvedModal();
-    setTargetDifference("축하합니다! 목표에 도달하셨네요!");
-    setCurrentStep(2);
-  };
-
-  // const handleNextStep = async () => {
-  //   try {
-  //     // 토큰
-  //     // 저장된 토큰 불러오기
-  //     const token = Cookies.get("token");
-  //     // API Endpoint 수정
-  //     const response = await fetch(
-  //       "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri/grow",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify({ weight }),
-  //       }
-  //     );
-  //     const data = await response.json();
-  //     if (response.ok) {
-  //       console.log(data.isEvolved);
-  //       if (data.isEvolved) {
-  //         dispatch(setId(data.moguri.id));
-  //         dispatch(setImage(data.moguri.imageUrl));
-  //         openEvolvedModal();
-  //       } else {
-  //         dispatch(setId(data.moguri.id));
-  //         dispatch(setImage(data.moguri.imageUrl));
-  //       }
-  //       setTargetDifference(data.targetDifference);
-  //       setCurrentStep(2);
-  //     } else {
-  //       console.log(data.error);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
+  // const handleNextStep = () => {
+  //   dispatch(setId(12));
+  //   dispatch(setImage("https://moguri.site/image/moguri_6-2.png"));
+  //   openEvolvedModal();
+  //   setTargetDifference("축하합니다! 목표에 도달하셨네요!");
+  //   setCurrentStep(2);
   // };
+
+  const handleNextStep = async () => {
+    try {
+      // 토큰
+      // 저장된 토큰 불러오기
+      const token = Cookies.get("token");
+      // API Endpoint 수정
+      const response = await fetch(
+        "https://moguri.sites:8000/api/moguri/grow",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ weight }),
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        console.log(data);
+        if (data.evolved) {
+          dispatch(setId(data.moguri.id));
+          dispatch(setImage(data.moguri.imageUrl));
+          openEvolvedModal();
+          console.log(isEvolvedModalOpen);
+        } else {
+          dispatch(setId(data.moguri.id));
+          dispatch(setImage(data.moguri.imageUrl));
+        }
+        setTargetDifference(data.targetDifference);
+        setCurrentStep(2);
+      } else {
+        console.log(data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleBackStep = () => {
     setCurrentStep(1);
