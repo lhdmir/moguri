@@ -48,17 +48,14 @@ const TodayExercise = () => {
         const token = Cookies.get("token");
 
         // API Endpoint 수정
-        const response = await fetch(
-          "https://www.moguri.site:8000/api/exercise",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ ...newItem }),
-          }
-        );
+        const response = await fetch("https://www.moguri.site/api/exercise", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ ...newItem }),
+        });
 
         const data = await response.json();
 
@@ -82,7 +79,7 @@ const TodayExercise = () => {
 
       // API Endpoint 수정
       const response = await fetch(
-        `https://www.moguri.site:8000/api/exercise/${id}`,
+        `https://www.moguri.site/api/exercise/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -113,7 +110,7 @@ const TodayExercise = () => {
 
       // API Endpoint 수정
       const response = await fetch(
-        `https://www.moguri.site:8000/api/exercise/${id}`,
+        `https://www.moguri.site/api/exercise/${id}`,
         {
           method: "PUT",
           headers: {

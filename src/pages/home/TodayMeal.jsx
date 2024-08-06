@@ -70,7 +70,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeBreakfast,
       updateAction: updateBreakfast,
       // API Endpoint 수정
-      apiEndpoint: "https://www.moguri.site:8000/api/breakfast",
+      apiEndpoint: "https://www.moguri.site/api/breakfast",
     },
     {
       name: "점심",
@@ -80,7 +80,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeLunch,
       updateAction: updateLunch,
       // API Endpoint 수정
-      apiEndpoint: "https://www.moguri.site:8000/api/lunch",
+      apiEndpoint: "https://www.moguri.site/api/lunch",
     },
     {
       name: "저녁",
@@ -90,7 +90,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeDinner,
       updateAction: updateDinner,
       // API Endpoint 수정
-      apiEndpoint: "https://www.moguri.site:8000/api/dinner",
+      apiEndpoint: "https://www.moguri.site/api/dinner",
     },
     {
       name: "간식",
@@ -100,7 +100,7 @@ const TodayMeal = ({ onMealSelect }) => {
       removeAction: removeSnack,
       updateAction: updateSnack,
       // API Endpoint 수정
-      apiEndpoint: "https://www.moguri.site:8000/api/snack",
+      apiEndpoint: "https://www.moguri.site/api/snack",
     },
   ];
 

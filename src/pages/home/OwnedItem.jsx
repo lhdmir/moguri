@@ -36,7 +36,7 @@ const OwnedItem = () => {
     if (selectedCategory === "accessory") {
       try {
         const response = await fetch(
-          "https://www.moguri.site:8000/api/moguri/accessory",
+          "https://www.moguri.site/api/moguri/accessory",
           {
             method: "PUT",
             headers: {
@@ -58,7 +58,7 @@ const OwnedItem = () => {
     } else if (selectedCategory === "background") {
       try {
         const response = await fetch(
-          "https://www.moguri.site:8000/api/moguri/background",
+          "https://www.moguri.site/api/moguri/background",
           {
             method: "PUT",
             headers: {
