@@ -43,7 +43,7 @@ const MoguriModal = ({ isOpen, onRequestClose }) => {
       const token = Cookies.get("token");
       // API Endpoint 수정
       const response = await fetch(
-        "https://moguri.sites:8000/api/moguri/grow",
+        "https://www.moguri.sites:8000/api/moguri/grow",
         {
           method: "POST",
           headers: {
