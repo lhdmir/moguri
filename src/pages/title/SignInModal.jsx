@@ -88,7 +88,7 @@ function SignInModal({ isOpen, onRequestClose }) {
     // 실제 API 연동
     try {
       // API Endpoint 수정
-      const response = await fetch("https://www.moguri.site:8000/api/login", {
+      const response = await fetch("https://www.moguri.site/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -42,7 +42,8 @@ const Shop = () => {
   const handleAccessoryDraw = async () => {
     try {
       const response = await fetch(
-        "https://www.moguri.site:8000/api/shop/accessory",
+        "https://www.moguri.site/api/shop/accessory",
+
         {
           method: "POST",
           headers: {
@@ -70,7 +71,8 @@ const Shop = () => {
   const handleBackgroundDraw = async () => {
     try {
       const response = await fetch(
-        "https://www.moguri.site:8000/api/shop/background",
+        "https://www.moguri.site/api/shop/background",
+
         {
           method: "POST",
           headers: {
