@@ -19,68 +19,68 @@ const OwnedItem = () => {
   const items = moguriState.ownedItem[selectedCategory];
 
   // 아이템 클릭 시 현재 아이템으로 설정하는 함수
-  const handleItemClick = (item) => {
-    if (selectedCategory === "accessory") {
-      if (moguriState.currentItem.accessory.id === item.id) {
-        dispatch(setCurrentAccessory({ id: 0, name: "", imageUrl: "" }));
-      } else {
-        dispatch(setCurrentAccessory(item));
-      }
-    } else if (selectedCategory === "background") {
-      dispatch(setCurrentBackground(item));
-    }
-  };
-
-  // 아이템 클릭 시 현재 아이템으로 설정하는 함수
-  // const handleItemClick = async (item) => {
+  // const handleItemClick = (item) => {
   //   if (selectedCategory === "accessory") {
-  //     try {
-  //       const response = await fetch(
-  //         "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri/accessory",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
-  //           },
-  //           body: JSON.stringify({ accessory: item }),
-  //         }
-  //       );
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-
-  //         dispatch(setCurrentAccessory(data.accessory));
-  //       }
-  //     } catch (error) {
-  //       console.error("Error:", error);
+  //     if (moguriState.currentItem.accessory.id === item.id) {
+  //       dispatch(setCurrentAccessory({ id: 0, name: "", imageUrl: "" }));
+  //     } else {
+  //       dispatch(setCurrentAccessory(item));
   //     }
   //   } else if (selectedCategory === "background") {
-  //     try {
-  //       const response = await fetch(
-  //         "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/moguri/background",
-  //         {
-  //           method: "PUT",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             Authorization: `Bearer ${Cookies.get("token")}`,
-  //           },
-  //           body: JSON.stringify({ background: item }),
-  //         }
-  //       );
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-
-  //         dispatch(setCurrentBackground(data.background));
-  //       }
-  //     } catch (error) {
-  //       console.error("Error:", error);
-  //     }
+  //     dispatch(setCurrentBackground(item));
   //   }
-
-  //   console.log(moguriState.currentItem);
   // };
+
+  // 아이템 클릭 시 현재 아이템으로 설정하는 함수
+  const handleItemClick = async (item) => {
+    if (selectedCategory === "accessory") {
+      try {
+        const response = await fetch(
+          "https://moguri.site:8000/api/moguri/accessory",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${Cookies.get("token")}`, // Assuming you use token-based auth
+            },
+            body: JSON.stringify({ accessory: item }),
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+
+          dispatch(setCurrentAccessory(data.accessory));
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    } else if (selectedCategory === "background") {
+      try {
+        const response = await fetch(
+          "http://localhost:8000/api/moguri/background",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${Cookies.get("token")}`,
+            },
+            body: JSON.stringify({ background: item }),
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+
+          dispatch(setCurrentBackground(data.background));
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+    console.log(moguriState.currentItem);
+  };
 
   return (
     <div>
@@ -123,5 +123,3 @@ const OwnedItem = () => {
 };
 
 export default OwnedItem;
-
-

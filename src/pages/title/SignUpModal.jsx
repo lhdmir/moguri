@@ -22,7 +22,7 @@ function SignUpModal({ isOpen, onRequestClose }) {
     event.preventDefault();
 
     const usernamePattern = /^[a-zA-Z0-9]{1,13}$/;
-    const passwordPattern = /^[a-zA-Z0-9]{1,13}$/;
+    const passwordPattern = /^[a-zA-Z0-9!@#$%^&*]{1,13}$/;
 
     if (username === "") {
       setError("아이디를 입력해주세요");
@@ -66,39 +66,36 @@ function SignUpModal({ isOpen, onRequestClose }) {
     setSuccess("");
 
     // 백엔드 API 서버 구축 완료시 삭제
-    setSuccess("회원가입 성공");
-    setUsername("");
-    setPassword("");
-    setPasswordCheck("");
-    setEmail("");
+    // setSuccess("회원가입 성공");
+    // setUsername("");
+    // setPassword("");
+    // setPasswordCheck("");
+    // setEmail("");
 
-    // try {
-    //   //   // API Endpoint 수정
-    //   const response = await fetch(
-    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/register",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ username, password, email }),
-    //     }
-    //   );
+    try {
+      //   // API Endpoint 수정
+      const response = await fetch("https://moguri.site:8000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password, email }),
+      });
 
-    //   const data = await response.json();
+      const data = await response.json();
 
-    //   if (response.ok) {
-    //     setSuccess(data.message);
-    //     setUsername("");
-    //     setPassword("");
-    //     setPasswordCheck("");
-    //     setEmail("");
-    //   } else {
-    //     setError("회원가입 실패: " + data.error);
-    //   }
-    // } catch (error) {
-    //   setError("회원가입 실패: 서버와의 통신 오류");
-    // }
+      if (response.ok) {
+        setSuccess(data.message);
+        setUsername("");
+        setPassword("");
+        setPasswordCheck("");
+        setEmail("");
+      } else {
+        setError("회원가입 실패: " + data.error);
+      }
+    } catch (error) {
+      setError("회원가입 실패: 서버와의 통신 오류");
+    }
   };
 
   const handleClose = () => {

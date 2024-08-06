@@ -14,7 +14,7 @@ import { setTodayMeal } from "../../features/meals/todayMealSlice";
 import { setTodayExercise } from "../../features/exercises/todayExerciseSlice";
 
 // 더미 데이터
-import data from "../../../json/user.json";
+// import data from "../../../json/user.json";
 
 function SignInModal({ isOpen, onRequestClose }) {
   //임시 코드
@@ -37,7 +37,7 @@ function SignInModal({ isOpen, onRequestClose }) {
     event.preventDefault();
 
     const usernamePattern = /^[a-zA-Z0-9]{1,13}$/;
-    const passwordPattern = /^[a-zA-Z0-9]{1,13}$/;
+    const passwordPattern = /^[a-zA-Z0-9!@#$%^&*]{1,13}$/;
 
     if (username === "") {
       setError("아이디를 입력해주세요");
@@ -63,12 +63,12 @@ function SignInModal({ isOpen, onRequestClose }) {
 
     // 더미 데이터 활용 기능 테스트
     //  데이터 로드
-    const { token, cookieExpirationTime, moguri, todayMeal, todayExercise } =
-      data;
+    // const { token, cookieExpirationTime, moguri, todayMeal, todayExercise } =
+    //   data;
 
-    // 토큰, 토큰 만료 시간 쿠키 저장
-    const expirationDate = new Date(cookieExpirationTime);
-    Cookies.set("token", token, { expires: expirationDate });
+    // // 토큰, 토큰 만료 시간 쿠키 저장
+    // const expirationDate = new Date(cookieExpirationTime);
+    // Cookies.set("token", token, { expires: expirationDate });
 
     // 모구리 데이터 업데이트
     // const updatedMoguriStateData = {
@@ -76,59 +76,56 @@ function SignInModal({ isOpen, onRequestClose }) {
     //   ...moguri,
     // };
     // dispatch(setMoguri(updatedMoguriStateData));
-    dispatch(setMoguri(moguri));
-    // 오늘의 식단 업데이트
-    dispatch(setTodayMeal(todayMeal));
-    // 오늘의 운동 업데이트
-    dispatch(setTodayExercise(todayExercise));
+    // dispatch(setMoguri(moguri));
+    // // 오늘의 식단 업데이트
+    // dispatch(setTodayMeal(todayMeal));
+    // // 오늘의 운동 업데이트
+    // dispatch(setTodayExercise(todayExercise));
 
-    // moguri 상태 업데이트 표시
-    setIsMoguriUpdated(true);
+    // // moguri 상태 업데이트 표시
+    // setIsMoguriUpdated(true);
 
     // 실제 API 연동
-    // try {
-    //   // API Endpoint 수정
-    //   const response = await fetch(
-    //     "https://5797b8a7-4933-4b3c-b62d-53e86f8c48ef.mock.pstmn.io/login",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ id: username, password }),
-    //     }
-    //   );
+    try {
+      // API Endpoint 수정
+      const response = await fetch("https://moguri.site:8000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    //   const data = await response.json();
+      const data = await response.json();
 
-    //   if (response.ok) {
-    //     const {
-    //       token,
-    //       cookieExpirationTime,
-    //       moguri,
-    //       todayMeal,
-    //       todayExercise,
-    //     } = data;
+      if (response.ok) {
+        const {
+          token,
+          cookieExpirationTime,
+          moguri,
+          todayMeal,
+          todayExercise,
+        } = data;
+        console.log(data);
+        // Save token and expiration time to cookies
+        const expirationDate = new Date(cookieExpirationTime);
+        Cookies.set("token", token, { expires: expirationDate });
 
-    //     // Save token and expiration time to cookies
-    //     const expirationDate = new Date(cookieExpirationTime);
-    //     Cookies.set("token", token, { expires: expirationDate });
+        // // 모구리 데이터 업데이트
+        dispatch(setMoguri(moguri));
+        // 오늘의 식단 업데이트
+        dispatch(setTodayMeal(todayMeal));
+        // 오늘의 운동 업데이트
+        dispatch(setTodayExercise(todayExercise));
 
-    //     // // 모구리 데이터 업데이트
-    //     dispatch(setMoguri(moguri));
-    //     // 오늘의 식단 업데이트
-    //     dispatch(setTodayMeal(todayMeal));
-    //     // 오늘의 운동 업데이트
-    //     dispatch(setTodayExercise(todayExercise));
-
-    //     // moguri 상태 업데이트 표시
-    //     setIsMoguriUpdated(true);
-    //   } else {
-    //     setError("로그인 실패: " + data.error);
-    //   }
-    // } catch (error) {
-    //   setError("로그인 실패: 서버와의 통신 오류");
-    // }
+        // moguri 상태 업데이트 표시
+        setIsMoguriUpdated(true);
+      } else {
+        setError("로그인 실패: " + data.error);
+      }
+    } catch (error) {
+      setError("로그인 실패: 서버와의 통신 오류");
+    }
   };
 
   useEffect(() => {
